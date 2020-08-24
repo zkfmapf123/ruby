@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>kdu강의평가사이트</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="headerContainer">
+        <div class="headerColumn">
+          <div class="column">
+            <p> KDU <p>
+            <p> 경동대학교 </p>
+            <p> 강의평가사이트 </p>
+          </div>
+        </div>
+        <div class="headerColumn">
+          <%=link_to "강의 평가", "/lesson", id: :btn1%>
+          <%=link_to "교수 평가", "/professor"%>
+          <%=link_to "게시판", "/seeboard"%>
+          <%=link_to "학점계산기", "/calculator"%>
+        </div>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </main>
+    <footer>
+      <p> Made by Lee <p>
+      <p> Designed by Koo <p>
+    </footer>
+  </body>
+</html>

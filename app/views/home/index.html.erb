@@ -1,0 +1,27 @@
+<div class="homeContainer">
+    <div class="modal", id="modal">
+        <div class="modalContent", id="modalLogin">
+            <h1> 이미지 </h1>
+            <%=form_tag "/", method: :post%>
+                <input type="email" placeholder="이메일을 입력하세요" required=true/>
+                <input type="password" placeholder="비밀번호를 입력하세요" required=true/>
+                <input type="submit" value="로그인"/>
+            </form>
+            <button id="btnJoin"> 회원가입 </button>
+            <button id="btnForget"> 아이디/비밀번호 찾기 </button> 
+        </div>
+    </div>
+    <div class="modal", id="modal">
+        <div class="modalContent", id="modalJoin">
+            <h1> Join </h1>
+        </div>
+    </div>
+    <div class="modal", id="modal">
+        <div class="modalContent", id="modalForget">
+            <h1> Forget <h1>
+        </div>
+    </div>
+    <div class="homeColumn">
+        <h1> 메인화면 <h1>
+    </div>
+</div>
