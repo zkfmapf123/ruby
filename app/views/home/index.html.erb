@@ -1,21 +1,77 @@
 <div class="homeContainer">
+    <!--로그인-->
     <div class="modal", id="modal">
         <div class="modalContent", id="modalLogin">
             <h1> 이미지 </h1>
-            <%=form_tag "/", method: :post%>
-                <input type="email" placeholder="이메일을 입력하세요" required=true/>
-                <input type="password" placeholder="비밀번호를 입력하세요" required=true/>
+            <%=form_tag "/login", method: :post%>
+                <input type="email" name="email" placeholder="이메일을 입력하세요" required=true/>
+                <input type="password" name="password" placeholder="비밀번호를 입력하세요" required=true/>
+                <strong class="error"><%=flash[:login]%></strong>
                 <input type="submit" value="로그인"/>
             </form>
             <button id="btnJoin"> 회원가입 </button>
             <button id="btnForget"> 아이디/비밀번호 찾기 </button> 
         </div>
     </div>
+    <!--회원가입-->
     <div class="modal", id="modal">
         <div class="modalContent", id="modalJoin">
-            <h1> Join </h1>
+            <h1> 이미지 </h1>
+            <%=form_tag "/join", method: :post%>
+                <input type="text" name="name" placeholder="이름" required=true>
+                <input type="email" name="email" placeholder="이메일" required=true>
+                <select name="major">
+                    <optgroup label="고성캠퍼스">
+                        <option name="major" value="관광경영학과">관광경영학과</option>
+                        <option name="major" value="호텔경영학과">호텔경영학과</option>
+                        <option name="major" value="항공경영학과">항공경영학과</option>
+                        <option name="major" value="(대명)레저&리조트학과">(대명)레저&리조트학과</option>
+                        <option name="major" value="해양심층수학과">해양심층수학과</option>
+                        <option name="major" value="국제경영학과">국제경영학과</option>
+                        <option name="major" value="국제호텔경영학과">국제호텔경영학과</option>
+                    </optgroup>
+                    <optgroup label="양주캠퍼스">
+                        <option name="major" value="체육학과">체육학과</option>
+                        <option name="major" value="건축공학과">건축공학과</option>
+                        <option name="major" value="경찰학과">경찰학과</option>
+                        <option name="major" value="행정학과">행정학과</option>
+                        <option name="major" value="컴퓨터공학과">컴퓨터공학과</option>
+                        <option name="major" value="유아교육과">유아교육과</option>
+                        <option name="major" value="경영학과">경영학과</option>
+                        <option name="major" value="외식사업학과">외식사업학과</option>
+                        <option name="major" value="외삭산업경영학과">외식산업경영학과</option>
+                        <option name="major" value="호텔조리학과">호텔조리학과</option>
+                        <option name="major" value="소프트웨어학과">소프트웨어학과</option>
+                        <option name="major" value="건축디자인학과">건축디자인학과</option>
+                        <option name="major" value="토목공학과">토목공학과</option>
+                        <option name="major" value="중등특수교육과">중등특수교육과</option>
+                        <option name="major" value="한국어교원학과">한국어교원학과</option>
+                        <option name="major" value="스포츠마케팅학과">스포츠마케팅학과</option>
+                        <option name="major" value="정보보안학과">정보보안학과</option>
+                        <option name="major" value="디자인학과">디자인학과</option>
+                    </optgroup>
+                    <optgroup label="원주캠퍼스">
+                        <option name="major" value="물리치료학과">물리치료학과</option>
+                        <option name="major" value="보건관리학과">보건관리학과</option>
+                        <option name="major" value="사회복지학과">사회복지학과</option>
+                        <option name="major" value="안경광학과">안경광학과</option>
+                        <option name="major" value="웰니스경영학과">웰니스경영학과</option>
+                        <option name="major" value="작업치료학과">작업치료학과</option>
+                        <option name="major" value="응급구조학과">응급구조학과</option>
+                        <option name="major" value="임상병리학과">임상병리학과</option>
+                        <option name="major" value="작업치료학과">작업치료학과</option>
+                        <option name="major" value="치기공학과">치기공학과</option>
+                        <option name="major" value="치위생학과">치위생학과</option>
+                        <option name="major" value="간호학과">간호학과</option>
+                    </optgroup>
+                <input type="password" name="password" placeholder="비밀번호" required=true>
+                <input type="password" name="passwordCheck" placeholder="비밀번호 확인" required=true>
+                <input type="submit" value="회원가입">
+                <strong class="error"><%=flash[:join]%></strong>
+            </form>
         </div>
     </div>
+    <!--아이디/비밀번호찾기-->
     <div class="modal", id="modal">
         <div class="modalContent", id="modalForget">
             <h1> Forget <h1>
@@ -23,5 +79,10 @@
     </div>
     <div class="homeColumn">
         <h1> 메인화면 <h1>
+        <% if current_user() == nil%>
+            <p> Guest <p>
+        <% else%>
+            <p> <%=current_user().name%> </p>
+        <%end%>
     </div>
 </div>

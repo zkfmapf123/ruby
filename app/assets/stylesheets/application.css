@@ -435,6 +435,13 @@ textarea {
     background-color: rgba(0,0,0,0.8);
 }
 
+#error{
+    font-size : 15px;
+    font-weight: bold;
+    color : white;
+    margin-top : 10px;
+}
+
 .modalContent{
     display: flex;
     background-color: gray;

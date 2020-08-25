@@ -19,29 +19,33 @@ var btn = document.getElementById("btn1");
 var modal = document.getElementsByClassName("modal");
 var btnJoin = document.getElementById("btnJoin");
 var btnForget = document.getElementById("btnForget");
+var errorMessage = document.getElementsByClassName("error");
 
-btn.addEventListener("click", (e)=>{
+//간이버튼
+btn.addEventListener("click", function(e){
     e.preventDefault();
 
     modal[0].style.display="block";
+    errorTextDefault(0);
 });
 
+//회원가입버튼
 btnJoin.addEventListener("click",(e)=>{
     e.preventDefault();
-
-    modal[0].style.display="none";
-    modal[1].style.display="block";
-    modal[2].style.display="none";
+    modal[0].style.display= "none";
+    modal[1].style.display= "block";
+    errorTextDefault(1);
 })
 
+//아이디 / 비밀번호찾기 버튼
 btnForget.addEventListener("click",(e)=>{
     e.preventDefault();
-
-    modal[0].style.display="none";
-    modal[1].style.display="none";
-    modal[2].style.display="block"
+    modal[0].style.display = "none";
+    modal[2].style.display = "block";
+    errorTextDefault(2);
 })
 
+//바탕화면 누르면 초기화
 window.onclick = (e) =>{
     for(let i=0; i<modal.length; i++){
         if(e.target == modal[i]){
@@ -49,3 +53,28 @@ window.onclick = (e) =>{
         }
     }
 }
+
+//버튼 눌렀을때 flash 초기화
+var errorTextDefault = function(index){
+    var errorText = document.getElementsByClassName("error");
+    if(errorText[index].textContent !== "") errorText[index].style.display="none";
+}
+
+//로그인 및 회원가입 오류시 나타내는 메시지
+var errorTextShowup = function(){
+    if(errorMessage[0].textContent !== ""){
+        modal[0].style.display="block";
+        modal[1].style.display="none";
+        modal[2].style.display="none";
+    }
+    
+    if(errorMessage[1].textContent !== ""){
+        modal[0].style.display="none";
+        modal[1].style.display="block";
+        modal[2].style.display="none";
+    }
+    //forget은 나중에
+}
+
+errorTextShowup();
+

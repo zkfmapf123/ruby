@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   get "/" => "home#index"
 
   # session
-  get "/login" => "session#login"
-  get "/join" => "session#join"
-  get "/forget" => "session#forget"
-  delete "/logout" => "session#logout"
+  post "/login" => "session#login"
+  post "/join" => "session#join"
 end
