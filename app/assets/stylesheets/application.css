@@ -1,3 +1,19 @@
+ /*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
  html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -360,64 +376,107 @@ textarea {
     padding: 0.2em 0;
 }
 
+/* min-width */
+header, footer, .popUpButton{
+    min-width: 1000px;
+}
+
+main{
+    min-width: 800px;
+}
+
+/* */
+
 /* header main footer */
  body{
      width: 100%;
+     min-width: 700px;
  }
 
 /* header */
  header{
-    height: 80px;
+    height: 400px;
     margin : 0;
-    background-color: #0D2140;
-    display: flex;
-    flex: 1;
-}
-
-.headerContainer{
+    background-color: #F6F6F6;
     display: flex;
     flex : 1;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.column{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.column p:nth-child(1){
-    font-size : 40px;
-    font-weight: bold;
-    color : white;
-    margin-right: 10px;
-}
-
-.column p{
-    font-size : 15px;
-    font-weight: bold;
-    color: white;
-}
-
-.column p:nth-child(3){
-    margin-right: 3px;
-}
-
-.headerColumn:nth-child(2) a{
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    padding-right: 10px;
-}
-
-.headerColumn:nth-child(2) a:hover{
-    opacity: 0.5;
 }
 
 /* header / */
+.headerContainer{
+    display: flex;
+    flex : 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerColumn:nth-child(1){
+    text-align: center;
+}
+
+.headerColumn:nth-child(1) h3{
+    font-size : 25px;
+    font-weight: bold;
+    color : purple;
+    margin-bottom: 10px;
+}
+
+.headerColumn:nth-child(2){
+    margin-top: 20px;
+}
+
+.headerColumn:nth-child(2) form{
+    border : 1px solid purple;
+    width : 500px;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex : 1;
+    flex-direction: row;
+}
+
+.headerColumn:nth-child(2) form input[type="text"]{
+    flex : 5;
+    border: 0px;
+    background-color: #F6F6F6;
+}
+
+.headerColumn:nth-child(2) form input[type="submit"]{
+    flex: 1;
+    border : 0px;
+    background-color: #F6F6F6;
+    font-size: 15px;
+    font-weight: bold;
+    color : purple;
+    border-left: 1px solid purple;
+}   
+
+.headerColumn:nth-child(3){
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.headerColumn:nth-child(3) a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.headerColumn:nth-child(3) i{
+    margin-bottom: 10px;
+    font-size : 100px;
+}
+
+.headerColumn:nth-child(3) .column{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 50px;
+    text-align: center;
+}
+
+
 
 /* modal */
 
@@ -460,6 +519,10 @@ textarea {
     align-items: center;
 }
 
+#modalPassword{
+    display: none;
+}
+
 /* modal / */
  main{
      display: flex;
@@ -467,22 +530,75 @@ textarea {
      justify-content: center;
      align-items: center;
      height: 1000px;
+     background-color: FFFFFF;
+     margin : 3% 10%;
+     
+     border : 1px solid black;
  }
 
+ /* popUpButton */
+ .popUpButton{
+     text-align: center;
+     margin-bottom: 10px;
+     font-size: 40px;
+ }
+
+ .popUpButton:hover{
+     opacity: 0.5;
+ }
+
+ /* footer */
  footer{
     display: flex;
+    flex: 1;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    height: 150px;
     background-color: #ecf0f1;
-
-    font-size: 15px;
-    font-weight: bold;
+    height: 500px;
  } 
 
- footer p{
-     margin-bottom: 10px;
+ footer .footerContainer{
+     display: flex;
+     flex: 1;
+     width: 100%;
+     flex-direction: column;
  }
+
+ .footerColumn:nth-child(1){
+    background-color: #6E5B7C;
+    display: none;
+    flex : 2;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .footerColumn:nth-child(2){
+     background-color: #4A3656;
+     display: flex;
+     flex : 1;
+     justify-content: left;
+     padding-left: 10%;
+     align-items: center;
+ }
+
+ .footerColumn:nth-child(2) p{
+     font-size : 15px;
+     font-weight: bold;
+     color : white;
+     margin-right: 15px;
+ }
+
+ .footerColumn:nth-child(2) p:nth-child(1){
+     font-size : 20px;
+     font-weight: bold;
+ }
+
+ /* media */
  
+@media screen and (max-width: 1000px){
+    main .homeContainer .homeColumn {
+        display: flex;
+        flex-direction: column;
+    }
+}

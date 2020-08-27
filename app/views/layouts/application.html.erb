@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>kdu강의평가사이트</title>
+    <title>구문정보아라</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/35fb68f7ee.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
       <div class="headerContainer">
         <div class="headerColumn">
-          <div class="column">
-            <p> KDU <p>
-            <p> 경동대학교 </p>
-            <p> 강의평가사이트 </p>
-          </div>
+          <h3>경동대학교<h3>
+          <h3>강의 평가 사이트<h3>
         </div>
         <div class="headerColumn">
-          <%=link_to "강의 평가", "/lesson", id: :btn1%>
-          <%=link_to "교수 평가", "/professor"%>
-          <%=link_to "게시판", "/seeboard"%>
-          <%=link_to "학점계산기", "/calculator"%>
+          <form action="/search">
+            <input type="text" name="search" placeholder="검색어를 입력하세요" required=true>
+            <input type="submit" value="Enter">
+          </form>
+        </div>
+        <div class="headerColumn">
+          <div class="column">
+            <i class="fas fa-book"></i>
+            <%=link_to "강의 평가", "/lesson", id: :btn1%>
+          </div>
+          <div class="column">
+            <i class="far fa-address-book"></i>
+            <%=link_to "교수 평가", "/professor"%>
+          </div>
+          <div class="column">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <%=link_to "게시판", "/seeboard"%>
+          </div>
+          <div class="column">
+            <i class="fas fa-sort-alpha-down"></i>
+            <%=link_to "학점계산기", "/calculator"%>
+          </div>
         </div>
       </div>
     </header>
@@ -30,9 +44,46 @@
       <%= yield %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </main>
-    <footer>
-      <p> Made by Lee <p>
-      <p> Designed by Koo <p>
+    <div class="popUpButton"> <!--맨 밑에-->
+      <i class="fas fa-chevron-up" id="popUpButton"></i>
+    </div>
+    <footer id="footer">
+      <div class="footerContainer">
+        <div class="footerColumn" id="footerPopup">
+          <% if current_user() == nil%>
+            <p> Guest <p>
+          <% else%>
+            <p><%=current_user().name%></p> 
+          <% end%>
+        </div>
+        <div class="footerColumn">
+          <p> 경동대학교 </p>
+          <p> 강의평가 사이트 </p>
+          <p> 개인정보 처리 방침 </p>
+          <p> 이용약관 </p>
+          <p> 고객문의 </p>
+        </div>
+      </div>
     </footer>
   </body>
+  <script>
+    var popUp = document.getElementById("popUpButton");
+    var popUpColumn = document.getElementById("footerPopup");
+    var footer = document.getElementById("footer");
+
+    footer.style.height="100px";
+
+    popUp.addEventListener("click",function(e){
+
+      if(popUpColumn.style.display === "flex"){
+        popUp.className="fas fa-chevron-up";
+        footer.style.height="100px";
+        popUpColumn.style.display = "none";
+      }else{
+        popUp.className="fas fa-chevron-down";
+        footer.style.height="500px";
+        popUpColumn.style.display="flex";
+      }
+    });
+  </script>
 </html>

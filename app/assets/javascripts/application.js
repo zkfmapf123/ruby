@@ -20,6 +20,7 @@ var modal = document.getElementsByClassName("modal");
 var btnJoin = document.getElementById("btnJoin");
 var btnForget = document.getElementById("btnForget");
 var errorMessage = document.getElementsByClassName("error");
+var modalPassword = document.getElementById("modalPassword");
 
 //간이버튼
 btn.addEventListener("click", function(e){
@@ -30,7 +31,7 @@ btn.addEventListener("click", function(e){
 });
 
 //회원가입버튼
-btnJoin.addEventListener("click",(e)=>{
+btnJoin.addEventListener("click",function(e){
     e.preventDefault();
     modal[0].style.display= "none";
     modal[1].style.display= "block";
@@ -38,15 +39,17 @@ btnJoin.addEventListener("click",(e)=>{
 })
 
 //아이디 / 비밀번호찾기 버튼
-btnForget.addEventListener("click",(e)=>{
+btnForget.addEventListener("click",function(e){
     e.preventDefault();
     modal[0].style.display = "none";
     modal[2].style.display = "block";
+    modalPassword.style.display ="none";
     errorTextDefault(2);
+    errorTextDefault(3);
 })
 
 //바탕화면 누르면 초기화
-window.onclick = (e) =>{
+window.onclick = function(e){
     for(let i=0; i<modal.length; i++){
         if(e.target == modal[i]){
             modal[i].style.display="none";
@@ -73,7 +76,19 @@ var errorTextShowup = function(){
         modal[1].style.display="block";
         modal[2].style.display="none";
     }
-    //forget은 나중에
+    
+    if(errorMessage[2].textContent !== ""){
+        modal[0].style.display ="none";
+        modal[1].style.display ="none";
+        modal[2].style.display ="block";
+    }
+
+    if(errorMessage[2].textContent !== "해당하는 이메일이 없습니다" && errorMessage[2].textContent !== ""){
+        modal[0].style.display ="none";
+        modal[1].style.display = "none";
+        modal[2].style.display = "block";
+        modalPassword.style.display="block";
+    }
 }
 
 errorTextShowup();

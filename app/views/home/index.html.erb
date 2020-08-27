@@ -1,4 +1,13 @@
 <div class="homeContainer">
+    <div class="homeColumn">
+        <h1> 메인화면 </h1>
+        <h1> 메인화면 </h1>
+        <h1> 메인화면 </h1>
+        <h1> 메인화면 </h1>
+        <h1> 메인화면 </h1>
+        <h1> 메인화면 </h1>
+        <h1> 메인화면 </h1>
+    </div>
     <!--로그인-->
     <div class="modal", id="modal">
         <div class="modalContent", id="modalLogin">
@@ -74,15 +83,21 @@
     <!--아이디/비밀번호찾기-->
     <div class="modal", id="modal">
         <div class="modalContent", id="modalForget">
-            <h1> Forget <h1>
+            <%=form_tag "/forget/?id=1"%>
+                <h1> 아이디 찾기 </h1>
+                <input type="text" name="name" placeholder="이름을 입력하세요" required=true>
+                <input type="text" name="major" placeholder="전공을 입력하세요" required=true>
+                <input type="submit" value="이메일 찾기">
+            </form>
+            <strong class="error"><%=flash[:forget]%></strong>
+            <div class="modalColumn", id="modalPassword">
+                <%=form_tag "/createPassword"%>
+                    <h1><%=flash[:forget]%> 비밀번호 바꾸기</h1>
+                    <input type="password" name="password" placeholder="비밀번호를 입력하세요" required=true>
+                    <input type="password" name="passwordCheck" placeholder="비밀번호 확인" required=true>
+                    <input type="submit" value="비밀번호 등록">
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="homeColumn">
-        <h1> 메인화면 <h1>
-        <% if current_user() == nil%>
-            <p> Guest <p>
-        <% else%>
-            <p> <%=current_user().name%> </p>
-        <%end%>
     </div>
 </div>

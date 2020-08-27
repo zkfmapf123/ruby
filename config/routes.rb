@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # session
   post "/login" => "session#login"
   post "/join" => "session#join"
+  post "/forget" => "session#forget"
+  post "/createPassword" => "session#findPassword"
 end
