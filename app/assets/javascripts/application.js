@@ -15,19 +15,53 @@
 //= require turbolinks
 //= require_tree .
 
-var btn = document.getElementById("btn1");
+var btn1 = document.getElementById("btn1");
+var btn2 = document.getElementById("btn2");
+var btn3 = document.getElementById("btn3");
+var btn4 = document.getElementById("btn4");
+
 var modal = document.getElementsByClassName("modal");
 var btnJoin = document.getElementById("btnJoin");
 var btnForget = document.getElementById("btnForget");
 var errorMessage = document.getElementsByClassName("error");
 var modalPassword = document.getElementById("modalPassword");
+var current_user = document.getElementById("current_user");
 
 //간이버튼
-btn.addEventListener("click", function(e){
-    e.preventDefault();
+btn1.addEventListener("click", function(e){
+    if(current_user.textContent === "로그인을 해주세요!"){
+        e.preventDefault();
+    
+        modal[0].style.display="block";
+        errorTextDefault(0);
+    }
+});
 
-    modal[0].style.display="block";
-    errorTextDefault(0);
+btn2.addEventListener("click", function(e){
+    if(current_user.textContent === "로그인을 해주세요!"){
+        e.preventDefault();
+    
+        modal[0].style.display="block";
+        errorTextDefault(0);
+    }
+});
+
+btn3.addEventListener("click", function(e){
+    if(current_user.textContent === "로그인을 해주세요!"){
+        e.preventDefault();
+    
+        modal[0].style.display="block";
+        errorTextDefault(0);
+    }
+});
+
+btn4.addEventListener("click", function(e){
+    if(current_user.textContent === "로그인을 해주세요!"){
+        e.preventDefault();
+    
+        modal[0].style.display="block";
+        errorTextDefault(0);
+    }
 });
 
 //회원가입버튼

@@ -1,0 +1,45 @@
+<div class="formContainer" id="lessonScreen">
+    <div class="formColumn">
+        <button id="homeworkButton"> 과제공유 버튼으루 </button>
+    </div>
+    <div class="formColumn">
+        <h1> 강의평가화면 </h1>
+        <h1> 강의평가화면 </h1>
+        <h1> 강의평가화면 </h1>
+        <h1> 강의평가화면 </h1>
+        <h1> 강의평가화면 </h1>
+        <h1> 강의평가화면 </h1>
+    </div>
+</div>
+<div class="formContainer" id="homeworkScreen">
+    <div class="formColumn">
+        <button id="lessonButton"> 강의평가 버튼으루</button>
+    </div>
+    <div class="formColumn">
+        <h1> 과제공유화면 </h1>
+        <h1> 과제공유화면 </h1>
+        <h1> 과제공유화면 </h1>
+        <h1> 과제공유화면 </h1>
+        <h1> 과제공유화면 </h1>
+        <h1> 과제공유화면 </h1>
+    </div>
+</div>
+<script>
+    var lessonScreen = document.getElementById("lessonScreen");
+    var homeworkScreen = document.getElementById("homeworkScreen");
+    
+    var homeworkButton = document.getElementById("homeworkButton");
+    var lessonButton = document.getElementById("lessonButton");
+
+    homeworkButton.addEventListener("click",function(e){
+        lessonScreen.style.display = "none";
+        homeworkScreen.style.display = "block";
+    });
+
+    lessonButton.addEventListener("click",function(e){
+        homeworkScreen.style.display="none";
+        lessonScreen.style.display="block";
+    });
+
+
+</script>

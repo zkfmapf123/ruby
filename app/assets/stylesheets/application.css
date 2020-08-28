@@ -379,6 +379,7 @@ textarea {
 /* min-width */
 header, footer, .popUpButton{
     min-width: 1000px;
+    /* min height 설정도 해야한다..*/
 }
 
 main{
@@ -415,10 +416,14 @@ main{
     text-align: center;
 }
 
+.headerColumn:nth-child(1) a{
+    text-decoration: none;
+}
+
 .headerColumn:nth-child(1) h3{
-    font-size : 25px;
+    font-size : 30px;
     font-weight: bold;
-    color : purple;
+    color : #4A3656;
     margin-bottom: 10px;
 }
 
@@ -427,7 +432,7 @@ main{
 }
 
 .headerColumn:nth-child(2) form{
-    border : 1px solid purple;
+    border : 1px solid #4A3656;
     width : 500px;
     border-radius: 20px;
     padding: 10px;
@@ -448,8 +453,8 @@ main{
     background-color: #F6F6F6;
     font-size: 15px;
     font-weight: bold;
-    color : purple;
-    border-left: 1px solid purple;
+    color : #4A3656;
+    border-left: 1px solid #4A3656;
 }   
 
 .headerColumn:nth-child(3){
@@ -476,6 +481,12 @@ main{
     text-align: center;
 }
 
+.headerColumn:nth-child(3) .column a{
+    text-decoration: none;
+    color : purple;
+    font-size : 20px;
+    font-weight: bold;
+}
 
 
 /* modal */
@@ -525,15 +536,11 @@ main{
 
 /* modal / */
  main{
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     height: 1000px;
-     background-color: FFFFFF;
-     margin : 3% 10%;
-     
-     border : 1px solid black;
+    display: flex;
+    flex: 1;
+    height: 1000px;
+    background-color: #FFFFFF;
+    margin : 3% 10%;
  }
 
  /* popUpButton */
@@ -568,10 +575,12 @@ main{
  .footerColumn:nth-child(1){
     background-color: #6E5B7C;
     display: none;
+    flex-direction: row;
     flex : 2;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
  }
+ 
 
  .footerColumn:nth-child(2){
      background-color: #4A3656;

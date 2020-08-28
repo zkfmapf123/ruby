@@ -2,8 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .homeContainer{
+    display: flex;
+    flex : 1;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .vertical{
+        border-left: 4px solid rgba(74,54,86,0.5);
+        height: 1000px;
+        align-items: center;
+        position: absolute;
+        left : 50%;
+    }
+
     .homeColumn{
+        h1{
+            font-size: 20px;
+            font-weight: bold;
+            color : #4A3656;
+        }
+    }
+
+    .homeColumn:nth-child(1){
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        width: 400px;
+    }
+
+    .homeColumn:nth-child(3){
+        display: flex;
+        flex-direction: column;
+        width : 400px;
     }
 }
