@@ -29,39 +29,31 @@ var current_user = document.getElementById("current_user");
 
 //간이버튼
 btn1.addEventListener("click", function(e){
-    if(current_user.textContent === "로그인을 해주세요!"){
         e.preventDefault();
     
         modal[0].style.display="block";
         errorTextDefault(0);
-    }
 });
 
 btn2.addEventListener("click", function(e){
-    if(current_user.textContent === "로그인을 해주세요!"){
         e.preventDefault();
     
         modal[0].style.display="block";
         errorTextDefault(0);
-    }
 });
 
 btn3.addEventListener("click", function(e){
-    if(current_user.textContent === "로그인을 해주세요!"){
         e.preventDefault();
     
         modal[0].style.display="block";
         errorTextDefault(0);
-    }
 });
 
 btn4.addEventListener("click", function(e){
-    if(current_user.textContent === "로그인을 해주세요!"){
         e.preventDefault();
     
         modal[0].style.display="block";
         errorTextDefault(0);
-    }
 });
 
 //회원가입버튼

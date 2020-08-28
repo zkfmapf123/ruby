@@ -23,17 +23,25 @@ module SessionHelper
         end
     end
 
+    def user_login
+        if current_user() == nil
+            return false
+        else
+            return true
+        end
+    end
+
     #로그인된 경우
     def isUser
-        if current_user() != nil
-            
+        if user_login()
+            redirect_to :controller => "home", action: "index"
         end
     end
 
     #로그인 안된경우
     def isNotUser
-        if current_user() == nil
-            
+        if !user_login()
+            redirect_to :controller => "home", action: "index"
         end
     end
 end
