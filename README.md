@@ -1,8 +1,7 @@
 # KDU 강의 평가사이트
+1. 폰트적용함 headCircle
 
-1. 폰트 적용하자.. (status 404 error) 
- - @font-face
+2. db 설계
+   로그인, 회원가입, 찾기 a 태그 css작업 마저해야함...
 
-2. 아이디/비밀번호찾기
-   db 설계
-   current_user형태로 짜기
+   db 뿌려주기 시작해야한다.. 너무늦음.

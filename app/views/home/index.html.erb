@@ -26,15 +26,17 @@
     <!--로그인-->
     <div class="modal", id="modal">
         <div class="modalContent", id="modalLogin">
-            <h1> 이미지 </h1>
+            <h1> 경동대학교 </h1>
+            <h1> 강의평가 사이트 </h1>
             <%=form_tag "/login", method: :post%>
                 <input type="email" name="email" placeholder="이메일을 입력하세요" required=true/>
                 <input type="password" name="password" placeholder="비밀번호를 입력하세요" required=true/>
                 <strong class="error"><%=flash[:login]%></strong>
-                <input type="submit" value="로그인"/>
+                <input type="submit" value="Log in"/>
             </form>
-            <button id="btnJoin"> 회원가입 </button>
-            <button id="btnForget"> 아이디/비밀번호 찾기 </button> 
+            <a id="btnForget"> 아이디 혹은 비밀번호를 잊으셨나요?</a> 
+            <a id="btnJoin"> 아직 회원이 아니신가요?</a>
+            <h3> 위에꺼 css 수정해야됨 </h3>
         </div>
     </div>
     <!--회원가입-->
@@ -115,4 +117,92 @@
             </div>
         </div>
     </div>
+    <script>
+        var loginButton = document.getElementById("loginButton");
+        var joinButton = document.getElementById("joinButton");
+
+        var modal = document.getElementsByClassName("modal");
+        var btnJoin = document.getElementById("btnJoin");
+        var btnForget = document.getElementById("btnForget");
+        var errorMessage = document.getElementsByClassName("error");
+        var modalPassword = document.getElementById("modalPassword");
+
+        // login, join button
+
+        loginButton.addEventListener("click",function(e){
+            e.preventDefault();
+            modal[0].style.display = "block";
+            errorTextDefault(0);
+        });
+
+        joinButton.addEventListener("click",function(e){
+            e.preventDefault();
+            modal[0].style.display ="none";
+            modal[1].style.display = "block";
+            errorTextDefault(1);
+        });
+
+
+        //회원가입버튼
+        btnJoin.addEventListener("click",function(e){
+            e.preventDefault();
+            modal[0].style.display= "none";
+            modal[1].style.display= "block";
+            errorTextDefault(1);
+        });
+
+        //아이디 / 비밀번호찾기 버튼
+        btnForget.addEventListener("click",function(e){
+            e.preventDefault();
+            modal[0].style.display = "none";
+            modal[2].style.display = "block";
+            modalPassword.style.display ="none";
+            errorTextDefault(2);
+        });
+
+        //바탕화면 누르면 초기화
+        window.onclick = function(e){
+            for(let i=0; i<modal.length; i++){
+                if(e.target == modal[i]){
+                    modal[i].style.display="none";
+                }
+            }
+        };
+
+        //버튼 눌렀을때 flash 초기화
+        var errorTextDefault = function(index){
+            var errorText = document.getElementsByClassName("error");
+            if(errorText[index].textContent !== "") errorText[index].style.display="none";
+        };
+
+        //로그인 및 회원가입 오류시 나타내는 메시지
+        var errorTextShowup = function(){
+            if(errorMessage[0].textContent !== ""){
+                modal[0].style.display="block";
+                modal[1].style.display="none";
+                modal[2].style.display="none";
+            }
+    
+            if(errorMessage[1].textContent !== ""){
+                modal[0].style.display="none";
+                modal[1].style.display="block";
+                modal[2].style.display="none";
+            }
+    
+            if(errorMessage[2].textContent !== ""){
+                modal[0].style.display ="none";
+                modal[1].style.display ="none";
+                modal[2].style.display ="block";
+            }
+
+            if(errorMessage[2].textContent !== "해당하는 이메일이 없습니다" && errorMessage[2].textContent !== ""){
+                modal[0].style.display ="none";
+                modal[1].style.display = "none";
+                modal[2].style.display = "block";
+                modalPassword.style.display="block";
+            }
+        }
+
+        errorTextShowup();
+    </script>
 </div>

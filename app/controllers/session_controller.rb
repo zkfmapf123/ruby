@@ -67,6 +67,12 @@ class SessionController < ApplicationController
         end
     end
 
+    def logout
+        isNotUser()
+        session.delete(:user_id)
+        redirect_to :controller => "home", action: "index"
+    end
+
     private
     def valid_email(user)
         if user.empty?

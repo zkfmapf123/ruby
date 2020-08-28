@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "/join" => "session#join"
   post "/forget" => "session#forget"
   post "/createPassword" => "session#findPassword"
+  delete "/logout" => "session#logout"
 
   # lesson
   get "/lesson" => "lesson#index"

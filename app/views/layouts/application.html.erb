@@ -6,14 +6,28 @@
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/35fb68f7ee.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <header>
       <div class="headerContainer">
         <div class="headerColumn">
+          <% if current_user()%>
+            <a style="cursor: pointer" id="userDetail">유저 정보</a>
+            <%=link_to "로그 아웃", "/logout", method: :delete %>
+            <a style="display: none" href="/" id="loginButton"> 로그인 </a>
+            <a style="display: none" href="/" id="joinButton"> 회원가입 </a>
+          <% else%>
+            <a style="display: none" href="/" id="userDetail">유저 정보</a>
+            <a style="display: none" href="/">로그 아웃</a>
+            <a href="/" id="loginButton"> 로그인 </a>
+            <a href="/" id="joinButton"> 회원가입 </a>
+          <% end%>
+        </div>
+        <div class="headerColumn">
           <a href="/">
-            <h3>경동대학교<h3>
-            <h3>강의 평가 사이트<h3>
+            <h3>경동대학교</h3>
+            <h3>강의 평가 사이트</h3>
           </a>
         </div>
         <div class="headerColumn">
@@ -45,7 +59,6 @@
     </header>
     <main>
       <%= yield %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </main>
     <div class="popUpButton"> <!--맨 밑에-->
       <i class="fas fa-chevron-up" id="popUpButton"></i>
@@ -54,7 +67,7 @@
       <div class="footerContainer">
         <div class="footerColumn" id="footerPopup">
           <% if current_user() == nil%>
-            <h1 id="current_user"> 로그인을 해주세요! <h1>
+            <h1 id="current_user">로그인을 해주세요!<h1>
           <% else%>
             <div class="column">
               <h1 id="current_user"><%=current_user().name%></h1> 
@@ -78,11 +91,10 @@
     var popUp = document.getElementById("popUpButton");
     var popUpColumn = document.getElementById("footerPopup");
     var footer = document.getElementById("footer");
-
+    var userDetail = document.getElementById("userDetail");
     footer.style.height="100px";
 
     popUp.addEventListener("click",function(e){
-
       if(popUpColumn.style.display === "flex"){
         popUp.className="fas fa-chevron-up";
         footer.style.height="100px";
@@ -91,7 +103,15 @@
         popUp.className="fas fa-chevron-down";
         footer.style.height="500px";
         popUpColumn.style.display="flex";
-      }
+      };
     });
+
+    userDetail.addEventListener("click",function(e){
+      popUp.className="fas fa-chevron-down";
+      footer.style.height ="500px";
+      popUpColumn.style.display="flex";
+      document.location.href="#footerPopup";
+    });
+
   </script>
 </html>

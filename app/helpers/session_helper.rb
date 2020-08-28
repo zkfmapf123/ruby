@@ -25,9 +25,9 @@ module SessionHelper
 
     def user_login
         if current_user() == nil
-            return false
+            return false #로그인 안됨
         else
-            return true
+            return true #로그인 됨
         end
     end
 
