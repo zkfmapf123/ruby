@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Professor, type: :model do
   describe '교수항목은 올바른가?' do
      subject{
-       describe_class.new(
+       described_class.new(
          name: "이동규",
          major: "컴퓨터공학과",
          image_url: "test.jpg"

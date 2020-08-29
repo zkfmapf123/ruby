@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 2020_08_29_081245) do
   end
 
   create_table "professors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "major"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
