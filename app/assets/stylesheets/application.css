@@ -594,10 +594,21 @@ main{
     width : 300px;
 }
 
-.modalContent input[type="email"], input[type="password"]{
+.modalContent input[type="email"], input[type="password"], input[type="email"]{
     background-color: #f1f1f1;
     color: #38363a;
     font-family: normal;
+}
+
+select{
+    border: 0px;
+    background-color: #F6F6F6;
+    color : #4A3656;
+    font-size: 20px;
+}
+
+select option{
+
 }
 
 .modalContent input[type="submit"]{
@@ -608,6 +619,8 @@ main{
     font-size : 18px;
     font-weight: bold;
 };
+
+
 
 .modal .modalContent a{
     font-size: 100px;
