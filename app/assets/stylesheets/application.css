@@ -47,7 +47,10 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-	line-height: 1;
+    line-height: 1;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 }
 
 ol, ul {
@@ -399,11 +402,17 @@ header, footer, .popUpButton{
 
 main{
     min-width: 800px;
+    display: flex;
+    flex: 3;
 }
 
 /* */
 
 /* header main footer */
+html, body{
+    height: 100%;
+}
+
  body{
      width: 100%;
      min-width: 700px;
@@ -652,6 +661,7 @@ select option{
  /* footer */
  footer{
     display: flex;
+    float: bottom;
     flex: 1;
     flex-direction: column;
     justify-content: center;
