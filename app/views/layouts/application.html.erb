@@ -27,7 +27,7 @@
         <div class="headerColumn">
           <a href="/">
             <h3>경동대학교</h3>
-            <h3>강의 평가 사이트</h3>
+            <h3>강의평가사이트</h3>
           </a>
         </div>
         <div class="headerColumn">
@@ -41,20 +41,28 @@
         </div>
         <div class="headerColumn">
           <div class="column">
-            <i class="fas fa-book"></i>
-            <%=link_to "강의 평가", "/lesson", id: :btn1%>
+            <a href="/lesson" id="btn1">
+              <i class="fas fa-book"></i>
+              <p> 강의평가 <p>
+            </a>
           </div>
           <div class="column">
-            <i class="far fa-address-book"></i>
-            <%=link_to "교수 평가", "/professor", id: :btn2%>
+            <a href="/professor" id="btn1">
+              <i class="far fa-address-book"></i>
+              <p> 교수평가 <p>
+            </a>
           </div>
           <div class="column">
-            <i class="fas fa-sort-alpha-down"></i>
-            <%=link_to "학점계산기", "/calculator", id: :btn3%>
+            <a href="/calculator" id="btn1">
+              <i class="fas fa-sort-alpha-down"></i>
+              <p> 학점계산기 <p>
+            </a>
           </div>
           <div class="column">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <%=link_to "오픈채팅방", "/chat", id: :btn4%>
+            <a href="/chat" id="btn1">
+              <i class="fas fa-chalkboard-teacher"></i>
+              <p> 오픈채팅방 <p>
+            </a>
           </div>
         </div>
       </div>

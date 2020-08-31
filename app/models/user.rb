@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+    #relation
+    has_many :professor_evals #교수평가
+    has_many :lesson_evals    #수업평가
+    has_many :favorites       #찜한목록
+    has_many :lesson_user_flags  #수업_유저_공감_flag
+    has_many :professor_user_flags #교수_유저_공감_flag
+    has_many :homeworks #과제공유
+    # 과제공유 게사핀...
+
     has_secure_password
     after_initialize :set_default
     before_save {self.email = email.downcase }

@@ -10,9 +10,86 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_29_081245) do
+ActiveRecord::Schema.define(version: 2020_08_30_133238) do
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "homeworks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "lesson_evals_id"
+    t.integer "user_id"
+    t.string "title"
+    t.string "description"
+    t.string "image_upload"
+    t.string "file_upload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lesson_evals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "user_id"
+    t.text "comment"
+    t.integer "goodPoint"
+    t.integer "badPoint"
+    t.integer "views"
+    t.float "score1"
+    t.float "score2"
+    t.float "score3"
+    t.float "score4"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lesson_user_flags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "user_id"
+    t.boolean "favorite_flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "professor_id"
+    t.string "title"
+    t.string "separate_class"
+    t.string "separate_major"
+    t.string "separate_subject"
+    t.string "separate_subject_register"
+    t.string "campus"
+    t.string "grade_score"
+    t.string "grade_theory_score"
+    t.string "grade_exam_score"
+    t.string "timetable"
+    t.string "class_target"
+    t.float "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "professor_evals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "professor_id"
+    t.integer "user_id"
+    t.text "comment"
+    t.integer "goodPoint"
+    t.integer "badPoint"
+    t.integer "views"
+    t.float "score1"
+    t.float "score2"
+    t.float "score3"
+    t.float "score4"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "professor_user_flags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "professor_id"
+    t.integer "user_id"
+    t.boolean "favorite_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -21,6 +98,7 @@ ActiveRecord::Schema.define(version: 2020_08_29_081245) do
     t.string "name"
     t.string "major"
     t.string "image_url"
+    t.float "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

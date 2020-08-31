@@ -1,26 +1,41 @@
 <div class="homeContainer">
     <div class="homeColumn">
-        <h1> 최신강의 평 </h1>
-        <p>Garbage value</p>
-        <p>Garbage value</p>
-        <p>Garbage value</p>
+        <h1> 최신강의 평가 </h1>
+        <% @recent_lesson.each do |item|%>
+            <div class="recentLesson">
+                <a href="/">
+                    <p><%= item.lesson.title%></p>
+                    <p><%= item.lesson.score%></p>
+                    <p><%= item.lesson.professor.name%></p>
+                    <p><%= item.comment%></p>
+                </a>
+            </div>
+        <%end%>
     </div>
     <div class="vertical">
     </div>
     <div class="homeColumn">
         <div class="column">
-            <h1> Best 강의 </h1>
-            <p>Garbage value</p>
-            <p>Garbage value</p>
-            <p>Garbage value</p>
-            <p>Garbage value</p>
+            <h1> BEST 강의 </h1>
+            <div class="bestLesson">
+                <a href="/">
+                    <p><%=@lesson[0].title%></p>
+                    <p><%=@lesson[0].professor.name%></p>
+                    <p><%=@lesson[0].score%></p>
+                    <p><%=@lesson[0].lesson_evals[0].comment%></p>
+                </a>
+            </div>
         </div>
         <div class="column">
-            <h1> Best 교수님 </h1>
-            <p>Garbage value</p>
-            <p>Garbage value</p>
-            <p>Garbage value</p>
-            <h1> 메모 : 에러날거임 각 layout에다가 로그인,회원가입,아/비번 html코드 넣어줘야됨. rails ujs error</h1> 
+            <h1> BEST 교수님 </h1>
+            <div class="bestProfessor">
+                <a href="/">
+                    <p><%=@professor[0].name%></p>
+                    <p><%=@professor[0].lessons[0].title%></p>
+                    <p><%=@professor[0].score%></p>
+                    <p><%=@professor[0].professor_evals[0].comment%></p>
+                </a>
+            </div>   
         </div>
     </div>
     <!--로그인-->
@@ -101,7 +116,6 @@
     <div class="modal", id="modal">
         <div class="modalContent", id="modalForget">
             <%=form_tag "/forget/?id=1"%>
-                <h1> 아이디 찾기 </h1>
                 <input type="text" name="name" placeholder="이름을 입력하세요" required=true>
                 <input type="text" name="major" placeholder="전공을 입력하세요" required=true>
                 <input type="submit" value="이메일 찾기">
@@ -109,7 +123,6 @@
             <strong class="error"><%=flash[:forget]%></strong>
             <div class="modalColumn", id="modalPassword">
                 <%=form_tag "/createPassword"%>
-                    <h1><%=flash[:forget]%> 비밀번호 바꾸기</h1>
                     <input type="password" name="password" placeholder="비밀번호를 입력하세요" required=true>
                     <input type="password" name="passwordCheck" placeholder="비밀번호 확인" required=true>
                     <input type="submit" value="비밀번호 등록">

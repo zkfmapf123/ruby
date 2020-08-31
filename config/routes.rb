@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'chat/index'
-  get 'calculator/index'
+  # db설정
+  get "/db" => "home#db"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/" => "home#index"
 
@@ -13,14 +14,18 @@ Rails.application.routes.draw do
 
   # lesson
   get "/lesson" => "lesson#index"
+  #get "/lesson/:id/detail" => "lesson#detail"
   
   # professor
   get "/professor" => "professor#index" 
+  #get "/professor/:id/detail" => "professor#detail"
 
-  # calculator
+  # get "/search" => "search#index"
+  
+  # calculator javascript단에서 마무리
   get "/calculator" => "calculator#index"
 
-  # chat
+  # chat 서비스 준비 중
   get "/chat" => "chat#index"
 
 end

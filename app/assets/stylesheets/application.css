@@ -379,6 +379,14 @@ textarea {
     padding: 0.2em 0;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover{
+    opacity: 0.5;
+}
+
 /* font */
 @font-face {
     font-family: 'headCircle';
@@ -446,19 +454,12 @@ html, body{
     color : #4A3656;
 }
 
-.headerColumn:nth-child(1) a{
-    text-decoration: none;
-}
-
-.headerColumn:nth-child(1) a:hover{
-    opacity: 0.5;
-}
 .headerColumn:nth-child(2){
     text-align: center;
 }
 
-.headerColumn:nth-child(2) a{
-    text-decoration: none;
+.headerColumn:nth-child(2) a:hover h3{
+    opacity: 0.5;
 }
 
 .headerColumn:nth-child(2) h3{
@@ -506,6 +507,13 @@ html, body{
     opacity: 0.5;
 }
 
+.headerColumn:nth-child(3) form select{
+    border: 0px;
+    background-color: #F6F6F6;
+    color : #4A3656;
+    font-size: 20px;
+}
+
 .headerColumn:nth-child(4){
     margin-top: 20px;
     display: flex;
@@ -513,14 +521,30 @@ html, body{
 }
 
 .headerColumn:nth-child(4) a{
-    text-decoration: none;
     font-family: 'headCircle';
     font-size: 30px;
     font-weight: bold;
+
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
 }
 
 .headerColumn:nth-child(4) a:hover{
-    opacity: 0.5;
+    opacity: 0.7;
+    -webkit-transform:scale(1.2);
+    -moz-transform:scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform:scale(1.2);
+    
 }
 
 .headerColumn:nth-child(4) i{
@@ -536,7 +560,6 @@ html, body{
 }
 
 .headerColumn:nth-child(4) .column a{
-    text-decoration: none;
     color : #4A3656;;
     font-size : 20px;
     font-weight: bold;
@@ -603,21 +626,21 @@ html, body{
     width : 300px;
 }
 
-.modalContent input[type="email"], input[type="password"], input[type="email"]{
+.modalContent input[type="email"], input[type="password"], .modalContent input[type="text"]{
     background-color: #f1f1f1;
     color: #38363a;
     font-family: normal;
 }
 
-select{
+#modalJoin form select{
+    background-color: #f1f1f1;
+    width: 330px;
+    margin-bottom: 10px;
+    padding: 15px;
     border: 0px;
-    background-color: #F6F6F6;
-    color : #4A3656;
-    font-size: 20px;
-}
-
-select option{
-
+    font-family: normal;
+    color: #38363a;
+    border-radius: 25px;
 }
 
 .modalContent input[type="submit"]{
@@ -629,17 +652,30 @@ select option{
     font-weight: bold;
 };
 
+#modalLogin a{
+    font-size: 14px;
+    font-weight: normal;
+}
 
-
-.modal .modalContent a{
-    font-size: 100px;
+#modalLogin a:nth-child(1){
+    margin-bottom: 20px;
 }
 
 #modalPassword{
     display: none;
 }
 
-/* modal / */
+.error{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size : 20px;
+}
+
+.error:nth-child(3){
+    margin-bottom: 10px;
+}
+
+/* modal */
  main{
     display: flex;
     height: 1000px;
