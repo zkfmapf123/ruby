@@ -11,15 +11,31 @@
     <div class="homeColumn">
         <div class="column">
             <h1> BEST 강의 </h1>
-            <div class="bestLesson">
+            <div class="bestColumn">
                 <a href="/">
+                    <div class="rowColumn">
+                        <div class="columnColumn">
+                            <p>ruby Programming</p>
+                            <p>구문정 교수</p>
+                        </div>
+                        <p>별 별 별 별 별 4.5</p>
+                    </div>
+                    <p class="comment"> 배울점이 많은 수업입니당</p>
                 </a>
             </div>
         </div>
         <div class="column">
             <h1> BEST 교수님 </h1>
-            <div class="bestProfessor">
+            <div class="bestColumn">
                 <a href="/">
+                    <div class="rowColumn">
+                        <div class="columnColumn">
+                            <p>구문정 교수</p>
+                            <p>디자인공학과</p>
+                        </div>
+                        <p>별 별 별 별 별 3.0</p>
+                    </div>
+                    <p class="comment">별로네요 ㅉㅉ</p>
                 </a>
             </div>   
         </div>
@@ -126,9 +142,9 @@
         var errorMessage = document.getElementsByClassName("error");
         var modalPassword = document.getElementById("modalPassword");
         var verticalLine = document.getElementById("vertical")
-        var main = document.getElementsByTagName("main");
+        var VERTICAL_HEIGHT = document.getElementsByClassName("homeColumn")[0];
         //중간라인
-        verticalLine.style.height = main[0].clientHeight + "px";
+        verticalLine.style.height = VERTICAL_HEIGHT.offsetHeight + "px";
         // login, join button
 
         loginButton.addEventListener("click",function(e){

@@ -409,7 +409,7 @@ header, footer, .popUpButton{
 }
 
 main{
-    min-width: 800px;
+    min-width: 860px;
     display: flex;
     flex: 3;
 }
@@ -748,9 +748,17 @@ html, body{
 
  /* media */
  
-@media screen and (max-width: 1000px){
-    main .homeContainer .homeColumn {
-        display: flex;
-        flex-direction: column;
+@media screen and (max-width: 1100px){
+    #vertical{
+        display : none;
     }
+
+    .homeContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /*모든 컨테이너에서 column으로 바뀌돼,
+      main의 사이가 mani사이즈가 되도록*/
 }
