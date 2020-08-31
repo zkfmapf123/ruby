@@ -1,27 +1,42 @@
 <div class="formContainer" id="lessonScreen">
     <div class="formColumn">
-        <button id="homeworkButton"> 과제공유 버튼으루 </button>
+        <a id="homeworkButton"> 과제공유 버튼으루 </a>
     </div>
     <div class="formColumn">
-        <h1> 강의평가화면 </h1>
-        <h1> 강의평가화면 </h1>
-        <h1> 강의평가화면 </h1>
-        <h1> 강의평가화면 </h1>
-        <h1> 강의평가화면 </h1>
-        <h1> 강의평가화면 </h1>
+        <form action="/search">
+            <select name="search">
+                <option name="title" value="title">수업제목</option>
+                <option name="campus" value="campus">캠퍼스</option>
+                <option name="target" value="target">대상학년</option>
+                <option name="major" value="major">이수구분</option>
+            </select>
+            <input style="width: 300px" type="text" name="search" placeholder="검색어를 입력하세요" required=true/>
+            <input type="submit" value="Enter">
+        </form>
+    </div>
+    <div class="formColumn">
+        <a href="/">조회수 순</a>
+        <a href="/">공감 순</a>
     </div>
 </div>
 <div class="formContainer" id="homeworkScreen">
     <div class="formColumn">
-        <button id="lessonButton"> 강의평가 버튼으루</button>
+        <a id="lessonButton"> 강의평가 버튼으루</a>
     </div>
     <div class="formColumn">
-        <h1> 과제공유화면 </h1>
-        <h1> 과제공유화면 </h1>
-        <h1> 과제공유화면 </h1>
-        <h1> 과제공유화면 </h1>
-        <h1> 과제공유화면 </h1>
-        <h1> 과제공유화면 </h1>
+        <form action="/search">
+            <select name="search">
+                <option name=""></option>
+                <option name=""></option>
+                <option name=""></option>
+                <option name=""></option>
+            </select>
+            <input style="width: 300px" type="text" name="search" placeholder="검색어를 입력하세요" required=true/>
+            <input type="submit" value="Enter">
+    </div>
+    <div class="formColumn">
+        <a href="/">조회수 순</a>
+        <a href="/">공감 순</a>
     </div>
 </div>
 <script>

@@ -1,0 +1,80 @@
+.formContainer{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*button*/
+.formColumn:nth-child(1){
+    position: absolute;
+    top: 350px;
+    right: 30px;
+
+    font-size: 20px;
+}
+
+/* form */
+.formColumn:nth-child(2){
+    display: flex;
+    justify-content: center;
+}
+
+.formColumn:nth-child(2) form{
+    border : 1px solid #4A3656;
+    width : 500px;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    margin-top : 20px;
+    margin-bottom: 20px;
+}
+
+.formColumn:nth-child(2) form select{
+    flex : 1;
+    border: 0px;
+    background-color: white;
+    color : #4A3656;
+    font-size: 20px;
+}
+
+.formColumn:nth-child(2) form input[type="text"]{
+    flex : 4;
+    border: 0px;
+    font-size: 20px;
+    background-color: white;
+}
+
+.formColumn:nth-child(2) form input[type="submit"]{
+    flex: 1;
+    width: 100px;
+    border : 0px;
+    background-color: white;
+    font-size: 20px;
+    font-family: 'headCircle';
+    font-weight: bold;
+    color : #4A3656;
+    padding-left: 20px;
+    border-left: 1px solid #4A3656;
+}
+
+.formColumn:nth-child(2) form input[type="submit"]:hover{
+    opacity: 0.5;
+}
+
+/* 조회수, 공감 순 버튼*/
+.formColumn:nth-child(3){
+    margin-right: 350px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.formColumn:nth-child(3) a:nth-child(1){
+    padding-right: 10px;   
+}
+
+.formColumn:nth-child(3) a:hover{
+    opacity: 0.5;
+}

@@ -1,1 +1,17 @@
-교수평가
+<div class="formContainer" id="lessonScreen">
+    <div style="display: none" class="formColumn"></div>
+    <div class="formColumn">
+        <form action="/search">
+            <select name="search">
+                <option name="name" value="name">교수이름</option>
+                <option name="major" value="major">교수전공</option>
+            </select>
+            <input style="width: 300px" type="text" name="search" placeholder="검색어를 입력하세요" required=true/>
+            <input type="submit" value="Enter">
+        </form>
+    </div>
+    <div class="formColumn">
+        <a href="/">조회수 순</a>
+        <a href="/">공감 순</a>
+    </div>
+</div>

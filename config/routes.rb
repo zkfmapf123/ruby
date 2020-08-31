@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get "/professor" => "professor#index" 
   #get "/professor/:id/detail" => "professor#detail"
 
-  # get "/search" => "search#index"
   
   # calculator javascript단에서 마무리
   get "/calculator" => "calculator#index"
