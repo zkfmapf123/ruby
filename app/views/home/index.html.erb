@@ -6,7 +6,7 @@
                 </a>
             </div>
     </div>
-    <div class="vertical">
+    <div id="vertical" class="vertical">
     </div>
     <div class="homeColumn">
         <div class="column">
@@ -125,7 +125,10 @@
         var btnForget = document.getElementById("btnForget");
         var errorMessage = document.getElementsByClassName("error");
         var modalPassword = document.getElementById("modalPassword");
-
+        var verticalLine = document.getElementById("vertical")
+        var main = document.getElementsByTagName("main");
+        //중간라인
+        verticalLine.style.height = main[0].clientHeight + "px";
         // login, join button
 
         loginButton.addEventListener("click",function(e){
