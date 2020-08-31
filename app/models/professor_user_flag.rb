@@ -1,4 +1,4 @@
 class ProfessorUserFlag < ApplicationRecord
-    belgons_to :professor
-    belgons_to :user
+    belongs_to :professor
+    belongs_to :user
 end

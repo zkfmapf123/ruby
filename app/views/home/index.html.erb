@@ -1,16 +1,10 @@
 <div class="homeContainer">
     <div class="homeColumn">
         <h1> 최신강의 평가 </h1>
-        <% @recent_lesson.each do |item|%>
             <div class="recentLesson">
                 <a href="/">
-                    <p><%= item.lesson.title%></p>
-                    <p><%= item.lesson.score%></p>
-                    <p><%= item.lesson.professor.name%></p>
-                    <p><%= item.comment%></p>
                 </a>
             </div>
-        <%end%>
     </div>
     <div class="vertical">
     </div>
@@ -19,10 +13,6 @@
             <h1> BEST 강의 </h1>
             <div class="bestLesson">
                 <a href="/">
-                    <p><%=@lesson[0].title%></p>
-                    <p><%=@lesson[0].professor.name%></p>
-                    <p><%=@lesson[0].score%></p>
-                    <p><%=@lesson[0].lesson_evals[0].comment%></p>
                 </a>
             </div>
         </div>
@@ -30,10 +20,6 @@
             <h1> BEST 교수님 </h1>
             <div class="bestProfessor">
                 <a href="/">
-                    <p><%=@professor[0].name%></p>
-                    <p><%=@professor[0].lessons[0].title%></p>
-                    <p><%=@professor[0].score%></p>
-                    <p><%=@professor[0].professor_evals[0].comment%></p>
                 </a>
             </div>   
         </div>
