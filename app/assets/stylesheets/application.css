@@ -428,7 +428,7 @@ html, body{
 
 /* header */
  header{
-    height: 400px;
+    height: 600px;
     margin : 0;
     background-color: #F6F6F6;
     display: flex;
@@ -680,6 +680,7 @@ html, body{
 /* modal */
  main{
     display: flex;
+    flex: 1;
     background-color: #FFFFFF;
     margin : 3% 10%;
  }
@@ -715,6 +716,9 @@ html, body{
  }
 
  .footerColumn:nth-child(1){
+    font-family: 'headCircle';
+    color : white;
+
     background-color: #6E5B7C;
     display: none;
     flex-direction: row;
@@ -722,7 +726,20 @@ html, body{
     justify-content: space-around;
     align-items: center;
  }
+
+ .current_user{
+     font-size: 30px;
+ }
  
+ .footerColumn:nth-child(1) .column{
+    display: flex;
+    flex-direction: column;
+ }
+
+ .footerColumn:nth-child(1) .column .columnColumn{
+     display: flex;
+     flex-direction: row;
+ }
 
  .footerColumn:nth-child(2){
      background-color: #4A3656;
@@ -745,9 +762,34 @@ html, body{
      font-weight: bold;
  }
 
+ .columnColumnColumn{
+     display: flex;
+     flex-direction: column;
+ }
+
+ .columnColumnColumn p:nth-child(1){
+     font-size: 30px;
+     margin-bottom: 10px;
+ }
+
+ .columnColumnColumn p:nth-child(2){
+     font-size: 20px;
+     margin-bottom: 50px;
+ }
+
+ .columnColumnColumn a{
+     text-decoration: none;
+     font-size: 20px;
+ }
+
+ .column
+
+/* User login*/
+
  /* media */
  
 @media screen and (max-width: 1100px){
+
     #vertical{
         display : none;
     }
@@ -757,7 +799,7 @@ html, body{
         justify-content: center;
         align-items: center;
     }
+}
 
     /*모든 컨테이너에서 column으로 바뀌돼,
       main의 사이가 mani사이즈가 되도록*/
-}

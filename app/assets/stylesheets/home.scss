@@ -3,173 +3,64 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .homeContainer{
     display: flex;
-    flex : 1;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
 
-    #star{
-        width: 130px;
-        height: 20px;
+    h1{
+        font-size : 30px;
     }
 
-    .vertical{
-        border-left: 4px solid rgba(74,54,86,0.5);
-        align-items: center;
-        position: absolute;
-        left : 50%;
+    .seeboard{
+        width: 1000px;
+        height: 500px;
+        border: 1px solid black;
+        margin : 20px 0;
     }
 
-    .homeColumn{
-        h1{
-            font-size: 25px;
-            margin-bottom: 20px;
-        }
-    }
-    
-    //최신강의
-    .homeColumn:nth-child(1){
-        display: flex;
-        flex-direction: column;
-        width: 400px;
+    // border 최신강의 평가 1x3
 
-        .column:nth-child(1), .column:nth-child(2), .column:nth-child(3){
-            margin-bottom: 30px;
-        }
-
-        .column{
+        .content{
             display: flex;
             flex-direction: row;
-            flex : 1;
-            
+            flex: 1;
+            justify-content: space-around;
+            align-items: center;
+            width : 1500px;
 
-            .columnColumn{
+            .contentColumn{
                 display: flex;
-                flex : 1;
+                flex: 1;
                 
-                border: 0px;
-                padding: 20px;
-                height: 180px;
-                background-color: #6E5B7C;
-                padding: 20px;
+                width : 200px;
+                height: 200px;
+                border : 0;
+                padding : 20px;
+                background-color:rgba(110, 91, 124, 0.8);
+                margin : 20px 5px;
                 border-radius: 25px;
-                align-items: center;
-                margin-right: 10px;
-
-                a{
-                    display: flex;
-                    flex-direction: column;
-                    flex: 1;
-
-                    p{
-                        padding-bottom: 8px;
-                    }
-
-                    img{
-                        padding-bottom: 20px;
-                    }
-
-                    color : white;
-                    p:nth-child(1){
-                        font-size: 25px;
-                    }   
-
-                    p:nth-child(2){
-                        font-size: 20px;
-                        font-family: normal;
-                    }
-
-                    p:nth-child(4){
-                        font-size: 15px;
-                        font-family: normal;
-                    }
-                }
-            }
         }
     }
 
-    // best교수 best강의
-    .homeColumn:nth-child(3){
+    // 최고의 교수, 최고의 수업
+    .bestProfessor{
         display: flex;
         flex-direction: column;
-        width : 400px;
+        flex :1;
+        justify-content: center;
+        align-items: center;
+        width: 1500px;
 
-        .column{
-            padding-bottom: 10px;
-
-            p{
-                color : white;
-            }
-            .bestColumn{
-                display: flex;
-                flex: 1;
-                //border
-                height: 180px;
-                width: 500px;
-                border: 0px;
-                background-color: #6E5B7C;
-                padding: 20px;
-                border-radius: 25px;
-                align-items: center;
-                margin-bottom: 10px;
-            }
-
-            a{
-                display: flex;
-                flex : 1;
-                flex-direction: column;
-            }
-
-            .comment{
-                font-size: 20px;
-            }
-
-            .score{
-                font-size: 30px;
-            }
-
-            .rowColumn{
-                display: flex;
-
-                flex-direction: row;
-                justify-content: space-between;
-                margin-bottom: 20px;
-
-                .columnColumn{
-                    margin-right: 20px;
-
-                    p:nth-child(1){
-                        font-size: 20px;
-                        margin-bottom: 5px;
-                    }
-
-                    p:nth-child(2){
-                        font-size: 15px;
-                    }
-                }
-
-                //best강의
-                .columnColumn:nth-child(1){
-                    display: flex;
-                    flex-direction: column;
-                }
-
-                .columnColumn:nth-child(2){
-                    display: flex;
-                    flex-direction: column;
-                }
-
-                .columnColumn{
-            
-                    p:nth-child(1){
-                        font-size: 30px;
-                        padding-bottom: 5px;
-                    }
-            
-                    p:nth-child(2){
-                        font-size: 20px;
-                    }
-                }
-            }
+        .contentColumn{
+            width : 1000px;
+            height: 200px;
+            border : 0px;
+            padding : 20px;
+            background-color:rgba(110, 91, 124, 0.8);
+            border-radius: 25px;
+            margin-bottom: 20px;
         }
+        
     }
 }
