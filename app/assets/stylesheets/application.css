@@ -680,7 +680,6 @@ html, body{
 /* modal */
  main{
     display: flex;
-    height: 1000px;
     background-color: #FFFFFF;
     margin : 3% 10%;
  }
