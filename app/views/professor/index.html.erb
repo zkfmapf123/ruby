@@ -14,4 +14,11 @@
         <a href="/">조회수 순</a>
         <a href="/">공감 순</a>
     </div>
+    <div class="formColumn">
+        <%@index.each do |item|%>
+            <div class="form">
+                <p><%=item.name%></p>
+            </div>
+        <%end%>
+    </div>
 </div>

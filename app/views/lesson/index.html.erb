@@ -18,6 +18,13 @@
         <a href="/">조회수 순</a>
         <a href="/">공감 순</a>
     </div>
+    <div class="formColumn">
+        <%@index.each do |item|%>
+            <div class="form">
+                <p><%=item.title%></p>
+            </div>
+        <%end%>
+    </div>
 </div>
 <div class="formContainer" id="homeworkScreen">
     <div class="formColumn">
@@ -38,11 +45,17 @@
         <a href="/">조회수 순</a>
         <a href="/">공감 순</a>
     </div>
+    <div class="formColumn">
+        <%@index.each do |item|%>
+            <div class="form">
+                <p><%=item.title%></p>
+            </div>
+        <%end%>
+    </div>
 </div>
 <script>
     var lessonScreen = document.getElementById("lessonScreen");
     var homeworkScreen = document.getElementById("homeworkScreen");
-    
     var homeworkButton = document.getElementById("homeworkButton");
     var lessonButton = document.getElementById("lessonButton");
 

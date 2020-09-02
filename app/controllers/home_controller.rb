@@ -8,6 +8,8 @@ class HomeController < ApplicationController
         #@lesson = Lesson.limit(1).order(:score)
         #@professor = Professor.limit(1).order(:score)
 
+        #크롤링
+
         respond_to do |format|
             format.html{
                 render "index"

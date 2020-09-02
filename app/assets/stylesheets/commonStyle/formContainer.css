@@ -78,3 +78,45 @@
 .formColumn:nth-child(3) a:hover{
     opacity: 0.5;
 }
+
+.formColumn:nth-child(4){
+    margin-top: 30px;
+    display: flex;
+    flex : 1;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.formColumn .form{
+    display: flex;
+    flex : 1;
+
+    width: 500px;
+    height: 200px;
+    border : 0px;
+    padding : 20px;
+    background-color: rgba(110,91,124,0.8);
+    margin :20px 5px;
+    border-radius: 25px;
+
+    -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+        -webkit-transition: .3s;
+        -moz-transition: .3s;
+        -ms-transition: .3s;
+        -o-transition: .3s;
+        transition: .3s;
+}
+
+.formColumn:nth-child(4) .form:hover{
+    opacity: 0.7;
+        -webkit-transform:scale(1.2);
+        -moz-transform:scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        transform:scale(1.2);
+}
