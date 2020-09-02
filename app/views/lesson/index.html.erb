@@ -21,7 +21,9 @@
     <div class="formColumn">
         <%@index.each do |item|%>
             <div class="form">
-                <p><%=item.title%></p>
+                <a href="lesson/<%=item.id%>/detail">
+                    <p><%=item.title%></p>
+                </a>
             </div>
         <%end%>
     </div>
@@ -48,6 +50,7 @@
     <div class="formColumn">
         <%@index.each do |item|%>
             <div class="form">
+                <a href="homework/<%=item.id%>/detail">
                 <p><%=item.title%></p>
             </div>
         <%end%>
@@ -58,6 +61,7 @@
     var homeworkScreen = document.getElementById("homeworkScreen");
     var homeworkButton = document.getElementById("homeworkButton");
     var lessonButton = document.getElementById("lessonButton");
+    var form = document.getElementsByClassName("formColumn")[3]
 
     homeworkButton.addEventListener("click",function(e){
         lessonScreen.style.display = "none";
@@ -68,6 +72,29 @@
         homeworkScreen.style.display="none";
         lessonScreen.style.display="block";
     });
+    
+    var flexFunction = function(){
+        var FLEX_NUMBER= 2;
+        var CHILD_LENGTH = (form.children.length)/2;
+
+        while(true){
+            for(var i=0; i<FLEX_NUMBER; i++){
+
+                var child = form.children;
+
+                var div = document.createElement("div");
+                div.style.display="flex";
+                div.setAttribute="flex-direction","row";
+                div.appendChild(child[i]);
+                div.appendChild(child[i]);
+                form.appendChild(div);
+            }
+            CHILD_LENGTH--;
+            if(CHILD_LENGTH ===0) break;
+        }
+    }
+    
+    //flexFunction();
 
 
 </script>

@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
     def index(index)
         @index = index.limit(6).order(:score)
     end
+
+    def detail(index, id)
+        @index = index.find(id)
+    end
 end

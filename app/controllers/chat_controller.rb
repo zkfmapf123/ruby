@@ -1,5 +1,6 @@
 class ChatController < ApplicationController
+  before_action :isNotUser
   def index
-    isNotUser()
+    
   end
 end

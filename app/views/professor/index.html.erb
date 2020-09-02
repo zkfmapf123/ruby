@@ -16,9 +16,11 @@
     </div>
     <div class="formColumn">
         <%@index.each do |item|%>
-            <div class="form">
-                <p><%=item.name%></p>
-            </div>
+            <a href="professor/<%=item.id%>/detail">
+                <div class="form">
+                    <p><%=item.name%></p>
+                </div>
+            </a>
         <%end%>
     </div>
 </div>

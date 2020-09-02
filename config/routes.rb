@@ -14,11 +14,11 @@ Rails.application.routes.draw do
 
   # lesson
   get "/lesson" => "lesson#index"
-  #get "/lesson/:id/detail" => "lesson#detail"
+  get "/lesson/:id/detail" => "lesson#detail"
   
   # professor
   get "/professor" => "professor#index" 
-  #get "/professor/:id/detail" => "professor#detail"
+  get "/professor/:id/detail" => "professor#detail"
 
   
   # calculator javascript단에서 마무리
