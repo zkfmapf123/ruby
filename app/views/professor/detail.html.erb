@@ -1,7 +1,24 @@
 <div class="detailContainer">
     <div class="detailColumn">
+        <h1> 교수설명 </h1>
         <%=@index.name%>
         <%=@index.major%>
         <%=@index.score%>
+    </div>
+    <div class="detailColumn">
+        <h1> 해당교수가 진행하는 수업 <h1>
+        <%@index.lessons.each do |item|%>
+            <a href="/lesson/<%=item.id%>/detail">
+                <p><%=item.title%></p>
+            </a>
+        <%end%>
+    </div>
+    <div class="detailColumn">
+        <p><%=current_user.name%> 평가해주세용 </p>
+        <h1> 댓글창, 평가항목1, 평가항목2, 평가항목3, 평가항목4 </h1>
+    </div>
+    <div class="detailColumn">
+        <h1>사람들이 평가한 댓글 밑으로 주주룩 </h1>
+        <p> 
     </div>
 </div>
