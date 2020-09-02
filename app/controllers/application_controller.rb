@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
     include SessionHelper
 
-    def index(index)
-        @index = index.limit(6).order(:score)
+    def index(args)
+        @index = args[:index].limit(6).order(:score)
     end
 
-    def detail(index, id)
-        @index = index.find(id)
+    def detail(args)
+        @index = args[:index].find(args[:id])
     end
 end

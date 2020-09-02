@@ -2,10 +2,17 @@ class ProfessorController < ApplicationController
     before_action :isNotUser
 
     def index
-        super(Professor)
+        super(:index => Professor)
     end
 
     def detail
-        super(Professor,params[:id])
+        super(
+            :index => Professor,
+            :id => params[:id]
+        )
+    end
+
+    def create
+        
     end
 end

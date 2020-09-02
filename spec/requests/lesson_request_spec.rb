@@ -27,4 +27,14 @@ RSpec.describe "Lessons", type: :request do
             expect(subject).to eql 200
         end
     end
+
+    describe "post #create isUser" do
+        post "/lesson/1/create", :params =>{
+            :content => "test Content",
+            :point1 => "50",
+            :point2 => "50",
+            :point3 => "50",
+            :point4 => "50"
+        }
+    end
 end

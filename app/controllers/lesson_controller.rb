@@ -2,10 +2,17 @@ class LessonController < ApplicationController
     # before_action :isNotUser
 
     def index
-        super(Lesson)
+        super(:index=>Lesson)
     end
 
     def detail
-        super(Lesson,params[:id])
+        super(
+            :index => Lesson,
+            :id => params[:id]
+        )
+    end
+
+    def create
+        super
     end
 end
