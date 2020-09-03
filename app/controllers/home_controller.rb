@@ -4,9 +4,9 @@ class HomeController < ApplicationController
     require "tasks/register_db_professor"
 
     def index
-        #@recent_lesson = LessonEval.limit(4).order(:created_at)
-        #@lesson = Lesson.limit(1).order(:score)
-        #@professor = Professor.limit(1).order(:score)
+        @recent_lesson = LessonEval.limit(3).order(created_at: :desc)
+        @lesson = Lesson.limit(5).order(score: :desc)
+        @professor = Professor.limit(5).order(score: :desc)
 
         #크롤링
 

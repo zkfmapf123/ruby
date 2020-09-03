@@ -52,21 +52,79 @@
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            //width : 1500px;
+            //width : 1500px
 
             .contentColumn{
                 display: flex;
                 flex: 1;
+                flex-direction: column;
                 
-                //width : 200px;
-                height: 200px;
+                height: 220px;
                 border : 0;
                 padding : 20px;
                 background-color:rgba(110, 91, 124, 0.8);
-                margin : 20px 5px;
+                margin : 20px 10px;
                 border-radius: 25px;
+
+                .recentColumn{
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .recentColumn:nth-child(1){
+                    flex : 1;
+
+                    p:nth-child(1){
+                        width: 180px;
+                        font-size : 20px;
+                        margin-bottom: 10px;
+
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+
+                    p:nth-child(2){
+                        font-family: "comment";
+                        font-size: 15px;
+                    }
+                }
+
+                .recentColumn:nth-child(2){
+                    flex : 2;
+
+                    justify-content: center;
+                    align-items: center;
+
+                    //평가항목
+                    .recentProgressbar[value]{
+                        position: relative;
+                        height: 40px;
+                        z-index: 0;
+                    }
+
+                    .scoreColumn{
+                        display: flex;
+                        flex : 1;
+                        flex-direction: row;
+
+                        p{
+                            font-family: "comment";
+                            margin-top: 11px;
+                            margin-right: 2px;
+                            font-size :15px;
+                        };
+                    }
+                }
+
+                .recentColumn:nth-child(3){
+                    display: flex;
+                    flex : 1;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
         }
-    }
 
     // 최고의 교수, 최고의 수업
     .bestProfessor{
@@ -75,11 +133,12 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 20px;
         //width: 1500px;
 
         .contentColumn{
-            //width : 1000px;
-            height: 200px;
+            width : 700px;
+            height: 300px;
             border : 0px;
             padding : 20px;
             background-color:rgba(110, 91, 124, 0.8);

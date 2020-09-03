@@ -21,10 +21,78 @@
     <div class="formColumn">
         <%@index.each do |item|%>
             <div class="form">
-                <a href="lesson/<%=item.id%>/detail">
-                    <p><%=item.title%></p>
-                    <p>수업제목, 이름, 코맨트, 좋아요,싫어요,조회수</p>
-                    <p>총점, 평가항목1, 평가항목2, 평가항목 3, 평가항목</p>
+                <a href="lesson/<%=item.id%>/detail"> 
+                    <%if item.lesson_evals.empty?%>
+                        <div class="rowColumn">
+                            <div class="rowColumnColumn">
+                                <div class="viewColumnColumn">
+                                    <p><%=truncate(strip_tags(item.title), length:20)%></p>
+                                    <p><%=item.professor.name%> 교수</p>
+                                </div>
+                                <div class="commentColumn">
+                                    <p>조회 수 <%=item.view%></p>
+                                    <p>평가가 필요해요!</p>
+                                </div>
+                            </div>
+                            <div class="rowColumnColumn">
+                                <%if item.score == 0%>
+                                    <p id="score">평가해 주세요</p>
+                                <%else%>
+                                    <p id="score">>평가가 필요해요!</p>
+                                <%end%>
+                                <progress value="0" max="100"></progress>
+                                <progress value="0" max="100"></progress>
+                                <progress value="0" max="100"></progress>
+                                <progress value="0" max="100"></progress>
+                            </div>
+                        </div>
+                        <div class="pointColumn">
+                            <p>평가가 필요해요!</p>
+                            <p>평가가 필요해요!</p>
+                        </div>
+                    <%else%>
+                        <div class="rowColumn">
+                            <div class="rowColumnColumn">
+                                <div class="viewColumnColumn">
+                                    <p><%=truncate(strip_tags(item.title), length:20)%></p>
+                                    <p><%=item.professor.name%> 교수</p>
+                                </div>
+                                <div class="commentColumn">
+                                    <p>조회 수 <%=item.view%></p>
+                                    <p><%=item.lesson_evals.order(goodPoint: :desc).first.comment%></p>
+                                </div>
+                            </div>
+                            <div class="rowColumnColumn">
+                                <%if item.score == 0%>
+                                    <p id="score">평가해 주세요</p>
+                                <%else%>
+                                    <p id="score">총평 <%=item.score.to_f / item.lesson_evals.count.to_f%></p>
+                                <%end%>
+                                <progress class="progressbar" value="<%=item.lesson_evals.order(goodPoint: :desc).first.score1%>" max="100"></progress>
+                                <div class="proText1">
+                                    <p>평가항목</p>
+                                </div>
+                                <progress class="progressbar" value="<%=item.lesson_evals.order(goodPoint: :desc).first.score2%>" max="100"></progress>
+                                <div class="proText2">
+                                    <p>평가항목</p>
+                                </div>
+                                <progress class="progressbar" value="<%=item.lesson_evals.order(goodPoint: :desc).first.score3%>" max="100"></progress>
+                                <div class="proText3">
+                                    <p>평가항목</p>
+                                </div>
+                                <progress class="progressbar" value="<%=item.lesson_evals.order(goodPoint: :desc).first.score4%>" max="100"></progress>
+                                <div class="proText4">
+                                    <p>평가항목</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pointColumn">
+                            <i class="fas fa-heart"></i>
+                            <p><%=item.lesson_evals.order(goodPoint: :desc).first.goodPoint%></p>
+                            <i class="far fa-heart"></i>
+                            <p><%=item.lesson_evals.order(goodPoint: :desc).first.badPoint%></p>
+                        </div>
+                    <%end%>
                 </a>
             </div>
         <%end%>
@@ -53,7 +121,8 @@
         <%@index.each do |item|%>
             <div class="form">
                 <a href="homework/<%=item.id%>/detail">
-                <p><%=item.title%></p>
+                    <p><%=item.title%></p>
+                </a>
             </div>
         <%end%>
     </div>
@@ -63,7 +132,6 @@
     var homeworkScreen = document.getElementById("homeworkScreen");
     var homeworkButton = document.getElementById("homeworkButton");
     var lessonButton = document.getElementById("lessonButton");
-    var form = document.getElementsByClassName("formColumn")[3]
 
     homeworkButton.addEventListener("click",function(e){
         lessonScreen.style.display = "none";
@@ -74,29 +142,6 @@
         homeworkScreen.style.display="none";
         lessonScreen.style.display="block";
     });
-    
-    var flexFunction = function(){
-        var FLEX_NUMBER= 2;
-        var CHILD_LENGTH = (form.children.length)/2;
-
-        while(true){
-            for(var i=0; i<FLEX_NUMBER; i++){
-
-                var child = form.children;
-
-                var div = document.createElement("div");
-                div.style.display="flex";
-                div.setAttribute="flex-direction","row";
-                div.appendChild(child[i]);
-                div.appendChild(child[i]);
-                form.appendChild(div);
-            }
-            CHILD_LENGTH--;
-            if(CHILD_LENGTH ===0) break;
-        }
-    }
-    
-    //flexFunction();
 
 
 </script>

@@ -5,3 +5,52 @@
 #homeworkScreen{
     display: none;
 }
+
+// 수업제목
+.viewColumnColumn p:nth-child(1){
+    font-size: 30px;
+    width: 380px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}  
+//교수이름
+.viewColumnColumn p:nth-child(2){
+    margin-top: 15px;
+    font-family: "comment";
+}
+
+//코맨트
+.commentColumn{
+    font-family: "comment";
+    
+    p:nth-child(1){
+        font-size:13px;
+        margin-bottom: 10px;
+    }
+
+    p:nth-child(2){
+        margin-bottom: 10px;
+        text-overflow: ellipsis;
+    }
+}
+
+// 좋아요 싫어용
+.pointColumn{
+    text-align: center;
+}
+
+// progressbar
+.rowColumnColumn:nth-child(2){
+
+    #score{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+}
+
+//색깔 어떻게 바꾼다냐?
+.progressbar[value]{
+    height: 40px;
+}

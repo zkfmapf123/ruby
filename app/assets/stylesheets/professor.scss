@@ -1,3 +1,25 @@
 // Place all the styles related to the professor controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+a{
+    text-decoration: none;
+}
+
+.viewsColumnColumn{
+    display : flex;
+    flex : 1;
+    flex-direction: row;
+
+    p:nth-child(1){
+        font-size: 30px;
+        margin-right: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    p:nth-child(2){
+        margin-top: 15px;
+        font-family: "comment";
+    }
+}

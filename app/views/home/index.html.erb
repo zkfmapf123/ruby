@@ -8,55 +8,57 @@
         <div class="column">
             <h1> 최신 강의 평가 </h1>
             <div class="content">
-                <div class="contentColumn">
-                    <p><p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
+                <%@recent_lesson.each do |item|%>
+                    <a href="/">
+                        <div class="contentColumn">
+                            <div class="recentColumn">
+                                <p><%=item.lesson.title%></p>
+                                <p><%=item.lesson.professor.name%></p>
+                            </div>
+                            <div class="recentColumn">
+                                <div class="scoreColumn">
+                                    <p>평가항목</p>
+                                    <progress class="recentProgressbar" value="<%=item.score1%>" max="100"></progress>
+                                </div>
+                                <div class="scoreColumn">
+                                    <p>평가항목</p>
+                                    <progress class="recentProgressbar" value="<%=item.score2%>" max="100"></progress>
+                                </div>
+                                <div class="scoreColumn">
+                                    <p>평가항목</p>
+                                    <progress class="recentProgressbar" value="<%=item.score3%>" max="100"></progress>
+                                </div>
+                                <div class="scoreColumn">
+                                    <p>평가항목</p>
+                                    <progress class="recentProgressbar" value="<%=item.score4%>" max="100"></progress>
+                                </div>
+                            </div>
+                            <div class="recentColumn">
+                                <p><%=item.user.name%></p>
+                            </div>
+                        </div>
+                    </a>
+                <%end%>
             </div>
         </div>
         <div class="column">
-            <h1> 최고의 교수 <h1>
+            <h1> 최고의 수업 <h1>
             <div class="bestProfessor">
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
+                <%@lesson.each do |item|%>
+                    <div class="contentColumn">
+                        <p><%=item.title%><p>
+                    </div>
+                <%end%>
             </div>
         </div>
         <div class="column">
-            <h1> 최고의 수업 </h1>
+            <h1> 최고의 교수 </h1>
             <div class="bestProfessor">
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
-                <div class="contentColumn">
-                    <p> 1 <p>
-                </div>
+                <%@professor.each do |item|%>
+                    <div class="contentColumn">
+                        <p><%=item.name%></p>
+                    </div>
+                <%end%>
             </div>
         </div>
     </div>

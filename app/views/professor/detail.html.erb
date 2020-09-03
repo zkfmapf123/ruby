@@ -19,7 +19,7 @@
     </div>
     <div class="detailColumn">
         <%=form_tag "/professor/#{@index.id}/create"%>
-            <textarea name="content" placeholder="코맨트"></textarea>
+            <textarea name="content" placeholder="코맨트" require=true></textarea>
             <label class="rangeValue">50</label>
             <input class="slider" type=range name=point1 min="50.0" max="99.9" />
             <label class="rangeValue">50</label>
@@ -32,3 +32,21 @@
         </form> 
     </div>
 </div>
+<script>
+    var slider = document.getElementsByClassName("slider");
+    var sliderLabel = document.getElementsByClassName("rangeValue");
+
+    slider[0].addEventListener("click",function(){
+        sliderLabel[0].textContent = slider[0].value;
+    });
+    slider[1].addEventListener("click",function(){
+        sliderLabel[1].textContent = slider[1].value;
+    });
+    slider[2].addEventListener("click",function(){
+        sliderLabel[2].textContent = slider[2].value;
+    });
+    slider[3].addEventListener("click",function(){
+        sliderLabel[3].textContent = slider[3].value;
+    });
+
+</script>

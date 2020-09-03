@@ -21,15 +21,15 @@
     </div>
     <div class="detailColumn">
         <%=form_tag "/lesson/#{@index.id}/create"%>
-            <textarea name="content" placeholder="코맨트"></textarea>
+            <textarea name="content" placeholder="코맨트" require=true></textarea>
             <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point1 min="50.0" max="99.9" />
+            <input class="slider" type=range name=point1 min="10.0" max="99.9" />
             <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point2 min="50.0" max="99.9" />
+            <input class="slider" type=range name=point2 min="10.0" max="99.9" />
             <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point3 min="50.0" max="99.9" />
+            <input class="slider" type=range name=point3 min="10.0" max="99.9" />
             <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point4 min="50.0" max="99.9" />
+            <input class="slider" type=range name=point4 min="10.0" max="99.9" />
             <input type="submit" value="주제넘지만 평가하기">
         </form> 
     </div>

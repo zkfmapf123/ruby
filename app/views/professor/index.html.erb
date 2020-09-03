@@ -16,13 +16,81 @@
     </div>
     <div class="formColumn">
         <%@index.each do |item|%>
-            <a href="professor/<%=item.id%>/detail">
-                <div class="form">
-                    <p><%=item.name%></p>
-                    <p>교수이름, 전공, 좋아요,싫어요 조회수</p>
-                    <p>총점, 평가항목1, 평가항목2, 평가항목3, 평가항목4 </p>
-                </div>
-            </a>
+            <div class="form">
+                <a href="professor/<%=item.id%>/detail"> 
+                    <%if item.professor_evals.empty?%>
+                        <div class="rowColumn">
+                            <div class="rowColumnColumn">
+                                <div class="viewsColumnColumn">
+                                    <p><%=item.name%> 교수</p>
+                                    <p><%=item.major%></p>
+                                </div>
+                                <div class="commentColumn">
+                                    <p>조회 수 <%=item.view%></p>
+                                    <p>평가가 필요해요!</p>
+                                </div>
+                            </div>
+                            <div class="rowColumnColumn">
+                                <%if item.score == 0%>
+                                    <p id="score">평가해 주세요</p>
+                                <%else%>
+                                    <p id="score">>평가가 필요해요!</p>
+                                <%end%>
+                                <progress value="0" max="100"></progress>
+                                <progress value="0" max="100"></progress>
+                                <progress value="0" max="100"></progress>
+                                <progress value="0" max="100"></progress>
+                            </div>
+                        </div>
+                        <div class="pointColumn">
+                            <p>평가가 필요해요!</p>
+                            <p>평가가 필요해요!</p>
+                        </div>
+                    <%else%>
+                        <div class="rowColumn">
+                            <div class="rowColumnColumn">
+                                <div class="viewsColumnColumn">
+                                    <p><%=item.name%> 교수</p>
+                                    <p><%=item.major%></p>
+                                </div>
+                                <div class="commentColumn">
+                                    <p>조회 수 <%=item.view%></p>
+                                    <p><%=item.professor_evals.order(goodPoint: :desc).first.comment%></p>
+                                </div>
+                            </div>
+                            <div class="rowColumnColumn">
+                                <%if item.score == 0%>
+                                    <p id="score">평가해 주세요</p>
+                                <%else%>
+                                    <p id="score">총평 <%=item.score.to_f / item.professor_evals.count.to_f%></p>
+                                <%end%>
+                                <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score1%>" max="100"></progress>
+                                <div class="proText1">
+                                    <p>평가항목</p>
+                                </div>
+                                <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score2%>" max="100"></progress>
+                                <div class="proText2">
+                                    <p>평가항목</p>
+                                </div>
+                                <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score3%>" max="100"></progress>
+                                <div class="proText3">
+                                    <p>평가항목</p>
+                                </div>
+                                <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score4%>" max="100"></progress>
+                                <div class="proText4">
+                                    <p>평가항목</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pointColumn">
+                            <i class="fas fa-heart"></i>
+                            <p><%=item.professor_evals.order(goodPoint: :desc).first.goodPoint%></p>
+                            <i class="far fa-heart"></i>
+                            <p><%=item.professor_evals.order(goodPoint: :desc).first.badPoint%></p>
+                        </div>
+                    <%end%>
+                </a>
+            </div>
         <%end%>
     </div>
 </div>

@@ -92,11 +92,11 @@
     display: flex;
     flex : 1;
 
-    width: 500px;
-    height: 200px;
-    border : 0px;
-    padding : 20px;
-    background-color: rgba(110,91,124,0.8);
+    width: 700px;
+    height: 300px;
+    border : 0.5px solid #4A3656;
+    padding : 30px;
+    background-color: #F5F5F5;
     margin :20px 5px;
     border-radius: 25px;
 
@@ -114,9 +114,100 @@
 
 .formColumn:nth-child(4) .form:hover{
     opacity: 0.7;
-        -webkit-transform:scale(1.2);
-        -moz-transform:scale(1.2);
-        -ms-transform: scale(1.2);
-        -o-transform: scale(1.2);
-        transform:scale(1.2);
+    -webkit-transform:scale(1.2);
+    -moz-transform:scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform:scale(1.2);
+}
+        
+/* 안쪽 flex 레이아웃*/
+
+.form a{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.rowColumn{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.rowColumnColumn:nth-child(1){
+    display: flex;
+    flex : 2;
+    flex-direction: column;
+}
+
+.rowColumnColumn:nth-child(2){
+    display: flex;
+    flex : 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.viewColumnColumn{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.commentColumn{
+    display: flex;
+    flex : 3;
+    flex-direction: column;
+}
+
+.pointColumn{
+    border-top : 0.5px solid #4A3656;
+    display: flex;
+    flex-direction: row;
+}
+
+.pointColumn i{
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.pointColumn p{
+    margin-top: 5px;
+    padding-right: 20px;
+}
+
+/* 안에다가 넣어보자 왜 안될까?....*/
+
+.progressbar[value]{
+    position: relative; 
+    z-index: 0;  
+}
+
+.proText1, .proText2, .proText3, .proText4{
+    font-family: "comment";
+}
+
+.proText1{
+    position: absolute;
+    top: 121px; left: 195px; width: 100%; padding-top: 5px; text-align: center;
+    z-index: 1;
+}
+
+.proText2{
+    position: absolute;
+    top: 161px; left: 195px; width: 100%; padding-top: 5px; text-align: center;
+    z-index: 1;
+}
+
+.proText3{
+    position: absolute;
+    top: 200px; left: 195px; width: 100%; padding-top: 5px; text-align: center;
+    z-index: 1;
+}
+
+.proText4{
+    position: absolute;
+    top: 241px; left: 195px; width: 100%; padding-top: 5px; text-align: center;
+    z-index: 1;
 }

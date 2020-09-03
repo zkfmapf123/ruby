@@ -4,13 +4,13 @@ class CreateLessonEvals < ActiveRecord::Migration[5.2]
       t.integer :lesson_id
       t.integer :user_id
       t.text :comment
-      t.integer :goodPoint
-      t.integer :badPoint
-      t.integer :views
-      t.float :score1
-      t.float :score2
-      t.float :score3
-      t.float :score4
+      t.integer :goodPoint, default: 0
+      t.integer :badPoint, default: 0
+      t.integer :views, default: 0
+      t.integer :score1, default: 0
+      t.integer :score2, default: 0
+      t.integer :score3, default: 0
+      t.integer :score4, default: 0
       t.timestamps
     end
   end

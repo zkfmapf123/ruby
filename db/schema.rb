@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2020_08_30_133238) do
     t.integer "lesson_id"
     t.integer "user_id"
     t.text "comment"
-    t.integer "goodPoint"
-    t.integer "badPoint"
-    t.integer "views"
-    t.float "score1"
-    t.float "score2"
-    t.float "score3"
-    t.float "score4"
+    t.integer "goodPoint", default: 0
+    t.integer "badPoint", default: 0
+    t.integer "views", default: 0
+    t.integer "score1", default: 0
+    t.integer "score2", default: 0
+    t.integer "score3", default: 0
+    t.integer "score4", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,7 +66,8 @@ ActiveRecord::Schema.define(version: 2020_08_30_133238) do
     t.string "grade_exam_score"
     t.string "timetable"
     t.string "class_target"
-    t.float "score"
+    t.integer "score", default: 0
+    t.integer "view", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,13 +76,13 @@ ActiveRecord::Schema.define(version: 2020_08_30_133238) do
     t.integer "professor_id"
     t.integer "user_id"
     t.text "comment"
-    t.integer "goodPoint"
-    t.integer "badPoint"
-    t.integer "views"
-    t.float "score1"
-    t.float "score2"
-    t.float "score3"
-    t.float "score4"
+    t.integer "goodPoint", default: 0
+    t.integer "badPoint", default: 0
+    t.integer "views", default: 0
+    t.integer "score1", default: 0
+    t.integer "score2", default: 0
+    t.integer "score3", default: 0
+    t.integer "score4", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,7 +99,8 @@ ActiveRecord::Schema.define(version: 2020_08_30_133238) do
     t.string "name"
     t.string "major"
     t.string "image_url"
-    t.float "score"
+    t.integer "score", default: 0
+    t.integer "view", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

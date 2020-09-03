@@ -397,6 +397,13 @@ a:hover{
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'comment';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-RegularA1.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
                       
 *{
     font-family: 'headCircle';
