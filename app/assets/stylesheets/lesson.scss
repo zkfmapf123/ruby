@@ -14,36 +14,42 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color : #4A3656;
 }  
 //교수이름
 .viewColumnColumn p:nth-child(2){
     margin-top: 15px;
     font-family: "comment";
+    color : #4A3656;
 }
 
 //코맨트
 .commentColumn{
     font-family: "comment";
-    
+    color : #4A3656;
+
     p:nth-child(1){
         font-size:13px;
         margin-bottom: 10px;
+        color : #4A3656;
     }
 
     p:nth-child(2){
         margin-bottom: 10px;
         text-overflow: ellipsis;
+        color : #4A3656;
     }
 }
 
 // 좋아요 싫어용
 .pointColumn{
     text-align: center;
+    color : #4A3656;
 }
 
 // progressbar
 .rowColumnColumn:nth-child(2){
-
+    color : #4A3656;
     #score{
         font-size: 30px;
         margin-bottom: 20px;
