@@ -1,3 +1,36 @@
 // Place all the styles related to the calculator controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.calContainer{
+    display: flex;
+    flex : 1;
+    flex-direction: column;
+
+    .calColumn:nth-child(1){
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+        margin-bottom: 20px;
+
+        border: 1px solid black;
+        border-radius: 20px;
+
+        .column{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .calColumn:nth-child(2){
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: center;
+
+        .column:nth-child(1){
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

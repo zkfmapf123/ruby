@@ -13,6 +13,7 @@
       <div class="headerContainer">
         <div class="headerColumn">
           <% if current_user()%>
+            <a href="/">내 과제</a>
             <a style="cursor: pointer" id="userDetail">유저 정보</a>
             <%=link_to "로그 아웃", "/logout", method: :delete %>
             <a style="display: none" href="/" id="loginButton"> 로그인 </a>

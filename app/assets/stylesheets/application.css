@@ -438,6 +438,10 @@ header{
     color : #4A3656;
 }
 
+.headerColumn:nth-child(1) a{
+    margin-left: 10px;
+}
+
 .headerColumn:nth-child(2){
     text-align: center;
 }

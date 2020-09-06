@@ -1,2 +1,305 @@
-<h1>Calculator#index</h1>
-<p>Find me in app/views/calculator/index.html.erb</p>
+<div class="calContainer">
+    <div class="calColumn">
+        <div class="column">
+            <p>취득학점</p>
+            <p id=view1> 0 </p>
+        </div>
+        <div class="column">
+            <p>평균학점</p>
+            <p id=view2> 0 </p>
+        </div>
+        <div class="column">
+            <p>전공학점</p>
+            <p id=view3> 0 </p>
+        </div>
+    </div>
+    <div class="calColumn">
+        <div class="column">
+            <p>너는 상위 몇 프로?</p>
+            <p id=view4> </p>
+        </div>
+        <div class="column">
+            <table>
+                <tr>
+                    <th> 과목명 </th>
+                    <th> 학점 </th>
+                    <th> 성적 </th>
+                    <th> 전공여부 <th>
+                </tr>
+                <tr>
+                    <td><input type="text" class="major"></td>
+                    <td><input type="number" class="number"></td>
+                    <td>
+                        <select class="scoreSelect">
+                            <option value="A+" value="A+">A+</option>
+                            <option value="A+" value="A0">A0</option>
+                            <option value="A+" value="B+">B+</option>
+                            <option value="A+" value="B0">B0</option>
+                            <option value="A+" value="C+">C+</option>
+                            <option value="A+" value="C0">C0</option>
+                            <option value="A+" value="D0">D0</option>
+                            <option value="A+" value="F">F</option>
+                    </td>
+                    <td>
+                        <input type="radio" class="radio">    
+                    <td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="major"></td>
+                    <td><input type="number" class="number"></td>
+                    <td>
+                        <select class="scoreSelect">
+                            <option value="A+">A+</option>
+                            <option value="A+">A0</option>
+                            <option value="A+">B+</option>
+                            <option value="A+">B0</option>
+                            <option value="A+">C+</option>
+                            <option value="A+">C0</option>
+                            <option value="A+">D0</option>
+                            <option value="A+">F</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="radio" class="radio"> 
+                    <td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="major"></td>
+                    <td><input type="number" class="number"></td>
+                    <td>
+                        <select class="scoreSelect">
+                            <option value="A+">A+</option>
+                            <option value="A+">A0</option>
+                            <option value="A+">B+</option>
+                            <option value="A+">B0</option>
+                            <option value="A+">C+</option>
+                            <option value="A+">C0</option>
+                            <option value="A+">D0</option>
+                            <option value="A+">F</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="radio" class="radio">   
+                    <td>
+                </tr>
+            </table>
+            <button id="submit">계산하기</button>
+            <a href="/" id="moreButton"> more </a>
+            <a href="/" id="lessButton"> less </a>
+            <button id="initialize"> 초기화 </button>
+        </div>
+    <div>
+</div>
+<script>
+    var calTableColumn = document.getElementsByClassName("calColumn")[1];
+    var calTable = calTableColumn.children[1];
+    var moreButton = document.getElementById("moreButton");
+    var lessButton = document.getElementById("lessButton");
+    var submitButton = document.getElementById("submit");
+    var initialize = document.getElementById("initialize");
+
+    //view
+    var view1 = document.getElementById("view1");
+    var view2 = document.getElementById("view2");
+    var view3 = document.getElementById("view3");
+    var view4 = document.getElementById("view4");
+
+    //arr
+    var arr = [
+        "신",
+        "교수님의 사랑",
+        "교수님의 귀염둥이",
+        "일반인",
+        "일탈을 꿈꾸는 소시민",
+        "오락문화의 선구자",
+        "불가촉천민",
+        "자벌레",
+        "플랑크톤",
+        "시대를 앞서가는 혁명의 씨앗",
+    ];
+
+    moreButton.addEventListener("click",(e)=>{
+        var calTableColumn = document.getElementsByClassName("calColumn")[1].children[1];
+        var calTable = calTableColumn.children[0];
+
+        e.preventDefault();
+
+        var tr = document.createElement("tr");
+        
+        var td = document.createElement("td");
+        var input = document.createElement("input");
+        input.setAttribute("type","text");
+        input.className="major";
+        td.appendChild(input);
+        tr.appendChild(td);
+
+        td = document.createElement("td");
+        input = document.createElement("input");
+        input.setAttribute("type","number");
+        input.className="number";
+        td.appendChild(input);
+        tr.appendChild(td);
+
+        td = document.createElement("td");
+        input = document.createElement("select");
+        input.className="scoreSelect";
+        var option = document.createElement("option");
+        option.setAttribute("value","A+")
+        option.innerText = "A+";
+        input.appendChild(option);
+
+        option = document.createElement("option");
+        option.setAttribute("value","A0")
+        option.innerText = "A0";
+        input.appendChild(option);
+
+        option = document.createElement("option");
+        option.setAttribute("value","B+")
+        option.innerText = "B+";
+        input.appendChild(option);
+
+        option = document.createElement("option");
+        option.setAttribute("value","B0")
+        option.innerText = "B0";
+        input.appendChild(option);
+
+        option = document.createElement("option");
+        option.setAttribute("value","C+")
+        option.innerText = "C+";
+        input.appendChild(option);
+
+        option = document.createElement("option");
+        option.setAttribute("value","C0")
+        option.innerText = "A0";
+        input.appendChild(option);
+
+        option = document.createElement("option");
+        option.setAttribute("value","D0")
+        option.innerText = "D0";
+        input.appendChild(option);
+
+        option = document.createElement("option");
+        option.setAttribute("value","F")
+        option.innerText = "F";
+        input.appendChild(option);
+
+        td.appendChild(input);
+        tr.appendChild(td);
+
+        td = document.createElement("td");
+        input = document.createElement("input");
+        input.setAttribute("type","radio");
+        input.innerText = "전공";
+        input.className="radio";
+        td.appendChild(input);
+        
+        tr.appendChild(td);
+        calTable.appendChild(tr);       
+    })
+
+    lessButton.addEventListener("click",(e)=>{
+        var calTableColumn = document.getElementsByClassName("calColumn")[1].children[1];
+        var calTable = calTableColumn.children[0];
+        
+        e.preventDefault();
+
+        var len = (calTable.childElementCount)-1;
+        if(len <= 0){
+            alert("더 이상 줄일 수 없습니다.")
+            return 0;
+        }
+        calTable.removeChild(calTable.children[len]);
+    })
+
+    submitButton.addEventListener("click",(e)=>{
+        e.preventDefault();
+
+        var arrNumber = document.getElementsByClassName("number"); //학점
+        var arrSelect = document.getElementsByClassName("scoreSelect"); //점수
+        var arrCheck = document.getElementsByClassName("radio"); //전공여부
+
+        var myMajor = [];
+
+        var total = 0;
+        var numberTotal = 0;
+        var scoreNumber = 0;
+        var subjectLength = arrNumber.length;
+
+        var majorTotal = 0;
+        var majorNumberTotal =0;
+        var majorLength = 0;
+
+        for(var i=0; i<arrNumber.length; i++){
+            if(arrNumber[i].value === ""){
+                alert("학점의 값이 올바르지 않습니다.")
+                return 0;
+            }
+
+            if(arrSelect[i].options[arrSelect[i].selectedIndex].text=== "A+"){
+                scoreNumber = 4.5;
+            }else if(arrSelect[i].options[arrSelect[i].selectedIndex].text=== "A0"){
+                scoreNumber = 4.0;
+            }else if(arrSelect[i].options[arrSelect[i].selectedIndex].text=== "B+"){
+                scoreNumber = 3.5;
+            }else if(arrSelect[i].options[arrSelect[i].selectedIndex].text=== "B0"){
+                scoreNumber = 3.0;  
+            }else if(arrSelect[i].options[arrSelect[i].selectedIndex].text=== "C+"){
+                scoreNumber = 2.5;
+            }else if(arrSelect[i].options[arrSelect[i].selectedIndex].text=== "C0"){
+                scoreNumber = 2.0;
+            }else if(arrSelect[i].options[arrSelect[i].selectedIndex].text=== "D0"){
+                scoreNumber = 1.0;
+            }else{
+                scoreNumber = 0;
+            }
+
+            if(arrCheck[i].checked === true){
+                majorTotal += (arrNumber[i].value * scoreNumber);
+                majorNumberTotal += Number(arrNumber[i].value);
+                majorLength++;
+            }
+
+            total += (arrNumber[i].value * scoreNumber);
+            numberTotal += Number(arrNumber[i].value);
+        }  
+
+        viewRendering(total, numberTotal, subjectLength, majorTotal, majorNumberTotal, majorLength);
+    });
+
+    var viewRendering = (total, numberTotal, subjectLength, majorTotal, majorNumberTotal, majorLength) => {
+        
+        var totalScore = (total / numberTotal).toFixed(2);
+        view1.innerText = numberTotal + " 학점";
+        view2.innerText = `${totalScore} / 4.5`
+        view3.innerText = `${(majorTotal / majorNumberTotal).toFixed(2)} / 4.5`
+
+        if(totalScore >= 4.5 ){
+            view4.innerText = arr[0];
+        }else if(totalScore <=4.49 && totalScore >= 4.2 ){
+            view4.innerText = arr[1];
+        }else if(totalScore <=4.19 && totalScore >= 3.5){
+            view4.innerText = arr[2];
+        }else if(totalScore <=3.49 && totalScore >= 2.8){
+            view4.innerText = arr[3];
+        }else if(totalScore <=2.79 && totalScore >= 2.3){
+            view4.innerText = arr[4];
+        }else if(totalScore <=2.29 && totalScore >= 1.75){
+            view4.innerText = arr[5];
+        }else if(totalScore <=1.74 && totalScore >= 1.0){
+            view4.innerText = arr[6];
+        }else if(totalScore <=0.99 && totalScore >= 0.5){
+            view4.innerText = arr[7];
+        }else if(totalScore <=0.49 && totalScore >= 0.1){
+            view4.innerText = arr[8];
+        }else{
+            view4.innerText = arr[9];
+        }
+    }
+
+    initialize.addEventListener("click",(e)=>{
+        location.reload(true);
+    });
+
+
+
+</script>

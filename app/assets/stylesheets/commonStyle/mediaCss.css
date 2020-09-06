@@ -5,5 +5,12 @@
     
 }
 
+/*app size*/
+@media screen and(max-device-width: 900px){
+  main{
+    background-color: blue;
+  }
+}
+
     /*모든 컨테이너에서 column으로 바뀌돼,
       main의 사이가 mani사이즈가 되도록*/

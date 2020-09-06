@@ -62,7 +62,7 @@
                                 <%if item.score == 0%>
                                     <p id="score">평가해 주세요</p>
                                 <%else%>
-                                    <p id="score">총평 <%=item.score.to_f / item.professor_evals.count.to_f%></p>
+                                    <p id="score">총평 <%=(item.score.to_f / item.professor_evals.count.to_f).round(1)%></p>
                                 <%end%>
                                 <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score1%>" max="100"></progress>
                                 <div class="proText1">

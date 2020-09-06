@@ -1,7 +1,5 @@
 <div class="formContainer" id="lessonScreen">
-    <div class="formColumn">
-        <a id="homeworkButton"> 과제공유 버튼으루 </a>
-    </div>
+    <div class="formColumn"></div>
     <div class="formColumn">
         <form action="/search">
             <select name="search">
@@ -66,7 +64,7 @@
                                 <%if item.score == 0%>
                                     <p id="score">평가해 주세요</p>
                                 <%else%>
-                                    <p id="score">총평 <%=item.score.to_f / item.lesson_evals.count.to_f%></p>
+                                    <p id="score">총평 <%=(item.score.to_f / item.lesson_evals.count.to_f).round(1)%></p>
                                 <%end%>
                                 <progress class="progressbar" value="<%=item.lesson_evals.order(goodPoint: :desc).first.score1%>" max="100"></progress>
                                 <div class="proText1">
@@ -98,50 +96,3 @@
         <%end%>
     </div>
 </div>
-<div class="formContainer" id="homeworkScreen">
-    <div class="formColumn">
-        <a id="lessonButton"> 강의평가 버튼으루</a>
-    </div>
-    <div class="formColumn">
-        <form action="/search">
-            <select name="search">
-                <option name=""></option>
-                <option name=""></option>
-                <option name=""></option>
-                <option name=""></option>
-            </select>
-            <input style="width: 300px" type="text" name="search" placeholder="검색어를 입력하세요" required=true/>
-            <input type="submit" value="Enter">
-    </div>
-    <div class="formColumn">
-        <a href="/">조회수 순</a>
-        <a href="/">공감 순</a>
-    </div>
-    <div class="formColumn">
-        <%@index.each do |item|%>
-            <div class="form">
-                <a href="homework/<%=item.id%>/detail">
-                    <p><%=item.title%></p>
-                </a>
-            </div>
-        <%end%>
-    </div>
-</div>
-<script>
-    var lessonScreen = document.getElementById("lessonScreen");
-    var homeworkScreen = document.getElementById("homeworkScreen");
-    var homeworkButton = document.getElementById("homeworkButton");
-    var lessonButton = document.getElementById("lessonButton");
-
-    homeworkButton.addEventListener("click",function(e){
-        lessonScreen.style.display = "none";
-        homeworkScreen.style.display = "block";
-    });
-
-    lessonButton.addEventListener("click",function(e){
-        homeworkScreen.style.display="none";
-        lessonScreen.style.display="block";
-    });
-
-
-</script>
