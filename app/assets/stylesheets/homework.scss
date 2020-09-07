@@ -1,3 +1,37 @@
 // Place all the styles related to the homework controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.homeworkLessonContainer{
+    display: flex;
+    flex : 1;
+    flex-direction: column;
+
+    .homeworkLessonColumn{
+        display: flex;
+        flex : 1;
+        justify-content: center;
+        align-items: center;
+        table{
+            width: 742px;
+            border-bottom: 3px solid #707070;
+        }
+        
+        th, td{
+            padding : 15px;
+            font-family: "comment";
+        }
+        
+        th{
+            border-top: 3px solid #707070;
+        }
+        
+        td{
+            border-top: 1px solid #707070;
+        }
+        
+        td:nth-last-child(4):hover{
+            opacity: 0.5;
+        }
+    }
+}
