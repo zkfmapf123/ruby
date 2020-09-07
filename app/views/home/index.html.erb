@@ -1,40 +1,48 @@
-<div class="homeContainer">
+<div class="homeContainer"> 
     <div class="homeColumn">
-        <h1> 학사일정 & 공지사항 </h1>
+        <h1> | 학사일정 & 공지사항 </h1>
         <div class="seeboard">
+            <table>
+                <tr>   
+                    <th>No</th>
+                    <th>제목</th>
+                    <th>작성일</th>
+                    <th></th>
+                </tr>
+                <%@url.each do |item|%>
+                <tr>
+                    <td><%=item.split(",")[0]%></td>
+                    <td>
+                        <a href="<%=item.split(",")[1]%>">
+                            <p><%=item.split(",")[2]%></p>
+                        </a>
+                    </td>
+                    <td>2020.09.07</td>
+                    <td>관리자</td>
+                </tr>
+                <%end%>
+            </table>
         </div>
     </div>
     <div class="homeColumn">
         <div class="column">
-            <h1> 최신 강의 평가 </h1>
+            <h1> | 최신 강의 평가 </h1>
             <div class="content">
                 <%@recent_lesson.each do |item|%>
-                    <a href="/">
+                    <a href="/lesson/<%=item.id%>/detail">
                         <div class="contentColumn">
                             <div class="recentColumn">
                                 <p><%=item.lesson.title%></p>
                                 <p><%=item.lesson.professor.name%></p>
                             </div>
                             <div class="recentColumn">
-                                <div class="scoreColumn">
-                                    <p>평가항목</p>
-                                    <progress class="recentProgressbar" value="<%=item.score1%>" max="100"></progress>
-                                </div>
-                                <div class="scoreColumn">
-                                    <p>평가항목</p>
-                                    <progress class="recentProgressbar" value="<%=item.score2%>" max="100"></progress>
-                                </div>
-                                <div class="scoreColumn">
-                                    <p>평가항목</p>
-                                    <progress class="recentProgressbar" value="<%=item.score3%>" max="100"></progress>
-                                </div>
-                                <div class="scoreColumn">
-                                    <p>평가항목</p>
-                                    <progress class="recentProgressbar" value="<%=item.score4%>" max="100"></progress>
-                                </div>
+                                <p><%=item.comment%></p>
                             </div>
                             <div class="recentColumn">
                                 <p><%=item.user.name%></p>
+                            </div>
+                            <div class="alertColumn">
+                                <p> + 자세히보기 </p>
                             </div>
                         </div>
                     </a>
@@ -45,8 +53,10 @@
             <h1> 최고의 수업 <h1>
             <div class="bestProfessor">
                 <%@lesson.each do |item|%>
-                    <div class="contentColumn">
-                        <p><%=item.title%><p>
+                    <div class="bestColumn">
+                        <a href="/">
+                        
+                        </a>
                     </div>
                 <%end%>
             </div>
@@ -55,8 +65,10 @@
             <h1> 최고의 교수 </h1>
             <div class="bestProfessor">
                 <%@professor.each do |item|%>
-                    <div class="contentColumn">
-                        <p><%=item.name%></p>
+                    <div class="bestColumn">
+                        <a href="/">
+
+                        </a>
                     </div>
                 <%end%>
             </div>

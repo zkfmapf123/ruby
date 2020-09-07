@@ -1,18 +1,21 @@
 <div class="formContainer" id="lessonScreen">
     <div style="display: none" class="formColumn"></div>
     <div class="formColumn">
-        <form action="/search">
-            <select name="search">
-                <option name="name" value="name">교수이름</option>
-                <option name="major" value="major">교수전공</option>
+        <form action="/professor">
+            <select name="searchFind">
+                <option name="name" value="professor_name">교수이름</option>
+                <option name="major" value="professor_major">교수전공</option>
             </select>
             <input style="width: 300px" type="text" name="search" placeholder="검색어를 입력하세요" required=true/>
             <input type="submit" value="Enter">
         </form>
     </div>
     <div class="formColumn">
-        <a href="/">조회수 순</a>
-        <a href="/">공감 순</a>
+        <p> 조회수 순으로 정렬 됩니다 </p>
+        <p> 해당 교수평가는 평점이 높은 평가가 나옵니다 </p>
+        <%if @index.empty?%>
+            <p id="emptyError"><%=flash[:no_find]%></p>
+        <%end%>
     </div>
     <div class="formColumn">
         <%@index.each do |item|%>
@@ -64,21 +67,21 @@
                                 <%else%>
                                     <p id="score">총평 <%=(item.score.to_f / item.professor_evals.count.to_f).round(1)%></p>
                                 <%end%>
-                                <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score1%>" max="100"></progress>
-                                <div class="proText1">
-                                    <p>평가항목</p>
+                                <div class="rowProgress">
+                                    <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score1%>" max="100"></progress>
+                                    <p> 평가항목 </p>
                                 </div>
-                                <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score2%>" max="100"></progress>
-                                <div class="proText2">
-                                    <p>평가항목</p>
+                                <div class="rowProgress">
+                                    <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score2%>" max="100"></progress>
+                                    <p> 평가항목 </p>
                                 </div>
-                                <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score3%>" max="100"></progress>
-                                <div class="proText3">
-                                    <p>평가항목</p>
+                                <div class="rowProgress">
+                                    <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score3%>" max="100"></progress>
+                                    <p> 평가항목 </p>
                                 </div>
-                                <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score4%>" max="100"></progress>
-                                <div class="proText4">
-                                    <p>평가항목</p>
+                                <div class="rowProgress">
+                                    <progress class="progressbar" value="<%=item.professor_evals.order(goodPoint: :desc).first.score4%>" max="100"></progress>
+                                    <p> 평가항목 </p>
                                 </div>
                             </div>
                         </div>

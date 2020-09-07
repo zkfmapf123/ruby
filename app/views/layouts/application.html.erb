@@ -13,7 +13,7 @@
       <div class="headerContainer">
         <div class="headerColumn">
           <% if current_user()%>
-            <a href="/">내 과제</a>
+            <a href="/homework/user">내 과제</a>
             <a style="cursor: pointer" id="userDetail">유저 정보</a>
             <%=link_to "로그 아웃", "/logout", method: :delete %>
             <a style="display: none" href="/" id="loginButton"> 로그인 </a>
@@ -32,10 +32,11 @@
           </a>
         </div>
         <div class="headerColumn">
-          <form action="/search">
-            <select name="search">
-              <option name="lesson" value="lesson">강의 제목</option>
-              <option name="professor" value="professor">교수 이름</option>
+          <form action="/lesson">
+            <select name="searchFind">
+              <option name="title" value="lesson_title">강의 제목</option>
+              <!--<option name="name" value="professor_name">교수 이름</option>-->
+            </select>
             <input style="width: 300px" type="text" name="search" placeholder="검색어를 입력하세요" required=true>
             <input type="submit" value="Enter">
           </form>
@@ -133,6 +134,7 @@
     var popUpColumn = document.getElementById("footerPopup");
     var footer = document.getElementById("footer");
     var userDetail = document.getElementById("userDetail");
+
     footer.style.height="100px";
 
     popUp.addEventListener("click",function(e){

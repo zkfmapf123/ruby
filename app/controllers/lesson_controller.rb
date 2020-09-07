@@ -2,14 +2,26 @@ class LessonController < ApplicationController
     attr_reader :index, :lesson, :total
     before_action :isNotUser
 
+    #/lesson
     def index
-        super(:index=>Lesson)
+        super(
+            :index=>Lesson,
+            :search => params[:searchFind],
+            :findText => params[:search]
+            )
     end
 
+    #/lesson/:id/detail
     def detail
         super(:index => Lesson)
     end
 
+    # /lesson/sort/:id ==> deprecated
+    # def sort
+    #
+    # end
+
+    #/lesson/:id/create
     def create
         # 미리검사
         @index = Lesson.find(params[:id]).lesson_evals.build(

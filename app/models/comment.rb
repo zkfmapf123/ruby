@@ -1,8 +1,9 @@
-class Homework < ApplicationRecord
+class Comment < ApplicationRecord
     mount_uploader :image, ImageUploader
     
-    belongs_to :lesson
+    belongs_to :homework
     belongs_to :user
+    has_many :homewokr_user_flags
 
     before_destroy :destroy_s3
 

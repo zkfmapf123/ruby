@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_30_133238) do
+ActiveRecord::Schema.define(version: 2020_09_06_101227) do
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "homework_id"
+    t.integer "user_id"
+    t.string "title"
+    t.text "description"
+    t.integer "goodPoint", default: 0
+    t.integer "badPoint", default: 0
+    t.integer "view"
+    t.string "image"
+    t.string "file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "lesson_id"
@@ -19,13 +33,22 @@ ActiveRecord::Schema.define(version: 2020_08_30_133238) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "homework_user_flags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "user_id"
+    t.boolean "point_flag", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "homeworks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "lesson_evals_id"
+    t.integer "lesson_id"
     t.integer "user_id"
     t.string "title"
-    t.string "description"
-    t.string "image_upload"
-    t.string "file_upload"
+    t.text "description"
+    t.integer "view"
+    t.string "image"
+    t.string "file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,7 +71,8 @@ ActiveRecord::Schema.define(version: 2020_08_30_133238) do
   create_table "lesson_user_flags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "lesson_id"
     t.integer "user_id"
-    t.boolean "favorite_flag"
+    t.boolean "point_flag", default: true
+    t.boolean "favorite_flag", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,7 +114,8 @@ ActiveRecord::Schema.define(version: 2020_08_30_133238) do
   create_table "professor_user_flags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "professor_id"
     t.integer "user_id"
-    t.boolean "favorite_flag"
+    t.boolean "point_flag", default: true
+    t.boolean "favorite_flag", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

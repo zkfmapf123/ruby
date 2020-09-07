@@ -1,14 +1,22 @@
 class HomeController < ApplicationController
-    attr_reader :bool, :professor, :lesson, :recent_lesson
+    attr_reader :bool, :professor, :lesson, :recent_lesson, :url, :urlText
+    require 'openssl'
+    require 'open-uri'
     require "tasks/register_db_lesson"
     require "tasks/register_db_professor"
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
+    def initial
+        @findCrawl = []
+    end
+    
 
     def index
+        initial()
         @recent_lesson = LessonEval.limit(3).order(created_at: :desc)
         @lesson = Lesson.limit(5).order(score: :desc)
-        @professor = Professor.limit(5).order(score: :desc)
-
-        #크롤링
+        @professor = Professor.limit(5).order(score: :desc) 
+        crawl()
 
         respond_to do |format|
             format.html{
@@ -32,6 +40,20 @@ class HomeController < ApplicationController
     end
 
     private
+
+    def crawl
+        #크롤링 
+        doc = Nokogiri::HTML(open("https://kduniv.ac.kr/"))
+        crawlData = doc.css('.brd-wrap.mcont02 .m-list a')
+
+        root_url = "https://kduniv.ac.kr"
+        @url = []
+
+        crawlData.each.with_index do |item,i|
+            @url[i] = "#{i+1}"+","+root_url + item["href"] +","+"[학사공지] " + item.text
+        end
+    end
+
     #csv_file
     def _eval_professor_file(bool)
         if @bool

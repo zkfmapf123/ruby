@@ -2,7 +2,11 @@ class ProfessorController < ApplicationController
     before_action :isNotUser
 
     def index
-        super(:index => Professor)
+        super(
+            :index=> Professor,
+            :search => params[:searchFind],
+            :findText => params[:search]
+            )
     end
 
     def detail

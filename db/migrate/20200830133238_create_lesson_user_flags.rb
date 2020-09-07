@@ -3,7 +3,8 @@ class CreateLessonUserFlags < ActiveRecord::Migration[5.2]
     create_table :lesson_user_flags do |t|
       t.integer :lesson_id
       t.integer :user_id
-      t.boolean :favorite_flag
+      t.boolean :point_flag, default: true
+      t.boolean :favorite_flag, default: true
       t.timestamps
     end
   end

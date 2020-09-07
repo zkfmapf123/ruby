@@ -6,10 +6,9 @@ class User < ApplicationRecord
     has_many :lesson_user_flags  #수업_유저_공감_flag
     has_many :professor_user_flags #교수_유저_공감_flag
     has_many :homeworks #과제공유
-    # 과제공유 게사핀...
+    has_many :homework_user_flags #코맨트_유저_공감_flag
 
     has_secure_password
-    after_initialize :set_default
     before_save {self.email = email.downcase }
 
     VALID_EMAIL_REGEX = /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/
@@ -18,9 +17,4 @@ class User < ApplicationRecord
         format: {with: VALID_EMAIL_REGEX},
         uniqueness: {case_sensitive: false}
     validates :major, presence: true
-
-    def set_default
-        self.alert = 0
-    end
-
 end
