@@ -2,16 +2,50 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//homeworkLessonContainer 과제공유 게시판목록
 .homeworkLessonContainer{
     display: flex;
     flex : 1;
     flex-direction: column;
 
-    .homeworkLessonColumn{
+    justify-content: center;
+    align-items: center;
+
+    //@index not exists
+    #noneIndexLink{
         display: flex;
-        flex : 1;
+        flex :1;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        p{
+            font-size: 30px;
+            font-family: "comment";
+        }
+
+        p:nth-child(1){
+            margin-bottom: 15px;
+        }
+    }
+
+    //@index exists
+    .homeworkLessonColumn:nth-child(1){
+        
+        display: flex;
+        flex : 1;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        //제목
+        #lessonTitle{
+            font-size :30px;
+            font-family: "comment";
+            margin-bottom: 30px;
+        }
+        
         table{
             width: 742px;
             border-bottom: 3px solid #707070;
@@ -27,11 +61,379 @@
         }
         
         td{
+            text-align: center;
             border-top: 1px solid #707070;
         }
         
         td:nth-last-child(4):hover{
             opacity: 0.5;
+        }
+    }
+
+    // 글쓰기 버튼
+    .homeworkLessonColumn:nth-child(2){
+        display: flex;
+        flex : 1;
+        
+        justify-content: center;
+        align-items: center;
+
+        margin-top : 15px;
+
+        a{
+            width: 750px;
+            font-size : 22px;
+            padding : 10px;
+            text-align: right;
+        }
+    }
+
+    // pageNumber 13보다 클 때
+    .homeworkLessonColumn:nth-child(3){
+        display: flex;
+        flex :1;
+        flex-direction: row;
+
+        width: 700px;
+        overflow: auto;
+        
+        padding: 15px 0px;
+
+        a{
+            font-size: 20px;
+            margin : 0px 15px;
+        }
+    }
+
+    // pageNumber 13보다 작을 때
+    .homeworkLessonColumnLess{
+        display: flex;
+        flex : 1;
+        flex-direction: row;
+
+        width: 700px;
+
+        justify-content: center;
+        align-items: center;
+
+        padding : 15px 0px;
+        
+        a{
+            font-size: 20px;
+            margin: 0px 15px;
+        }
+    }
+
+    // 검색 및 글쓰기
+    .homeworkLessonColumn:nth-child(4){
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+        
+        form{
+            border : 1px solid #4A3656;
+            width : 500px;
+            border-radius: 20px;
+            padding: 15px;
+            display: flex;
+            flex : 1;
+            flex-direction: row; 
+        }
+
+        form select{
+            flex : 1;
+            border : 0px;
+            background-attachment: #F6F6F6;
+            color : #4A3656;
+            font-size: 20px;
+        }
+
+        form input[type=text]{
+            flex : 4;
+            border: 0px;
+            font-size: 20px;
+            background-color: white;
+        }
+
+        form input[type=submit]{
+            flex: 1;
+            width: 100px;
+            border : 0px;
+            background-color: white;
+            font-size: 20px;
+            font-family: 'headCircle';
+            font-weight: bold;
+            color : #4A3656;
+            padding-left: 20px;
+            border-left: 1px solid #4A3656;
+        }
+
+        form input[type=submit]:hover{
+            opacity: 0.5;
+        }
+    }
+}
+
+// homewokr/lesson/:id
+.viewColumnColumn p:nth-child(1){
+    font-size: 30px;
+    width: 380px;
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color : #4A3656;
+}  
+//교수이름
+.viewColumnColumn p:nth-child(2){
+    margin-top: 15px;
+    font-family: "comment";
+    color : #4A3656;
+}
+
+//코맨트
+.commentColumn{
+    font-family: "comment";
+    color : #4A3656;
+
+    p:nth-child(1){
+        font-size:13px;
+        margin-bottom: 10px;
+        color : #4A3656;
+    }
+
+    p:nth-child(2){
+        margin-bottom: 10px;
+        text-overflow: ellipsis;
+        color : #4A3656;
+    }
+}
+
+// 좋아요 싫어용
+.pointColumn{
+    text-align: center;
+    color : #4A3656;
+}
+
+// progressbar
+.rowColumnColumn:nth-child(2){
+    color : #4A3656;
+    #score{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+}
+
+// homewokr/lesson/:id/detail
+.detailContainer{
+    display: flex;
+    flex : 1;
+    flex-direction: column;
+
+    //설명
+    .detailColumn:nth-child(1){
+        display: flex;
+        flex : 1;
+        flex-direction: column;
+        
+        //제목
+        .column:nth-child(1)
+        {
+            display: flex;
+            flex : 1;
+            margin: 10px 0px;
+            color : #4A3656;
+            justify-content: center;
+
+            p:nth-child(1){
+                font-size : 25px;
+                font-family: "comment";
+                margin-right: 10px;
+            }
+
+            p:nth-child(2){
+                font-size: 15px;
+                font-family: "comment";
+                color: gray;
+                margin-top : 13px;
+            }
+        }
+    
+        //이미지
+        .column:nth-child(2){
+            display: flex;
+            flex : 3;
+            margin: 5px 0px;
+
+            justify-content: center;
+            align-items: center;
+
+            img{
+                width : 920px;
+            }
+        }
+    
+        //설명
+        .column:nth-child(3){
+            display: flex;
+            flex :2;
+            margin: 5px 0px;
+            
+            justify-content: center;
+            align-items: center;
+
+            pre{
+                padding : 10px;
+
+                width: 920px;
+                font-family: "comment";
+                line-height: 1.2;
+                font-size : 18px;
+                border-bottom : 0.5px dotted #4A3656; 
+
+                //text-overflow
+                word-wrap: break-word;
+            }
+        }
+
+        //조회수
+        .column:nth-child(4){
+            display: flex;
+            flex : 1;
+
+            margin : 10px 0px;
+
+            justify-content: center;
+            align-items: center;
+
+            p{
+                width: 835px;
+                font-size : 13px;
+                margin-left: 20px;
+            }
+
+            a{
+                font-size: 20px;
+                font-family: "comment";
+            }
+        }
+    }
+
+    //댓글
+    .detailColumn:nth-child(2){
+        display: flex;
+        flex : 1;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+
+        .column{
+            width: 930px;
+        }
+
+        //댓글쓰기
+        .column:nth-child(1){
+
+            p{
+                margin-bottom: 10px;
+                font-size: 20px;
+                font-family: "comment";
+            }
+
+            form{
+                display: flex;
+                flex : 1;
+                flex-direction: row;
+                margin-bottom: 10px;
+            }
+            
+            textarea{
+                display: flex;
+                padding: 10px;
+                height: 150px;
+                flex : 15;
+
+                font-size : 15px;
+                font-family: "comment";
+                color : black;
+            };
+
+            input{
+                display: flex;
+                flex :1;
+            };
+        }
+        //sorting
+        .column:nth-child(2){
+            margin : 20px 0px;
+
+            a{
+                font-size: 20px;
+                padding-right: 10px;
+            }
+        }
+
+        //댓글란
+        .column:nth-child(3){
+            display: flex;
+            flex : 1;
+            flex-direction: column;
+            
+            font-family: "comment";
+
+            border-left : 1px dotted black;
+            padding-left: 5px;
+
+            //comment
+            .commentColumn{
+                display: flex;
+                width: 930px;
+                flex : 1;
+                flex-direction: row;
+
+                //이름
+                p:nth-child(1){
+                    display: flex;
+                    flex : 1;
+                    font-size : 20px;
+                    margin-right: 10px;
+                }
+
+                //description
+                p:nth-child(2){
+                    display: flex;
+                    flex : 11;
+                    line-height: 1.2;
+                    margin-top: 3px;
+                    font-size : 15px;
+                    margin-right: 5px;
+                }
+
+                //날짜
+                p:nth-child(3){
+                    display: flex;
+                    flex : 2;
+                    margin-right: 5px;
+                    
+                    font-size : 13px;
+                    color : gray;
+                }
+
+                .heartColumn{
+                    display: flex;
+                    flex : 2;
+                    
+                    a{
+                        display: flex;
+                        flex-direction: row;
+                        margin-right: 5px;
+                    }
+                }
+            }
         }
     }
 }

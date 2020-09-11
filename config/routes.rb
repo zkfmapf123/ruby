@@ -28,13 +28,12 @@ Rails.application.routes.draw do
   # crud 작업
 
   # homework 과제공유 내 과제
-  get "/homework/user" => "homework#index"
-  get "/homework/lesson/:id" => "homework#lesson"
-  get "/homework/lesson/:id/detail" => "homework#detail"
-  
-  # 연습
-  post "/homework/create" => "homework#create"
-  # crud 작업
+  get "/homework/user" => "homework#index"                        # 내 과제
+  get "/homework/lesson/:id" => "homework#lesson"                 # 게시판
+  get "/homework/lesson/:id/create" => "homework#create"          # 글쓰기
+  post "/homework/lesson/:id/postCreate" => "homework#postCreate" # 글쓰기Post
+  get "/homework/:id/detail" => "homework#detail"                 # 세부항목
+  post "/homework/:id/create" => "homework#homeworkCreate"
   
   # calculator javascript단에서 마무리
   get "/calculator" => "calculator#index"

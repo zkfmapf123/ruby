@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="column">
-            <h1> 최고의 수업 <h1>
+            <h1> | 최고의 수업 <h1>
             <div class="bestProfessor">
                 <%@lesson.each do |item|%>
                     <div class="bestColumn">
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="column">
-            <h1> 최고의 교수 </h1>
+            <h1 id="professor"> | 최고의 교수 </h1>
             <div class="bestProfessor">
                 <%@professor.each do |item|%>
                     <div class="bestColumn">
@@ -92,7 +92,6 @@
     <!--회원가입-->
     <div class="modal", id="modal">
         <div class="modalContent", id="modalJoin">
-            <h1> 이미지 </h1>
             <%=form_tag "/join", method: :post%>
                 <input type="text" name="name" placeholder="이름" required=true>
                 <input type="email" name="email" placeholder="이메일" required=true>

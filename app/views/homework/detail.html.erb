@@ -1,0 +1,54 @@
+<div class="detailContainer">
+    <div class="detailColumn">
+        <div class="column">
+            <p><%=@index.title%></p>
+            <p><%=truncate(strip_tags("#{@index.created_at}"), length: 14)%></p>
+        </div>
+        <div class="column">
+            <%=image_tag "#{@index.image}"%>
+        </div>
+        <div class="column">
+            <pre><%=@index.description%></pre>
+        </div>
+        <div class="column">
+            <p>조회수</p>
+            <% if @index.user.name == current_user().name%>
+                <a href="/"> 글 삭제하기 </a>
+            <%else%>
+                <a style="display:none"></a>        
+            <%end%>
+        </div>
+    </div>
+    <div id="comment" class="detailColumn">
+        <div class="column">
+            <p><%=current_user().name%></p>
+            <%=form_tag "/homework/#{params[:id]}/create#comment", method: :post%>
+                <textarea name="content" placeholder="내용을 입력하세요"></textarea>
+                <input type="submit" value="댓글달기">
+            </form>
+        </div>
+        <div class="column">
+            <a href="/homework/<%=params[:id]%>/detail/?sort=1#comment">좋아요 수</a>
+            <a href="/homework/<%=params[:id]%>/detail/?sort=2#comment">최근작성</a>
+        </div>
+        <div class="column">
+            <%@comment.each do |item|%>
+                <div class="commentColumn">
+                    <p><%=item.user.name%></p>
+                    <p><%=item.description%></p>
+                    <p><%=truncate(strip_tags("#{item.created_at}"), length: 14)%></p>
+                    <div class="heartColumn">
+                        <a href="/">
+                            <i class="fas fa-heart"></i>
+                            <p><%=item.goodPoint%></p>
+                        </a>
+                        <a href="/">
+                            <i class="far fa-heart"></i>
+                            <p><%=item.badPoint%></p>
+                        </a>
+                    </div>
+                </div>
+            <%end%>
+        </div>
+    </div>
+</div>

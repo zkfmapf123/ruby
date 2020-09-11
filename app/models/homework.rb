@@ -3,6 +3,7 @@ class Homework < ApplicationRecord
     
     belongs_to :lesson
     belongs_to :user
+    has_many :comments
 
     before_destroy :destroy_s3
 

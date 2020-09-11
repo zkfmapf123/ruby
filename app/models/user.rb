@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_many :professor_user_flags #교수_유저_공감_flag
     has_many :homeworks #과제공유
     has_many :homework_user_flags #코맨트_유저_공감_flag
+    has_many :comments #누가 댓글썻니?
 
     has_secure_password
     before_save {self.email = email.downcase }

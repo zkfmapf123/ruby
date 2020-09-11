@@ -5,7 +5,7 @@ class CreateHomeworks < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.string :title           #과제공유 글 제목
       t.text :description     #과제공유 설명
-      t.integer :view
+      t.integer :view, default: 0
       t.string :image   # imageUpload aws s3 Carrierwave
       t.string :file     # fileUpload aws s3 Carrierwave
       t.timestamps

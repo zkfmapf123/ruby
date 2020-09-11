@@ -9,6 +9,19 @@
     align-items: center;
     color : #4A3656;
 
+    // margin-bottom
+    .homeColumn:nth-child(1){
+        margin-bottom: 50px;
+    }
+
+    .content{
+        margin-bottom: 50px;
+    }
+
+    #professor{
+        margin-top: 50px;
+    }
+
     #btnForget{
         margin-top: 50px;
         margin-bottom: 20px;
