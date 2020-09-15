@@ -187,7 +187,9 @@
     var lessonDetail = document.getElementById("lessonDetail");
     var progress = document.getElementsByClassName("progressbar");
     
-    //document.getElementsByClassName("bottomColumn")[0].style="display: none";
+    if(document.getElementsByClassName("bottomColumn").length !==0){
+        document.getElementsByClassName("bottomColumn")[0].style="display: none";
+    }
 
     plusButton.addEventListener("mouseover",function(e){
         lessonDetail.style.display = "flex";    
