@@ -4,12 +4,15 @@
             <div class="rowColumn">
                 <p><%=@index.title%></p>
                 <p><%=@index.professor.name%></p>
+                <a id="plusButton">
+                    <i class="fas fa-search-plus"></i>
+                </a>
             </div>
             <div class="rowColumn">
                 <%=link_to "과제공유 하러가기!", "/homework/lesson/#{@index.id}", method: :get%>
             </div>
         </div>
-        <div class="detailRowColumn">
+        <div style="display: none" id = "lessonDetail" class="detailRowColumn">
             <div class="rowColumn">
                 <table>
                     <tr>
@@ -30,18 +33,13 @@
                         <td><%=@index.separate_subject%></td>
                         <td><%=@index.separate_subject_register%></td>
                         <td><%=@index.campus%></td>
-                        <td><%=@index.grade_score%></td>
+                        <td><%=@index.class_target%></td>
                         <td><%=@index.grade_theory_score%></td>
                         <td><%=@index.grade_exam_score%></td>
-                        <td><%=@index.timetable%></td>
                         <td><%=@index.class_target%></td>
+                        <td><%=@index.grade_score%></td>
                     </tr>
                 </table>
-            </div>
-            <div class="rowColumn">
-                <p style="display:none" id="averageNumber"><%=@indexNumber%></p>
-                <p id="totalNumber">0</p>
-                <p>&nbsp;/&nbsp;100점</p>
             </div>
         </div>
         <div class="detailRowColumn">
@@ -59,75 +57,180 @@
                 <i class="fas fa-star"></i>
             </a>
         </div>
+        <div class="detailRowColumn">
+            <% if @index.lesson_evals.empty?%>
+                <div class="rowColumn" id="commentColumn" style="text-align:center;">
+                    <p style="font-size: 20px;"> 유저들의 평가가 필요합니다 </p>
+                </div>
+            <% else%>
+                <div class="rowColumn" id="commentColumn">
+                    <p><%=@index.lesson_evals.order(goodPoint: :desc).first.user.name%>님의 의견</p>
+                    <pre><%=@index.lesson_evals.order(goodPoint: :desc).first.comment%></pre>
+                    <div class="bottom">
+                        <a href="/">
+                            <span>100</span>
+                            <i class="fas fa-heart"></i>
+                        </a>
+                        <a href="/">
+                            <span>200</span>
+                            <i class="far fa-heart"></i>
+                        </a>
+                        <p><%=truncate(strip_tags("#{@index.lesson_evals.order(goodPoint: :desc).first.created_at}"), length: 14)%></p>
+                    </div>
+                </div>
+                <div class="rowColumn" id="scoreColumn">
+                    <div class="rowProgress">
+                        <p id="totalNumber"> 0 </p> 
+                        <p>&nbsp;/ 100</p>
+                    </div>
+                    <div class="rowProgress">
+                        <progress class="progressbar" value="<%=@index.lesson_evals.order(goodPoint: :desc).first.score1%>" max="100"></progress>
+                        <p> 수업 과제량 </p>
+                    </div>
+                    <div class="rowProgress">
+                        <progress class="progressbar" value="<%=@index.lesson_evals.order(goodPoint: :desc).first.score2%>" max="100"></progress>
+                        <p> 수업 난이도 </p>
+                    </div>
+                    <div class="rowProgress">
+                        <progress class="progressbar" value="<%=@index.lesson_evals.order(goodPoint: :desc).first.score3%>" max="100"></progress>
+                        <p> 시험 난이도 </p>
+                    </div>
+                    <div class="rowProgress">
+                        <progress class="progressbar" value="<%=@index.lesson_evals.order(goodPoint: :desc).first.score4%>" max="100"></progress>
+                        <p> 재수강 의향 </p>
+                    </div>
+                </div>
+            <%end%>
+        </div>
     </div>
+    <%if @index.lesson_evals.find_by_user_id(current_user().id) == nil%>
+        <div class="detailColumn">
+            <%=form_tag "/lesson/#{@index.id}/create"%>
+                <textarea name="content" placeholder="나의 수강후기를 적어주세요" require=true></textarea>
+                <div class="progressColumn">
+                    <div class="progress">
+                        <p>수업 과제량</p>
+                        <input class="slider" type=range name=point1 min="10.0" max="99.9" />
+                        <label class="rangeValue">50 / 100</label>
+                    </div>
+                    <div class="progress">
+                        <p>수업 난이도</p>
+                        <input class="slider" type=range name=point2 min="10.0" max="99.9" />
+                        <label class="rangeValue">50 / 100</label>
+                    </div>
+                    <div class="progress">
+                        <p>시험 난이도</p>
+                        <input class="slider" type=range name=point3 min="10.0" max="99.9" />
+                        <label class="rangeValue">50 / 100</label>
+                    </div>
+                    <div class="progress">
+                        <p>재수강 의향</p>
+                        <input class="slider" type=range name=point4 min="10.0" max="99.9" />
+                        <label class="rangeValue">50 / 100</label>
+                    </div>
+                </div>
+                <input type="submit" value="평가하기">
+            </form>
+        </div>
+    <%else%>
+        <div style="display: none"class="detailColumn"></div>
+    <%end%>
     <div class="detailColumn">
-        <%=form_tag "/lesson/#{@index.id}/create"%>
-            <textarea name="content" placeholder="나의 수강후기를 적어주세요" require=true></textarea>
-            <div class="progressColumn">
-                <div class="progress">
-                    <p>과제량</p>
-                    <input class="slider" type=range name=point1 min="10.0" max="99.9" />
-                    <label class="rangeValue">50 / 100</label>
+        <% if @index.lesson_evals.count > 1 || @index.lesson_evals.empty? == false%>
+            <%@index.lesson_evals.order(goodPoint: :desc).each do |item|%>
+                <div class="bottomColumn">
+                    <div class="rowColumn", id="commentColumn">
+                        <p><%=item.user.name%>님의 의견</p>
+                        <pre><%=item.comment%></pre>
+                        <div class="bottom">
+                            <a href="/">
+                                <span>100</span>
+                                <i class="fas fa-heart"></i>
+                            </a>
+                            <a href="/">
+                                <span>200</span>
+                                <i class="far fa-heart"></i>
+                            </a>
+                            <p><%=truncate(strip_tags("#{item.created_at}"), length: 14)%></p>
+                        </div>
+                    </div>
+                    <div class="rowColumn" id="scoreColumn">
+                        <div class="rowProgress">
+                            <p>그냥점수</p>
+                        </div>
+                        <div class="rowProgress">
+                            <progress class="progressbar" value="<%=item.score1%>" max="100"></progress>
+                            <p> 수업 과제량 </p>
+                        </div>
+                        <div class="rowProgress">
+                            <progress class="progressbar" value="<%=item.score2%>" max="100"></progress>
+                            <p> 수업 난이도 </p>
+                        </div>
+                        <div class="rowProgress">
+                            <progress class="progressbar" value="<%=item.score3%>" max="100"></progress>
+                            <p> 시험 난이도 </p>
+                        </div>
+                        <div class="rowProgress">
+                            <progress class="progressbar" value="<%=item.score4%>" max="100"></progress>
+                            <p> 재수강 의향 </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="progress">
-                    <p>수업난이도</p>
-                    <input class="slider" type=range name=point2 min="10.0" max="99.9" />
-                    <label class="rangeValue">50 / 100</label>
-                </div>
-                <div class="progress">
-                    <p>시험난이도</p>
-                    <input class="slider" type=range name=point3 min="10.0" max="99.9" />
-                    <label class="rangeValue">50 / 100</label>
-                </div>
-                <div class="progress">
-                    <p>재수강의향</p>
-                    <input class="slider" type=range name=point4 min="10.0" max="99.9" />
-                    <label class="rangeValue">50 / 100</label>
-                </div>
-            </div>
-            <input type="submit" value="평가하기">
-        </form> 
-    </div>
-    <div class="detailColumn">
-        <p><%=current_user.name%> 평가해주세용 </p>
-        <h1> 댓글창, 평가항목1, 평가항목2, 평가항목3, 평가항목4 </h1>
+            <%end%>
+        <% end %>
     </div>
 </div>
 <script>
     var slider = document.getElementsByClassName("slider");
     var sliderLabel = document.getElementsByClassName("rangeValue");
-    var averageNumber = document.getElementById("averageNumber");
+    var plusButton = document.getElementById("plusButton");
+    var lessonDetail = document.getElementById("lessonDetail");
+    var progress = document.getElementsByClassName("progressbar");
+    
+    //document.getElementsByClassName("bottomColumn")[0].style="display: none";
 
+    plusButton.addEventListener("mouseover",function(e){
+        lessonDetail.style.display = "flex";    
+    });
+
+    plusButton.addEventListener("mouseleave",function(e){
+        lessonDetail.style.display = "none";
+    })
+
+/*
+    var averageNumber = Math.floor(progress[0].value + progress[1].value + progress[2].value + progress[3].value)/4;
     //countUp
     var countUp = function(count){
         document.getElementById("totalNumber").textContent = count;
 
-        if(count < averageNumber.textContent){
+        if(count < averageNumber){
 
             setTimeout(() => {
                 countUp(count+1)
             }, 60);
         }
 
-        if(count === Math.floor(averageNumber.textContent)){
-            count = averageNumber.textContent;
-            //document.getElementById("totalNumber") = averageNumber.textContent + " / 100";
+        if(count === averageNumber){
+            count = averageNumber;
         }
     }
-
+    
     countUp(1);
-
-    slider[0].addEventListener("click",function(){
-        sliderLabel[0].textContent = slider[0].value + " / 100";
-    });
-    slider[1].addEventListener("click",function(){
-        sliderLabel[1].textContent = slider[1].value + " / 100";
-    });
-    slider[2].addEventListener("click",function(){
-        sliderLabel[2].textContent = slider[2].value + " / 100";
-    });
-    slider[3].addEventListener("click",function(){
-        sliderLabel[3].textContent = slider[3].value + " / 100";
-    });
+*/
+    if(slider.length !== 0)
+    {
+        slider[0].addEventListener("click",function(){
+            sliderLabel[0].textContent = slider[0].value + " / 100";
+        });
+        slider[1].addEventListener("click",function(){
+            sliderLabel[1].textContent = slider[1].value + " / 100";
+        });
+        slider[2].addEventListener("click",function(){
+            sliderLabel[2].textContent = slider[2].value + " / 100";
+        });
+        slider[3].addEventListener("click",function(){
+            sliderLabel[3].textContent = slider[3].value + " / 100";
+        });
+    }
 
 </script>

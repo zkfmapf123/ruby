@@ -67,23 +67,23 @@
                                 <%if item.score == 0%>
                                     <p id="score">평가해 주세요</p>
                                 <%else%>
-                                    <p id="score">총평 <%=(item.score.to_f / item.lesson_evals.count.to_f).round(1)%></p>
+                                    <p style="display: none" id="score">총평 <%=(item.score.to_f / item.lesson_evals.count.to_f).round(1)%></p>
                                 <%end%>
                                 <div class="rowProgress">
                                     <progress class="progressbar" value="<%=item.lesson_evals.order(goodPoint: :desc).first.score1%>" max="100"></progress>
-                                    <p> 평가항목 </p>
+                                    <p> 수업 과제량 </p>
                                 </div>
                                 <div class="rowProgress">
                                     <progress class="progressbar" value="<%=item.lesson_evals.order(goodPoint: :desc).first.score2%>" max="100"></progress>
-                                    <p> 평가항목 </p>
+                                    <p> 수업 난이도 </p>
                                 </div>
                                 <div class="rowProgress">
                                     <progress class="progressbar" value="<%=item.lesson_evals.order(goodPoint: :desc).first.score3%>" max="100"></progress>
-                                    <p> 평가항목 </p>
+                                    <p> 시험 난이도 </p>
                                 </div>
                                 <div class="rowProgress">
                                     <progress class="progressbar" value="<%=item.lesson_evals.order(goodPoint: :desc).first.score4%>" max="100"></progress>
-                                    <p> 평가항목 </p>
+                                    <p> 재수강 의향 </p>
                                 </div>
                             </div>
                         </div>

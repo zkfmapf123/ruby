@@ -26,9 +26,10 @@
             flex-direction: row;
 
             justify-content: space-between;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
 
             width: 930px;
+            height: 50px;
 
             //수업, 교수이름
             .rowColumn:nth-child(1){
@@ -49,6 +50,32 @@
                     font-size: 20px;
                     margin-top: 5px;
                 }
+
+                a{
+                    margin-top: 7px;
+                    margin-left: 20px;
+                    i{
+                        font-size: 20px;
+
+                        animation-name: demo;
+	                    animation-duration: 2s;
+	                    animation-iteration-count : infinite;
+                    }
+                
+                    @keyframes demo {
+                        0% { font-size: 22px;}  
+                        10% {font-size: 24px;}
+                        20% {font-size: 26px;}
+                        30% {font-size: 28px;}
+                        40% {font-size: 30px;}
+                        50% {font-size: 32px;}
+                        60% {font-size: 30px;}
+                        70% {font-size: 28px;}
+                        80% {font-size: 26px;}
+                        90% {font-size: 24px;}
+                        10% {font-size: 22px;}
+                    }
+                }
             }
 
             .rowColumn:nth-child(2){
@@ -64,11 +91,10 @@
         }
 
         .detailRowColumn:nth-child(2){
-            width: 930px;
             display: flex;
             flex : 1;
             flex-direction: row;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
 
             justify-content: space-between;
 
@@ -112,10 +138,12 @@
         }
 
         .detailRowColumn:nth-child(3){
+
             display: flex;
             flex :1;
             flex-direction: row;
             width: 930px;
+            margin-bottom: 30px;
 
             p, a{
                 font-family: "comment";
@@ -134,6 +162,76 @@
             }
         }
 
+        .detailRowColumn:nth-child(4){
+            width: 930px;
+
+            display: flex;
+            flex-direction: row;
+
+            justify-content: center;
+            align-items: center;
+
+            border : 0px;
+            background-color: #F6F6F6;
+            border-radius: 20px;
+            padding : 20px;
+
+            .rowColumn:nth-child(1){
+                flex : 3;
+                flex-direction: column;
+
+                p:nth-child(1){
+                    font-size: 30px;
+                    font-family: "comment";
+                }
+    
+                //comment
+                pre:nth-child(2){
+                    font-family: "comment";
+                    font-size: 20px;
+                    margin-top: 5px;
+    
+                    width: 677px;
+                    min-height: 150px;
+                }
+
+                .bottom{
+                    display: flex;
+                    flex-direction: row;
+                    width: 677px;
+                    align-items: flex-end;
+                    justify-content: flex-end;
+
+                    a{
+                        font-family: "comment";
+                        font-size : 15px;
+                        margin-right: 30px;
+                    }
+                    
+                    p{
+                        font-family: "comment";
+                        font-size: 15px;    
+                    }
+                }
+            }
+
+            .rowColumn:nth-child(2){
+                flex : 1;
+                flex-direction: column;
+            }
+        }
+    }
+
+    // 점수표 깔끔스
+    #scoreColumn{
+        .rowProgress{
+            justify-content: center;
+        }
+    }
+
+    .rowProgress:nth-child(1){
+        margin-bottom: 5px;
+        font-size: 30px;
     }
 
     // 평가하기
@@ -225,5 +323,76 @@
     //댓글 주루룩
     .detailColumn:nth-child(3){
         width: 930px;
+    }
+}
+
+//밑에 평가창 
+.detailColumn:nth-child(3){
+    flex :1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+
+    .bottomColumn{
+        border : 0px;
+        background-color: #F6F6F6;
+        border-radius: 20px;
+        padding : 20px;
+
+        width: 930px;
+        display: flex;
+        flex : 1;
+        flex-direction: row;
+        margin-bottom: 50px;
+
+        .rowColumn:nth-child(1){
+            display: flex;
+            flex-direction: column;
+            flex :3;
+
+            p:nth-child(1){
+                font-size: 30px;
+                font-family: "comment";
+            }
+
+            //comment
+            pre:nth-child(2){
+                font-family: "comment";
+                font-size: 20px;
+                margin-top: 5px;
+
+                width: 677px;
+                min-height: 150px;
+            }
+
+            .bottom{
+                display: flex;
+                flex-direction: row;
+                width: 677px;
+
+                justify-content: flex-end;
+                align-items: flex-end;
+
+                p,a{
+                    font-family: "comment";
+                    font-size: 15px;    
+                }
+
+                a{
+                    margin-right: 30px;
+                }
+            }
+        }
+
+        .rowColumn:nth-child(2){
+            display: flex;
+            flex-direction: column;
+            flex : 1;
+
+            
+            justify-content: center;
+            align-items: center;
+        }
     }
 }
