@@ -1,40 +1,99 @@
 <div class="detailContainer">
     <div class="detailColumn">
-        <h1> 교수설명 </h1>
-        <%=@index.name%>
-        <%=@index.major%>
-        <%=@index.score%>
+        <div class="detaildddColumn">
+            <div class="rowColumn">
+                <p> 여긴 커스텀 해야할둣...
+                <%=@index.name%>
+                <%=@index.major%>
+                <%=@index.score%>
+                <!--
+                <p style="display:none" id="averageNumber"><%=@indexNumber%></p>
+                <p id="totalNumber">0</p>
+                <p>&nbsp;/&nbsp;100점</p>
+                -->
+            </div>
+        </div>
+        <div class="detaildddColumn">
+            <h1> 해당교수가 진행하는 수업 <h1>
+            <%@index.lessons.each do |item|%>
+                <a href="/lesson/<%=item.id%>/detail">
+                    <p><%=item.title%></p>
+                </a>
+            <%end%>
+        </div>
+        <div class="detailRowColumn">
+            <p> 조회수 <%=@index.view%></p>
+            <a href="/">
+                좋아요 <i class="fas fa-heart"></i>
+            </a>
+            <a href="/">
+                싫어요 <i class="far fa-heart"></i>
+            </a>
+            <a href="/">
+                찜하기 <i class="far fa-star"></i>
+            </a>
+            <a href="/">
+                <i class="fas fa-star"></i>
+            </a>
+        </div>
     </div>
     <div class="detailColumn">
-        <h1> 해당교수가 진행하는 수업 <h1>
-        <%@index.lessons.each do |item|%>
-            <a href="/lesson/<%=item.id%>/detail">
-                <p><%=item.title%></p>
-            </a>
-        <%end%>
+        <%=form_tag "/professor/#{@index.id}/create"%>
+            <textarea name="content" placeholder="나의 수강후기를 적어주세요" require=true></textarea>
+            <div class="progressColumn">
+                <div class="progress">
+                    <p>과제량</p>
+                    <input class="slider" type=range name=point1 min="10.0" max="99.9" />
+                    <label class="rangeValue">50 / 100</label>
+                </div>
+                <div class="progress">
+                    <p>수업난이도</p>
+                    <input class="slider" type=range name=point2 min="10.0" max="99.9" />
+                    <label class="rangeValue">50 / 100</label>
+                </div>
+                <div class="progress">
+                    <p>시험난이도</p>
+                    <input class="slider" type=range name=point3 min="10.0" max="99.9" />
+                    <label class="rangeValue">50 / 100</label>
+                </div>
+                <div class="progress">
+                    <p>재수강의향</p>
+                    <input class="slider" type=range name=point4 min="10.0" max="99.9" />
+                    <label class="rangeValue">50 / 100</label>
+                </div>
+            </div>
+            <input type="submit" value="평가하기">
+        </form> 
     </div>
     <div class="detailColumn">
         <p><%=current_user.name%> 평가해주세용 </p>
         <h1> 댓글창, 평가항목1, 평가항목2, 평가항목3, 평가항목4 </h1>
     </div>
-    <div class="detailColumn">
-        <%=form_tag "/professor/#{@index.id}/create"%>
-            <textarea name="content" placeholder="코맨트" require=true></textarea>
-            <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point1 min="50.0" max="99.9" />
-            <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point2 min="50.0" max="99.9" />
-            <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point3 min="50.0" max="99.9" />
-            <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point4 min="50.0" max="99.9" />
-            <input type="submit" value="주제넘지만 평가하기">
-        </form> 
-    </div>
 </div>
 <script>
     var slider = document.getElementsByClassName("slider");
     var sliderLabel = document.getElementsByClassName("rangeValue");
+
+    var averageNumber = document.getElementById("averageNumber");
+
+    //countUp
+    var countUp = function(count){
+        document.getElementById("totalNumber").textContent = count;
+
+        if(count < averageNumber.textContent){
+
+            setTimeout(() => {
+                countUp(count+1)
+            }, 60);
+        }
+
+        if(count === Math.floor(averageNumber.textContent)){
+            count = averageNumber.textContent;
+            //document.getElementById("totalNumber") = averageNumber.textContent + " / 100";
+        }
+    }
+
+    countUp(1);
 
     slider[0].addEventListener("click",function(){
         sliderLabel[0].textContent = slider[0].value;

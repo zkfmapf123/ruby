@@ -1,55 +1,133 @@
 <div class="detailContainer">
     <div class="detailColumn">
-        <h1> 수업설명 </h1>
-        <%=@index.title%>
-        <%=@index.professor.name%>
-        <%=@index.separate_class%>
-        <%=@index.separate_major%>
-        <%=@index.separate_subject%>
-        <%=@index.separate_subject_register%>
-        <%=@index.campus%>
-        <%=@index.grade_score%>
-        <%=@index.grade_theory_score%>
-        <%=@index.grade_exam_score%>
-        <%=@index.timetable%>
-        <%=@index.class_target%>
-        <%=@index.score%>
-        <%=link_to "#{@index.title} 수업의 과제", "/homework/lesson/#{@index.id}", method: :get%>
+        <div class="detailRowColumn">
+            <div class="rowColumn">
+                <p><%=@index.title%></p>
+                <p><%=@index.professor.name%></p>
+            </div>
+            <div class="rowColumn">
+                <%=link_to "과제공유 하러가기!", "/homework/lesson/#{@index.id}", method: :get%>
+            </div>
+        </div>
+        <div class="detailRowColumn">
+            <div class="rowColumn">
+                <table>
+                    <tr>
+                        <td>분반</td>
+                        <td>이수구분</td>
+                        <td>과목구분</td>
+                        <td>교과적용</td>
+                        <td>캠퍼스</td>
+                        <td>학점</td>
+                        <td>이론</td>
+                        <td>실습</td>
+                        <td>시간표</td>
+                        <td>수강대상</td>
+                    </tr>
+                    <tr>
+                        <td><%=@index.separate_class%></td>
+                        <td><%=@index.separate_major%></td>
+                        <td><%=@index.separate_subject%></td>
+                        <td><%=@index.separate_subject_register%></td>
+                        <td><%=@index.campus%></td>
+                        <td><%=@index.grade_score%></td>
+                        <td><%=@index.grade_theory_score%></td>
+                        <td><%=@index.grade_exam_score%></td>
+                        <td><%=@index.timetable%></td>
+                        <td><%=@index.class_target%></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="rowColumn">
+                <p style="display:none" id="averageNumber"><%=@indexNumber%></p>
+                <p id="totalNumber">0</p>
+                <p>&nbsp;/&nbsp;100점</p>
+            </div>
+        </div>
+        <div class="detailRowColumn">
+            <p> 조회수 <%=@index.view%></p>
+            <a href="/">
+                좋아요 <i class="fas fa-heart"></i>
+            </a>
+            <a href="/">
+                싫어요 <i class="far fa-heart"></i>
+            </a>
+            <a href="/">
+                찜하기 <i class="far fa-star"></i>
+            </a>
+            <a href="/">
+                <i class="fas fa-star"></i>
+            </a>
+        </div>
+    </div>
+    <div class="detailColumn">
+        <%=form_tag "/lesson/#{@index.id}/create"%>
+            <textarea name="content" placeholder="나의 수강후기를 적어주세요" require=true></textarea>
+            <div class="progressColumn">
+                <div class="progress">
+                    <p>과제량</p>
+                    <input class="slider" type=range name=point1 min="10.0" max="99.9" />
+                    <label class="rangeValue">50 / 100</label>
+                </div>
+                <div class="progress">
+                    <p>수업난이도</p>
+                    <input class="slider" type=range name=point2 min="10.0" max="99.9" />
+                    <label class="rangeValue">50 / 100</label>
+                </div>
+                <div class="progress">
+                    <p>시험난이도</p>
+                    <input class="slider" type=range name=point3 min="10.0" max="99.9" />
+                    <label class="rangeValue">50 / 100</label>
+                </div>
+                <div class="progress">
+                    <p>재수강의향</p>
+                    <input class="slider" type=range name=point4 min="10.0" max="99.9" />
+                    <label class="rangeValue">50 / 100</label>
+                </div>
+            </div>
+            <input type="submit" value="평가하기">
+        </form> 
     </div>
     <div class="detailColumn">
         <p><%=current_user.name%> 평가해주세용 </p>
         <h1> 댓글창, 평가항목1, 평가항목2, 평가항목3, 평가항목4 </h1>
     </div>
-    <div class="detailColumn">
-        <%=form_tag "/lesson/#{@index.id}/create"%>
-            <textarea name="content" placeholder="코맨트" require=true></textarea>
-            <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point1 min="10.0" max="99.9" />
-            <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point2 min="10.0" max="99.9" />
-            <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point3 min="10.0" max="99.9" />
-            <label class="rangeValue">50</label>
-            <input class="slider" type=range name=point4 min="10.0" max="99.9" />
-            <input type="submit" value="주제넘지만 평가하기">
-        </form> 
-    </div>
 </div>
 <script>
     var slider = document.getElementsByClassName("slider");
     var sliderLabel = document.getElementsByClassName("rangeValue");
+    var averageNumber = document.getElementById("averageNumber");
+
+    //countUp
+    var countUp = function(count){
+        document.getElementById("totalNumber").textContent = count;
+
+        if(count < averageNumber.textContent){
+
+            setTimeout(() => {
+                countUp(count+1)
+            }, 60);
+        }
+
+        if(count === Math.floor(averageNumber.textContent)){
+            count = averageNumber.textContent;
+            //document.getElementById("totalNumber") = averageNumber.textContent + " / 100";
+        }
+    }
+
+    countUp(1);
 
     slider[0].addEventListener("click",function(){
-        sliderLabel[0].textContent = slider[0].value;
+        sliderLabel[0].textContent = slider[0].value + " / 100";
     });
     slider[1].addEventListener("click",function(){
-        sliderLabel[1].textContent = slider[1].value;
+        sliderLabel[1].textContent = slider[1].value + " / 100";
     });
     slider[2].addEventListener("click",function(){
-        sliderLabel[2].textContent = slider[2].value;
+        sliderLabel[2].textContent = slider[2].value + " / 100";
     });
     slider[3].addEventListener("click",function(){
-        sliderLabel[3].textContent = slider[3].value;
+        sliderLabel[3].textContent = slider[3].value + " / 100";
     });
 
 </script>

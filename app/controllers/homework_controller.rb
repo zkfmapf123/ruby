@@ -20,8 +20,11 @@ class HomeworkController < ApplicationController
             @flag = 0;
         end
         
-        @pageNumber = (@index.length.to_f / @per_page.to_f).ceil + 1 
-        # @pageNumber = 20 #testing
+        if @index.length <= 10
+            @pageNumber = 1
+        else
+            @pageNumber = (@index.length.to_f / @per_page.to_f).ceil + 1 
+        end
     end
 
     # /homework/:id/detail

@@ -113,7 +113,6 @@
 }
 
 .formColumn:nth-child(4) .form:hover{
-    opacity: 0.7;
     -webkit-transform:scale(1.2);
     -moz-transform:scale(1.2);
     -ms-transform: scale(1.2);
@@ -157,13 +156,18 @@
 
 .commentColumn{
     width: 467px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-all;
+    height: 208px;
 
     display: flex;
     flex : 3;
     flex-direction: column;
+}
+
+.commentColumn pre{
+    width: 467px;
+    height: 208px;
+
+    overflow: auto;
 }
 
 .pointColumn{

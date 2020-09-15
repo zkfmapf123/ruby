@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="commentColumn">
                                     <p>조회 수 <%=item.view%></p>
-                                    <p><%=item.lesson_evals.order(goodPoint: :desc).first.comment%></p>
+                                    <pre><%=item.lesson_evals.order(goodPoint: :desc).first.comment%></pre>
                                 </div>
                             </div>
                             <div class="rowColumnColumn">

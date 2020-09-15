@@ -239,6 +239,9 @@
         flex : 1;
         flex-direction: column;
         
+        justify-content: center;
+        align-items: center;
+        
         //제목
         .column:nth-child(1)
         {
@@ -246,7 +249,9 @@
             flex : 1;
             margin: 10px 0px;
             color : #4A3656;
-            justify-content: center;
+            justify-content: flex-start;
+            
+            width: 930px;
 
             p:nth-child(1){
                 font-size : 25px;

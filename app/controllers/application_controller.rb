@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
 
     def detail(args)
         @index = args[:index].find(params[:id])
+        if args[:index] == Lesson
+            @indexNumber = ((@index.score.to_f) / (@index.lesson_evals.count.to_f)).round(1)
+        else
+            @indexNumber = ((@index.score.to_f) / (@index.professor_evals.count.to_f)).round(1)
+        end
         @index.view += 1
         @index.save
     end
