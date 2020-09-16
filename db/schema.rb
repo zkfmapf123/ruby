@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_101227) do
     t.integer "user_id"
     t.string "title"
     t.text "description"
-    t.integer "view"
+    t.integer "view", default: 0
     t.string "image"
     t.string "file"
     t.datetime "created_at", null: false

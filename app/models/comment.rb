@@ -3,12 +3,7 @@ class Comment < ApplicationRecord
     
     belongs_to :homework
     belongs_to :user
-    has_many :homewokr_user_flags
+    has_many :homework_user_flags, dependent: :destroy
 
-    before_destroy :destroy_s3
-
-    def destory_s3
-        self.image.remove! if self.image
-        self.save!
-    end
+    # s3 이놈은 안씀
 end

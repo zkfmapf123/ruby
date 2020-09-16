@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   # db설정
   get "/db" => "home#db"
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
   get "/lesson/:id/detail" => "lesson#detail"
   get "/lesson/sort" => "lesson#sort"
   post "/lesson/:id/create" => "lesson#create"
+  delete "/lesson/:id/delete" => "lesson#delete"
+  
 
   # crud 작업
  
@@ -24,6 +27,8 @@ Rails.application.routes.draw do
   get "/professor" => "professor#index" 
   get "/professor/:id/detail" => "professor#detail"
   post "/professor/:id/create" => "professor#create"
+  delete "/professor/:id/delete" => "professor#delete"
+  
 
   # crud 작업
 
@@ -34,6 +39,8 @@ Rails.application.routes.draw do
   post "/homework/lesson/:id/postCreate" => "homework#postCreate" # 글쓰기Post
   get "/homework/:id/detail" => "homework#detail"                 # 세부항목
   post "/homework/:id/create" => "homework#homeworkCreate"
+  delete "/homework/:id/delete" => "homework#delete"
+  delete "/comment/:id/delete" => "homework#commentDelete"
   
   # calculator javascript단에서 마무리
   get "/calculator" => "calculator#index"

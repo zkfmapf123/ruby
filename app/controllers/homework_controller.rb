@@ -30,6 +30,8 @@ class HomeworkController < ApplicationController
     # /homework/:id/detail
     def detail
         @index = Homework.find(params[:id])
+        @index.view +=1
+        @index.save
         @comment = @index.comments
     end
 
@@ -62,5 +64,35 @@ class HomeworkController < ApplicationController
         @index.save
 
         redirect_to :controller => "homework", action: "lesson"
+    end
+
+    # 글 지우기
+    def delete
+        begin
+            if Homework.find(params[:id]) == nil
+                raise "error"
+            end
+            @index = Homework.find(params[:id]).delete
+            @index.save
+        rescue => exception
+            flash[:alert] = "올바르지 못한 방법입니다"
+        end
+
+        redirect_to :controller => "homework", action: "lesson"
+    end
+
+    # 댓글 지우기
+    def commentDelete
+        begin
+            if Comment.find(params[:id]) == nil
+                raise "error"
+            end
+            @index = Comment.find(params[:id]).delete
+            @index.save
+        rescue => exception
+            flash[:alert] = "올바르지 못한 명령입니다"
+        end
+
+        redirect_to :controller => "homework", action: "detail"
     end
 end

@@ -311,18 +311,18 @@
 
             margin : 10px 0px;
 
-            justify-content: center;
-            align-items: center;
+            width: 930px;
+            justify-content: flex-start;
+            align-items: flex-start;
 
             p{
-                width: 835px;
-                font-size : 13px;
-                margin-left: 20px;
+                margin-right: 50px;
+                font-size : 20px;
+                font-family: "comment";
             }
 
             a{
                 font-size: 20px;
-                font-family: "comment";
             }
         }
     }
@@ -359,7 +359,7 @@
             textarea{
                 display: flex;
                 padding: 10px;
-                height: 150px;
+                height: 180px;
                 flex : 15;
 
                 font-size : 15px;
@@ -374,7 +374,8 @@
         }
         //sorting
         .column:nth-child(2){
-            margin : 20px 0px;
+            margin-top: 10px;
+            margin-bottom: 30px;
 
             a{
                 font-size: 20px;
@@ -385,57 +386,56 @@
         //댓글란
         .column:nth-child(3){
             display: flex;
-            flex : 1;
             flex-direction: column;
-            
-            font-family: "comment";
-
-            border-left : 1px dotted black;
-            padding-left: 5px;
 
             //comment
             .commentColumn{
                 display: flex;
-                width: 930px;
+                min-height: 10px;
                 flex : 1;
                 flex-direction: row;
+                
+                border : 0px;
+                background-color: #F6F6F6;
+                border-radius: 20px;
+                padding-top: 12px;
+                padding-right: 20px;
+                padding-left: 20px;
+                margin-bottom: 10px;
 
                 //이름
                 p:nth-child(1){
                     display: flex;
-                    flex : 1;
+                    flex :1;
                     font-size : 20px;
                     margin-right: 10px;
                 }
 
                 //description
-                p:nth-child(2){
+                pre{
                     display: flex;
-                    flex : 11;
+                    flex : 5;
                     line-height: 1.2;
                     margin-top: 3px;
-                    font-size : 15px;
+                    font-size : 18px;
                     margin-right: 5px;
-                }
-
-                //날짜
-                p:nth-child(3){
-                    display: flex;
-                    flex : 2;
-                    margin-right: 5px;
-                    
-                    font-size : 13px;
-                    color : gray;
                 }
 
                 .heartColumn{
                     display: flex;
-                    flex : 2;
-                    
+                    flex-direction: row;
+                    p{
+                        font-size: 15px;
+                    }
+
                     a{
                         display: flex;
                         flex-direction: row;
-                        margin-right: 5px;
+                        margin-right: 10px;
+
+                        i{
+                            margin-right: 2px;
+                        }
                     }
                 }
             }

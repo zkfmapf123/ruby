@@ -29,7 +29,7 @@
             <h1> | 최신 강의 평가 </h1>
             <div class="content">
                 <%@recent_lesson.each do |item|%>
-                    <a href="/lesson/<%=item.id%>/detail">
+                    <a href="/lesson/<%=item.lesson_id%>/detail">
                         <div class="contentColumn">
                             <div class="recentColumn">
                                 <p><%=item.lesson.title%></p>

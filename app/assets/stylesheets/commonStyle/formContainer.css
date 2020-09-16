@@ -148,13 +148,13 @@
     flex-direction: column;
 }
 
-.viewColumnColumn{
+.rowColumnColumn .viewColumnColumn{
     display: flex;
     flex: 1;
     flex-direction: row;
 }
 
-.commentColumn{
+.rowColumnColumn .commentColumn{
     width: 467px;
     height: 208px;
 
@@ -163,7 +163,7 @@
     flex-direction: column;
 }
 
-.commentColumn pre{
+.rowColumnColumn .commentColumn pre{
     width: 467px;
     height: 208px;
 

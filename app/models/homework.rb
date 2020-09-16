@@ -3,11 +3,10 @@ class Homework < ApplicationRecord
     
     belongs_to :lesson
     belongs_to :user
-    has_many :comments
+    has_many :comments, dependent: :destroy
+    before_destroy :destroy
 
-    before_destroy :destroy_s3
-
-    def destory_s3
+    def destory
         self.image.remove! if self.image
         self.save!
     end

@@ -43,4 +43,20 @@ class LessonController < ApplicationController
 
         redirect_to :controller => "lesson", action: "detail"
     end
+
+    # lesson/:id/delete
+    def delete
+        begin
+            if LessonEval.find(params[:id]) == nil
+                raise "error"
+            end
+            @index = LessonEval.find(params[:id]).delete
+            @index.save
+            
+        rescue => exception
+            flash[:alert] = "올바르지 못한 명령입니다"    
+        end
+
+        redirect_to :controller => "lesson", action: "detail"
+    end
 end

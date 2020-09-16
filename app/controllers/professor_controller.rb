@@ -10,9 +10,7 @@ class ProfessorController < ApplicationController
     end
 
     def detail
-        super(
-            :index => Professor,
-            :id => params[:id])
+        super(:index => Professor)
     end
 
     def create
@@ -34,6 +32,21 @@ class ProfessorController < ApplicationController
             :total => @total
         )
 
-        redirect_to :controller => "lesson", action: "detail"
+        redirect_to :controller => "professor", action: "detail"
+    end
+
+    # professor/:id/delete
+    def delete
+        begin
+            if ProfessorEval.find(params[:id])==nil
+                raise "error"
+            end
+            @index = ProfessorEval.find(params[:id]).delete
+            @index.save
+        rescue => exception
+            flash[:alert] = "올바르지 못한 명령입니다"
+        end
+
+        redirect_to :controller => "professor", action: "detail"
     end
 end

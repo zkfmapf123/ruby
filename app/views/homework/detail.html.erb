@@ -11,15 +11,15 @@
             <pre><%=@index.description%></pre>
         </div>
         <div class="column">
-            <p>조회수</p>
-            <% if @index.user.name == current_user().name%>
-                <a href="/"> 글 삭제하기 </a>
+            <p>조회수 <%=@index.view%></p>
+            <% if @index.user.id == current_user().id%>
+                <%=link_to "글 삭제하기", "/homework/#{@index.id}/delete", method: :delete%>
             <%else%>
                 <a style="display:none"></a>        
             <%end%>
         </div>
     </div>
-    <div id="comment" class="detailColumn">
+    <div class="detailColumn">
         <div class="column">
             <p><%=current_user().name%></p>
             <%=form_tag "/homework/#{params[:id]}/create#comment", method: :post%>
@@ -35,9 +35,9 @@
             <%@comment.each do |item|%>
                 <div class="commentColumn">
                     <p><%=item.user.name%></p>
-                    <p><%=item.description%></p>
-                    <p><%=truncate(strip_tags("#{item.created_at}"), length: 14)%></p>
+                    <pre><%=item.description%></pre>
                     <div class="heartColumn">
+                        <p><%=truncate(strip_tags("#{item.created_at}"), length: 14)%></p>
                         <a href="/">
                             <i class="fas fa-heart"></i>
                             <p><%=item.goodPoint%></p>
@@ -46,6 +46,9 @@
                             <i class="far fa-heart"></i>
                             <p><%=item.badPoint%></p>
                         </a>
+                        <% if item.user.id == current_user().id%>
+                           <%=link_to "글 삭제하기", "/comment/#{item.id}/delete", method: :delete%> 
+                        <%end%>
                     </div>
                 </div>
             <%end%>
