@@ -19,8 +19,9 @@
                 <%@index.each do |item|%>
                     <tr>
                         <td>
-                            <a href="/homework/<%=item.id%>/detail">
-                                <%=item.title%>
+                            <a id="titleComment" href="/homework/<%=item.id%>/detail">
+                                <p><%=item.title%></p>
+                                <p>(<%=item.comments.count%>)</p>
                             </a>
                         </td>
                         <td><%=item.user.name%></td>

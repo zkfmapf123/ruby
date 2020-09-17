@@ -2,10 +2,6 @@
     <div class="homeColumn">
         <div class="guideColumn">
             <h1> | 학사일정 & 공지사항 </h1>
-            <a id="guideLineButton"> 
-                <i class="fas fa-book-reader"></i>
-                <p>ReadMe</p>
-            </a>
         </div>
         <div class="seeboard">
             <table>
@@ -78,18 +74,6 @@
                     </div>
                 <%end%>
             </div>
-        </div>
-    </div>
-    <!--가이드라인 이미지-->
-    <div class="guideLine" id="guideLine">
-        <div class="guideColumn">
-            <a href="/">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            <%=image_tag "logo.PNG", id: :guideLineImage%>
-            <a href="/">
-                <i class="fas fa-angle-right"></i>
-            </a>
         </div>
     </div>
     <!--로그인-->
@@ -191,14 +175,6 @@
         var btnForget = document.getElementById("btnForget");
         var errorMessage = document.getElementsByClassName("error");
         var modalPassword = document.getElementById("modalPassword");
-        var guideLine = document.getElementById("guideLine");
-
-        // 가이드라인 연습
-        var a = document.getElementById("guideLineButton");
-
-        a.addEventListener("click",function(e){
-            guideLine.style.display = "block";
-        });
 
         // login, join button
 
@@ -240,10 +216,6 @@
                     modal[i].style.display="none"; 
                 }
             }
-        };
-
-        window.onclick =function(e){
-            if(e.target == guideLine) guideLine.style.display="none";
         };
 
         //버튼 눌렀을때 flash 초기화

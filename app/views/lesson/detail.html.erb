@@ -52,12 +52,11 @@
             <a href="/">
                 싫어요 <i class="far fa-heart"></i>
             </a>
-            <a href="/">
-                찜하기 <i class="far fa-star"></i>
-            </a>
-            <a href="/">
-                <i class="fas fa-star"></i>
-            </a>
+            <% if @index.lesson_user_flags.empty? || @index.lesson_user_flags.find_by_user_id(current_user().id).favorite_flag == false%>
+                <%=link_to "찜하기", "/lesson/#{@index.id}/detail/favorite", method: :post%>
+            <% else %>
+                <%=link_to "찜하기 취소", "/lesson/#{@index.id}/detail/favorite", method: :post%>
+            <%end%>
         </div>
     </div>
     <!--아무글도 없을경우-->
