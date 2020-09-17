@@ -429,9 +429,12 @@ header{
 }
 
 .headerColumn:nth-child(1){
-    position: absolute;
-    top: 30px;
-    right: 30px;
+    display: flex;
+    width: 100%;
+    margin-right: 50px;
+    margin-bottom: 100px;
+    justify-content: flex-end;
+    flex-direction: row;
     font-size: 20px;
     font-weight: bold;
     font-family: "comment";
@@ -769,3 +772,42 @@ header{
      text-decoration: none;
      font-size: 20px;
  }
+
+ /* default */
+
+ .default{
+     display: flex;
+     flex : 1;
+     flex-direction: column;
+
+     justify-content: center;
+     align-items: center;
+ }
+
+ .default .defaultColumn:nth-child(1){
+     display: flex;
+     flex : 1;
+ }
+
+ .default .defaultColumn:nth-child(2){
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+ }
+
+ .defaultColumn:nth-child(1){
+    font-size: 30px;
+ }
+
+ .defaultColumn:nth-child(2){
+     font-size: 20px;
+ }
+
+ .defaultColumn:nth-child(2) p{
+    margin-right: 20px;
+ }
+
+ .defaultColumn:nth-child(2) p:hover{
+     font-size: 30px;
+ }
+

@@ -39,6 +39,20 @@
         justify-content: center;
         align-items: center;
 
+        #titleComment{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            p:nth-child(1){
+                margin-right: 10px;
+            }
+
+            p:nth-child(2){
+                opacity: 0.5;
+            }
+        }
+
         //제목
         #lessonTitle{
             font-size :30px;

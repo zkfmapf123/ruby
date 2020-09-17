@@ -19,26 +19,24 @@ Rails.application.routes.draw do
   get "/lesson/sort" => "lesson#sort"
   post "/lesson/:id/create" => "lesson#create"
   delete "/lesson/:id/delete" => "lesson#delete"
+  post "/lesson/:id/detail/favorite" => "lesson#favorite"
   
-
-  # crud 작업
- 
   # professor
   get "/professor" => "professor#index" 
   get "/professor/:id/detail" => "professor#detail"
   post "/professor/:id/create" => "professor#create"
   delete "/professor/:id/delete" => "professor#delete"
-
   # crud 작업
 
   # homework 과제공유 내 과제
+  get "/homework/default" => "homework#default"
   get "/homework/user" => "homework#index"                        # 내 과제
   get "/homework/lesson/:id" => "homework#lesson"                 # 게시판
   get "/homework/lesson/:id/create" => "homework#create"          # 글쓰기
   post "/homework/lesson/:id/postCreate" => "homework#postCreate" # 글쓰기Post
   get "/homework/:id/detail" => "homework#detail"                 # 세부항목
   post "/homework/:id/create" => "homework#homeworkCreate"
-  delete "/homework/:id/delete" => "homework#delete"
+  delete "/homework/lesson/:id/delete" => "homework#delete"
   delete "/comment/:id/delete" => "homework#commentDelete"
   
   # calculator javascript단에서 마무리

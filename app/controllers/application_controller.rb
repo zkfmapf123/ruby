@@ -56,4 +56,8 @@ class ApplicationController < ActionController::Base
         @index.score += args[:total]
         @index.save
     end
+
+    def favorite(args)
+        
+    end
 end

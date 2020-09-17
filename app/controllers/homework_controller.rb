@@ -6,6 +6,11 @@ class HomeworkController < ApplicationController
         
     end
 
+    # /homework/default
+    def default
+        
+    end
+
     # /homework/lesson/:id
     def lesson
         @per_page = 10
@@ -72,13 +77,14 @@ class HomeworkController < ApplicationController
             if Homework.find(params[:id]) == nil
                 raise "error"
             end
-            @index = Homework.find(params[:id]).delete
+            @index = Homework.find(params[:id]).destroy
             @index.save
         rescue => exception
             flash[:alert] = "올바르지 못한 방법입니다"
         end
 
-        redirect_to :controller => "homework", action: "lesson"
+        redirect_to :controller => "homework", action: "default"
+        
     end
 
     # 댓글 지우기

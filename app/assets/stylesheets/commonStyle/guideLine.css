@@ -1,8 +1,9 @@
-.guideLine{
+    .guideLine{
     display: none;
+    flex-direction: column;
     position: fixed;
     z-index : 1;
-    padding-top: 10%;
+    padding-top: 7%;
     left : 0;
     top : 0;
     width: 100%;
@@ -15,27 +16,51 @@
 .guideColumn{
     display: flex;
     background-color: white;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
     border-radius: 25px;
 
-    width: 800px;
-    height: 700px;
-}
-
-.guideColumn a:nth-child(1){
-    width: 50px;
-    font-size : 50px;
-}
-
-.guideColumn #guideLineImage{
     width: 700px;
-    height: 600px;
+    height: 800px;
 }
 
-.guideColumn a:nth-child(3){
+.guideColumn .rowColumn{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-content: center;
+}
+
+.guideColumn .rowColumn a:nth-child(1){
     width: 50px;
     font-size : 50px;
+
+    justify-items: center;
+    align-self: center;
+}
+
+.guideColumn .rowColumn #guideLineImage{
+    width: 600px;
+    height: 700px;
+    justify-items: center;
+    align-self: center;
+}
+
+.guideColumn .rowColumn a:nth-child(3){
+    width: 50px;
+    font-size : 50px;
+    justify-items: center;
+    align-self: center;
+}
+
+#guideLineButton{
+    display: flex;
+    flex-direction: row;
+}
+
+#nextButton{
+    margin-bottom: 50px;
 }
