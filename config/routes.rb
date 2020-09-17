@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   get "/professor/:id/detail" => "professor#detail"
   post "/professor/:id/create" => "professor#create"
   delete "/professor/:id/delete" => "professor#delete"
-  
 
   # crud 작업
 

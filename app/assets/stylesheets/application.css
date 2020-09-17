@@ -406,7 +406,7 @@ a:hover{
 }
                       
 *{
-    font-family: 'headCircle';
+    font-family: 'comment';
 }
             
 /* font */
@@ -434,7 +434,7 @@ header{
     right: 30px;
     font-size: 20px;
     font-weight: bold;
-    font-family: "headCircle";
+    font-family: "comment";
     color : #4A3656;
 }
 
@@ -451,7 +451,7 @@ header{
 }
 
 .headerColumn:nth-child(2) h3{
-    font-family: 'headCircle';
+    font-family: 'comment';
     font-size : 30px;
     font-weight: bold;
     color : #4A3656;
@@ -493,7 +493,7 @@ header{
     border : 0px;
     background-color: #F6F6F6;
     font-size: 20px;
-    font-family: 'headCircle';
+    font-family: 'comment';
     font-weight: bold;
     color : #4A3656;
     padding-left: 20px;
@@ -511,7 +511,7 @@ header{
 }
 
 .headerColumn:nth-child(4) a{
-    font-family: 'headCircle';
+    font-family: 'comment';
     font-size: 30px;
     font-weight: bold;
 
@@ -704,7 +704,7 @@ header{
  }
 
  .footerColumn:nth-child(1){
-    font-family: 'headCircle';
+    font-family: 'comment';
     color : white;
 
     background-color: #6E5B7C;

@@ -68,14 +68,13 @@
             margin-bottom: 10px;
             
             a{
-                border : 1px dotted #4A3656;
-                border-radius: 25px;
+                font-size: 20px;
+                border : 0px;
+                border-radius: 20px;
                 padding: 10px;
-            }
-
-            a:hover{
-                background-color: #4A3656;
                 color : white;
+                font-family: "comment";
+                background-color: #4A3656;
             }
         }
     }
