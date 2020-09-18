@@ -13,12 +13,24 @@
         text-align: center;
         margin-bottom: 20px;
 
-        border: 1px solid black;
+        padding: 20px;
+
+        border: 0px;
+        background-color: #F6F6F6;
         border-radius: 20px;
 
         .column{
             display: flex;
             flex-direction: column;
+
+            p:nth-child(1){
+                font-size: 25px;
+                margin-bottom: 10px;
+            }
+
+            p:nth-child(2){
+                font-size: 20px;
+            }
         }
     }
 
@@ -31,6 +43,77 @@
         .column:nth-child(1){
             display: flex;
             flex-direction: column;
+            flex : 1;
+
+            font-size: 40px;
+
+            background-color: #F6F6F6;
+            border-radius: 25px;
+            padding: 20px;
+            margin-right: 10px;
+
+            #view4{
+                margin-top: 90px;
+                justify-content: center;
+                align-items: center;
+            }
+            
+        }
+
+        //table
+        .column:nth-child(2){
+            display: flex;
+            flex-direction: column;
+            flex : 1;
+
+            background-color: #F6F6F6;
+            border-radius: 25px;
+            padding: 20px;
+
+            table{
+                margin-left: 70px;
+
+                margin-bottom: 20px;
+                th,td{
+                    font-size: 20px;
+                    width: 100px;
+                }
+
+                input[type=text], input[type=number]{
+                    border: 0px;
+                    border-radius: 25px;
+                    margin : 10px 0px;
+                    padding: 10px;
+                    background-color: white;
+                }
+
+                input[type=number]{
+                    width: 50px;
+                }
+
+                select{
+                    width: 60px;
+                    height: 47px;
+                    border-radius: 10px;
+                }
+            }
+            
+            #moreButton, #lessButton{
+                i{
+                    font-size: 30px;
+                }
+            }
+
+            #submit, #initialize{
+                background-color: #4A3656;
+                color: white;
+                border-radius: 20px;
+                padding : 10px;
+            }
+
+            #moreButton, #lessButton, #submit{
+                margin-right: 20px;
+            }
         }
     }
 }

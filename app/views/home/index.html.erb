@@ -212,7 +212,7 @@
         //바탕화면 누르면 초기화
         window.onclick = function(e){
             for(let i=0; i<modal.length; i++){
-                if(e.target == modal[i]){
+                if(e.target === modal[i]){
                     modal[i].style.display="none"; 
                 }
             }

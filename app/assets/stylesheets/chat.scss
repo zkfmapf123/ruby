@@ -1,3 +1,20 @@
 // Place all the styles related to the chat controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chatContainer{
+    display: flex;
+    flex : 1;
+    justify-content: center;
+    align-items: center;
+
+    p{
+        font-size: 30px;
+        
+        border : 0px;
+        background-color: #F6F6F6;
+        border-radius: 20px;
+        padding : 20px;
+
+    }
+}

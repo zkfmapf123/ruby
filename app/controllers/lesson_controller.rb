@@ -62,23 +62,23 @@ class LessonController < ApplicationController
 
     #lesson/:id/detail/favorite
     def favorite
-        @index = LessonUserFlag.where(
-            user: User.find(current_user().id),
-            lesson: Lesson.find(params[:id]))
-        if @index.empty?
+        if LessonUserFlag.where(user: User.find(current_user().id), lesson: Lesson.find(params[:id])).empty?
             @index = User.find(current_user().id).lesson_user_flags.build(
                     lesson: Lesson.find(params[:id]),
                     favorite_flag: false)
             @index.save
-        else
-            # 찜하기가 안되있을 경우 와 되있을 경우
-            @index[0].favorite_flag == true ? 
-                (@index[0].favorite_flag = false) : (@index[0].favorite_flag = true)
-            @index[0].save
-
-            #true 일때가 찜한거임...
-
-            redirect_to :controller => "lesson", action: "detail"
         end
+
+        @index = LessonUserFlag.where(
+            user: User.find(current_user().id),
+            lesson: Lesson.find(params[:id]))
+        
+        # 찜하기가 안되있을 경우 와 되있을 경우
+        @index[0].favorite_flag == true ? 
+            (@index[0].favorite_flag = false) : (@index[0].favorite_flag = true)
+        @index[0].save
+        #true 일때가 찜한거임...
+
+        redirect_to :controller => "lesson", action: "detail"
     end
 end

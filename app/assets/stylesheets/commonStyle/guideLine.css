@@ -3,7 +3,7 @@
     flex-direction: column;
     position: fixed;
     z-index : 1;
-    padding-top: 7%;
+    padding-top: 5%;
     left : 0;
     top : 0;
     width: 100%;
@@ -63,4 +63,8 @@
 
 #nextButton{
     margin-bottom: 50px;
+}
+
+#guideLineButton i{
+    margin-right: 3px;
 }

@@ -70,7 +70,7 @@
                         <span>200</span>
                         <i class="far fa-heart"></i>
                     </a>
-                    <%=link_to "내 글 삭제하기","/professor/#{@index.professor_evals.order(goodPoint: :desc).first.id}/delete", method: :delete, id: :myBlog%>
+                    <%=link_to "내 글 삭제하기","/professor/#{@index.professor_evals.order(goodPoint: :desc).first.id}/delete", method: :delete, id: :myBlog, data: {confirm: "해당글을 삭제하시겠습니까?"}%>
                     <p><%=truncate(strip_tags("#{@index.professor_evals.order(goodPoint: :desc).first.created_at}"), length: 14)%></p>
                 </div>
             </div>
@@ -142,7 +142,7 @@
                     </a>
                     <p><%=truncate(strip_tags("#{@index.professor_evals.find_by_user_id(current_user().id).created_at}"), length: 14)%></p>
                     <%if @index.professor_evals.find_by_user_id(current_user().id).user.id == current_user().id%>
-                        <%=link_to "내 글 삭제하기","/professor/#{@index.professor_evals.find_by_user_id(current_user().id).id}/delete", method: :delete, id: :myBlog%>
+                        <%=link_to "내 글 삭제하기","/professor/#{@index.professor_evals.find_by_user_id(current_user().id).id}/delete", method: :delete, id: :myBlog, data: {confirm: "해당글을 삭제하시겠습니까?"}%>
                     <%end%>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                             </a>
                             <p><%=truncate(strip_tags("#{item.created_at}"), length: 14)%></p>
                             <%if item.user.id == current_user().id%>
-                                <%=link_to "내 글 삭제하기","/professor/#{item.id}/delete", method: :delete, id: :myBlog%>
+                                <%=link_to "내 글 삭제하기","/professor/#{item.id}/delete", method: :delete, id: :myBlog, data: {confirm: "해당글을 삭제하시겠습니까?"}%>
                             <%end%>
                         </div>
                     </div>

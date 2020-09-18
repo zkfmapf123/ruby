@@ -3,7 +3,7 @@ class HomeworkController < ApplicationController
     before_action :isNotUser
     # /homework/user
     def index
-        
+        @index = User.find(current_user().id).homeworks.order(created_at: :desc)
     end
 
     # /homework/default
@@ -99,6 +99,6 @@ class HomeworkController < ApplicationController
             flash[:alert] = "올바르지 못한 명령입니다"
         end
 
-        redirect_to :controller => "homework", action: "detail"
+        redirect_to :controller => "homework", action: "default"
     end
 end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>구문정보아라</title>
+    <title>경동대 강의평가</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/35fb68f7ee.js" crossorigin="anonymous"></script>
@@ -14,7 +14,7 @@
         <div class="headerColumn">
           <a id="guideLineButton">
             <i class="fas fa-book-reader"></i>
-            <p> ReadMe </p>
+            <p> 읽어주세요 </p>
           </a>
           <% if current_user()%>
             <a href="/homework/user">내 과제</a>
@@ -76,14 +76,15 @@
       <div class="guideLine" id="guideLine">
         <div class="guideColumn">
           <div class="rowColumn">
-            <a href="/">
+            <a id="guideLeft" href="/">
               <i class="fas fa-angle-left"></i>
             </a>
             <%=image_tag "logo.PNG", id: :guideLineImage%>
-            <a href="/">
+            <a id="guideRight" href="/">
               <i class="fas fa-angle-right"></i>
             </a>
           </div>
+          <a id="guideEnd">가이드 끄기</a>
           <p id="nextButton">1,2,3,4,5,</p>
         </div>
       </div>
@@ -102,7 +103,7 @@
           <% else%>
             <div class="column">
               <div class="columnColumn">
-                <p> 이미지 </p>
+                <i id="userIcon" class="fas fa-user-circle"></i>
                 <div class="columnColumnColumn">
                   <p class="currrent_user"><%=current_user().name%> 님 안녕하세요</p> 
                   <p><%=current_user().major%></p>
@@ -112,14 +113,22 @@
             </div>
             <div class="column">
               <div class="columnColumn">
-                <i class="fas fa-heart"></i>
-                <h1> 찜한 목록 (needs view Helper)</h1>
+                <i style="margin-right: 5px" class="fas fa-heart"></i>
+                <h1> 찜한 목록 </h1>
+                <% if !(current_user().lesson_user_flags.empty?)%>
+                  <p><%=current_user().lesson_user_flags.count%></p>
+                <%end%>
               </div>
               <div class="columnColumn">
                 <%current_user().lesson_user_flags.each do |item|%>
-                  <% if item.favorite_flag == true%>
-                    <p><%=item.favorite_flag%></p>
-                  <%end%>
+                  <div class="favoriteColumn">
+                    <% if item.favorite_flag == true%>
+                      <a href="/">
+                        <p><%=item.lesson.title%></p>
+                        <p><%=item.lesson.professor.name%>
+                      </a>
+                    <%end%>
+                  </div>
                 <%end%>
               </div>
             </div>
@@ -141,17 +150,37 @@
     var footer = document.getElementById("footer");
     var userDetail = document.getElementById("userDetail");
     var guideLine = document.getElementById("guideLine");
+    var guideLeftButton = document.getElementById("guideLeft");
+    var guideRightButton = document.getElementById("guideRight");
+    var guideEnd = document.getElementById("guideEnd");
 
-        // 가이드라인 연습
+        // 가이드라인 
         var a = document.getElementById("guideLineButton");
 
         a.addEventListener("click",function(e){
             guideLine.style.display = "block";
         });
 
-        window.onclick =function(e){
-            if(e.target == guideLine) guideLine.style.display="none";
-        };
+        //끄기버튼
+        guideEnd.addEventListener("click",function(e){
+          guideLine.style.display = "none"
+        });
+
+        //왼쪽버튼
+        guideLeftButton.addEventListener("click",function(e){
+          e.preventDefault();
+
+          alert("left");
+        });
+
+        //오른쪽버튼
+        guideRightButton.addEventListener("click",function(e){
+          e.preventDefault();
+
+          alert("right");
+        });
+
+        //
 
     footer.style.height="100px";
 

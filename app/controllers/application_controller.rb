@@ -27,22 +27,22 @@ class ApplicationController < ActionController::Base
         begin
             @index = args[:index].find(params[:id])
             if args[:index] == Lesson
-                #if @index.lesson_eval.find_by_user_id(current_user().id).valid?
-                #    raise "error"
-                #end
+                if @index.lesson_eval.find_by_user_id(current_user().id).valid?
+                    raise "error"
+                end
                 @indexNumber = ((@index.score.to_f) / (@index.lesson_evals.count.to_f)).round(1)
             elsif args[:index] == Professor
-                #if @index.professor_evals.find_by_user_id(current_user().id).valid?
-                #    raise "error"
-                #end
+                if @index.professor_evals.find_by_user_id(current_user().id).valid?
+                    raise "error"
+                end
                 @indexNumber = ((@index.score.to_f) / (@index.professor_evals.count.to_f)).round(1)
             end
-            @index.view += 1
-            @index.save
         rescue => exception
             flash[:alert] = "평가는 하나만 가능합니다."
+        ensure
+            @index.view += 1
+            @index.save
         end
-
     end
 
     # deprecated

@@ -13,7 +13,7 @@
         <div class="column">
             <p>조회수 <%=@index.view%></p>
             <% if @index.user.id == current_user().id%>
-                <%=link_to "글 삭제하기", "/homework/lesson/#{@index.id}/delete", method: :delete%>
+                <%=link_to "글 삭제하기", "/homework/lesson/#{@index.id}/delete", method: :delete, data: {confirm: "해당 글을 삭제하시겠습니까?"}%>
             <%else%>
                 <a style="display:none"></a>        
             <%end%>
@@ -47,7 +47,7 @@
                             <p><%=item.badPoint%></p>
                         </a>
                         <% if item.user.id == current_user().id%>
-                           <%=link_to "글 삭제하기", "/comment/#{item.id}/delete", method: :delete%> 
+                           <%=link_to "글 삭제하기", "/comment/#{item.id}/delete", method: :delete, data: {confirm: "Are you sure?"}%> 
                         <%end%>
                     </div>
                 </div>

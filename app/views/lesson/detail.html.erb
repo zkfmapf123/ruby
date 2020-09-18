@@ -108,7 +108,7 @@
                         <i class="far fa-heart"></i>
                     </a>
                     <p><%=truncate(strip_tags("#{@index.lesson_evals.order(goodPoint: :desc).first.created_at}"), length: 14)%></p>
-                    <%=link_to "내 글 삭제하기" , "/lesson/#{@index.lesson_evals.order(goodPoint: :desc).first.id}/delete", method: :delete, id: :myBlog%>
+                    <%=link_to "내 글 삭제하기" , "/lesson/#{@index.lesson_evals.order(goodPoint: :desc).first.id}/delete", method: :delete, id: :myBlogdata, data: {confirm: "해당글을 삭제하시겠습니까?"}%>
                 </div>
             </div>
             <div class="rowColumn" id="scoreColumn">
@@ -179,7 +179,7 @@
                     </a>
                     <p><%=truncate(strip_tags("#{@index.lesson_evals.find_by_user_id(current_user().id).created_at}"), length: 14)%></p>
                     <%if @index.lesson_evals.find_by_user_id(current_user().id).user.id == current_user().id%>
-                        <%=link_to "내 글 삭제하기", "/lesson/#{@index.lesson_evals.find_by_user_id(current_user().id).id}/delete", method: :delete, id: :myBlog%>
+                        <%=link_to "내 글 삭제하기", "/lesson/#{@index.lesson_evals.find_by_user_id(current_user().id).id}/delete", method: :delete, id: :myBlog, data: {confirm: "해당글을 삭제하시겠습니까?"}%>
                     <%end%>
                 </div>
             </div>
@@ -225,7 +225,7 @@
                             </a>
                             <p><%=truncate(strip_tags("#{item.created_at}"), length: 14)%></p>
                             <%if item.user.id == current_user().id%>
-                                <%=link_to "내 글 삭제하기", "/lesson/#{item.id}/delete", method: :delete, id: :myBlog%>
+                                <%=link_to "내 글 삭제하기", "/lesson/#{item.id}/delete", method: :delete, id: :myBlog, data: {confirm: "해당글을 삭제하시겠습니까?"}%>
                             <%end%>
                         </div>
                     </div>
@@ -268,28 +268,8 @@
 
     plusButton.addEventListener("mouseleave",function(e){
         lessonDetail.style.display = "none";
-    })
+    });
 
-/*
-    var averageNumber = Math.floor(progress[0].value + progress[1].value + progress[2].value + progress[3].value)/4;
-    //countUp
-    var countUp = function(count){
-        document.getElementById("totalNumber").textContent = count;
-
-        if(count < averageNumber){
-
-            setTimeout(() => {
-                countUp(count+1)
-            }, 60);
-        }
-
-        if(count === averageNumber){
-            count = averageNumber;
-        }
-    }
-    
-    countUp(1);
-*/
     if(slider.length !== 0)
     {
         slider[0].addEventListener("click",function(){

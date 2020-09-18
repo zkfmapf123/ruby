@@ -16,7 +16,7 @@
 @import "./commonStyle/formContainer.css"; /* 강의평가, 교수평가, search */
 @import "./commonStyle/mediaCss.css"; /*media 조정*/
 @import "./commonStyle/minWidthHeight.css"; /*min-widht min-height*/
- 
+@import "./commonStyle/guideLine.css";
  html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -721,16 +721,6 @@ header{
  .current_user{
      font-size: 30px;
  }
- 
- .footerColumn:nth-child(1) .column{
-    display: flex;
-    flex-direction: column;
- }
-
- .footerColumn:nth-child(1) .column .columnColumn{
-     display: flex;
-     flex-direction: row;
- }
 
  .footerColumn:nth-child(2){
      background-color: #4A3656;
@@ -753,6 +743,36 @@ header{
      font-weight: bold;
  }
 
+ /* 로그인 했을때 찜한 목록*/
+ .columnColumn:nth-child(1){
+     display: flex;
+     flex-direction: row;
+ }
+
+ #userIcon{
+     font-size: 50px;
+     margin-right: 20px;
+}
+    
+.footerColumn .column:nth-child(2){
+    display: flex;
+    flex-direction: column;
+}
+
+/* 찜한 목록*/
+ .columnColumn:nth-child(2){
+    display: flex;
+    flex-direction: column;
+
+    height: 200px;
+    overflow: auto;
+ }
+
+ .columnColumn:nth-child(2) i, h1{
+    margin-right: 5px;
+    margin-bottom: 10px;
+ }
+
  .columnColumnColumn{
      display: flex;
      flex-direction: column;
@@ -771,6 +791,27 @@ header{
  .columnColumnColumn a{
      text-decoration: none;
      font-size: 20px;
+ }
+
+ .favoriteColumn{
+     display: flex;
+     flex-direction: row;
+     margin-bottom: 10px;
+ }
+
+ .favoriteColumn a{
+     text-decoration: none;
+     color: white;
+ }
+
+ .favoriteColumn p:nth-child(1){
+    font-size: 20px;
+    margin-right: 10px;
+ }
+
+ .favoriteColumn p:nth-child(2){
+    margin-top: 5px;
+    font-size: 15px;
  }
 
  /* default */
