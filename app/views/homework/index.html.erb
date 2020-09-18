@@ -1,5 +1,27 @@
 <div class="homeworkContainer">
     <p id="notice"> 전 학기에 과제공유는 자동적으로 삭제됩니다 </p>
+    <!--연습-->
+    <div class="homeworkSearchColumn">
+        <input type="text" placeholder="과제공유할 수업을 검색하세요">
+        <a style="border: 1px solid black; padding: 5px;" id="searchButton">검색</a>
+        <ol div id="list" style="display: none">
+            <li><a id="listDetail">너무너무넝</a></li>
+            <li><a>너무너무넝</a></li>
+            <li><a>너무너무넝</a></li>
+            <li><a>너무너무넝</a></li>
+            <li><a>너무너무넝</a></li>
+            <li><a>너무너무넝</a></li>
+            <li><a>너무너무넝</a></li>
+        </ol>
+        <div style="display: none" id="search">
+            <input type="hidden" name="lessonId" value="<%=params[:id]%>">
+            <input type="text" name="title" placeholder="제목을 입력해주세요" required=true>
+            <textarea name="description" placeholder="올바르지 않은 내용은 삭제될 수 있습니다." required=true></textarea>
+            <input type="file" name="image">
+            <input type="submit" value="글 쓰기">
+        </div>
+    </div>
+    <!--연습-->
     <div class="homeworkColumn">
         <%@index.each do |item|%>
             <div class="myHomework">
@@ -25,6 +47,16 @@
             </div>
         <%end%>
     </div>
-    <div class="homeworkColumn">
-    </div>
 </div>
+<script>
+    var searchButton = document.getElementById("searchButton");
+    var listDeatil = document.getElementById("listDetail");
+
+    searchButton.addEventListener("click",function(e){
+        list.style.display="block";
+    });
+
+    listDeatil.addEventListener("click",function(e){
+        search.style.display="block";
+    })
+</script>
