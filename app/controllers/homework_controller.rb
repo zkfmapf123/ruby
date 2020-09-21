@@ -37,7 +37,7 @@ class HomeworkController < ApplicationController
         @index = Homework.find(params[:id])
         @index.view +=1
         @index.save
-        @comment = @index.comments
+        @comment = @index.comments.order(created_at: :desc)
     end
 
     # /homework/:id/create

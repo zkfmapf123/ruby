@@ -49,4 +49,19 @@ class ProfessorController < ApplicationController
 
         redirect_to :controller => "professor", action: "detail"
     end
+
+    def good_bad_flag 
+        @index = ProfessorUserFlag.where(user: User.find(current_user().id), professor: Professor.find(params[:id]))
+
+        if @index.empty?
+            @userFlag = @index.build(
+                professor: Professor.find(params[:id]))
+            @userFlag.save
+        end
+
+        super(:index => @index,
+              :subject => Professor.find(params[:id]))
+
+        redirect_to :controller => "professor", action: "detail"
+    end
 end

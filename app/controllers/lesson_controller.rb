@@ -81,4 +81,19 @@ class LessonController < ApplicationController
 
         redirect_to :controller => "lesson", action: "detail"
     end
+
+    def good_bad_flag   
+        @index = LessonUserFlag.where(user: User.find(current_user().id), lesson: Lesson.find(params[:id]))
+
+        if @index.empty?
+            @userFlag = @index.build(
+                lesson: Lesson.find(params[:id]))
+            @userFlag.save
+        end
+
+        super(:index => @index,
+              :subject => Lesson.find(params[:id]))
+
+        redirect_to :controller => "lesson", action: "detail"
+    end
 end

@@ -14,12 +14,21 @@
     <div class="deepColumn">
         <div class="rowColumn">
             <p> 조회수 <%=@index.view%></p>
-            <a href="/">
-                좋아요 <i class="fas fa-heart"></i>
-            </a>
-            <a href="/">
-                싫어요 <i class="far fa-heart"></i>
-            </a>
+            <% if @index.professor_user_flags.empty? || @index.professor_user_flags.find_by_user_id(current_user().id).point_flag == true%>
+                <a href="/professor/<%=@index.id%>/detail/point/?point=good">
+                    좋아요 <i class="fas fa-heart"><%=@index.goodPoint%></i>
+                </a>
+                <a href="/professor/<%=@index.id%>/detail/point/?point=bad">
+                    싫어요 <i class="far fa-heart"><%=@index.badPoint%></i>
+                </a>
+            <% else%>
+                <p>
+                    좋아요 <i class="fas fa-heart"><%=@index.goodPoint%></i>
+                </p>
+                <p>
+                    싫어요 <i class="far fa-heart"><%=@index.badPoint%></i>
+                </p>
+            <%end%>
         </div>
     </div>
     <!--아무글도 없을경우-->

@@ -2,8 +2,8 @@
     <div class="homeworkLessonColumn">
         <%if @index.exists? == false%>
             <a id="noneIndexLink" href="/homework/lesson/<%=params[:id]%>/create">
-                <p> 게시글이 없습니다. <p>
-                <p> 힘든 과제를 공유해 보세요 </p>
+                <p> 찾는 게시글이 없습니다. <p>
+                <p> 직접 과제를 공유해 보세요 </p>
             </a>
         <%else%>
             <p id="lessonTitle">

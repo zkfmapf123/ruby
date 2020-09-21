@@ -57,7 +57,23 @@ class ApplicationController < ActionController::Base
         @index.save
     end
 
-    def favorite(args)
-        
+    def good_bad_flag(args)
+        #이미 pointFlag가 설정이 돼있었다면
+
+        if args[:index][0].point_flag == true
+            args[:index][0].point_flag = false
+            args[:index][0].save
+
+            if params[:point] == "good"
+                args[:subject].goodPoint +=1
+                args[:subject].save
+            else
+                args[:subject].badPoint +=1
+                args[:subject].save
+            end
+        else
+            flash[:alert] = "이미 평가한 항목입니다."
+        end
+
     end
 end

@@ -27,10 +27,7 @@
                 <input type="submit" value="댓글달기">
             </form>
         </div>
-        <div class="column">
-            <a href="/homework/<%=params[:id]%>/detail/?sort=1#comment">좋아요 수</a>
-            <a href="/homework/<%=params[:id]%>/detail/?sort=2#comment">최근작성</a>
-        </div>
+        <div style="display : none" class="column"></div>
         <div class="column">
             <%@comment.each do |item|%>
                 <div class="commentColumn">
@@ -38,14 +35,6 @@
                     <pre><%=item.description%></pre>
                     <div class="heartColumn">
                         <p><%=truncate(strip_tags("#{item.created_at}"), length: 14)%></p>
-                        <a href="/">
-                            <i class="fas fa-heart"></i>
-                            <p><%=item.goodPoint%></p>
-                        </a>
-                        <a href="/">
-                            <i class="far fa-heart"></i>
-                            <p><%=item.badPoint%></p>
-                        </a>
                         <% if item.user.id == current_user().id%>
                            <%=link_to "글 삭제하기", "/comment/#{item.id}/delete", method: :delete, data: {confirm: "Are you sure?"}%> 
                         <%end%>

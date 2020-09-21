@@ -167,6 +167,8 @@
     width: 467px;
     height: 208px;
 
+    line-height: 1.2;
+
     overflow: auto;
 }
 

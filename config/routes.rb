@@ -20,11 +20,13 @@ Rails.application.routes.draw do
   post "/lesson/:id/create" => "lesson#create"
   delete "/lesson/:id/delete" => "lesson#delete"
   post "/lesson/:id/detail/favorite" => "lesson#favorite"
+  get "/lesson/:id/detail/point" => "lesson#good_bad_flag" 
   
   # professor
   get "/professor" => "professor#index" 
   get "/professor/:id/detail" => "professor#detail"
   post "/professor/:id/create" => "professor#create"
+  get "/professor/:id/detail/point" => "professor#good_bad_flag"
   delete "/professor/:id/delete" => "professor#delete"
   # crud 작업
 
