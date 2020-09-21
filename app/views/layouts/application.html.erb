@@ -122,7 +122,7 @@
               <div class="columnColumn">
                 <%current_user().lesson_user_flags.each do |item|%>
                   <div class="favoriteColumn">
-                    <% if item.favorite_flag == true%>
+                    <% if item.favorite_flag == false%>
                       <a href="/">
                         <p><%=item.lesson.title%></p>
                         <p><%=item.lesson.professor.name%>

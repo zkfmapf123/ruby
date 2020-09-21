@@ -51,17 +51,17 @@
                     좋아요 <i class="fas fa-heart"><%=@index.goodPoint%></i>
                 </a>
                 <a href="/lesson/<%=@index.id%>/detail/point/?point=bad">
-                    싫어요 <i class="far fa-heart"><%=@index.badPpint%></i>
+                    싫어요 <i class="far fa-heart"><%=@index.badPoint%></i>
                 </a>
             <% else%>
                 <p>
                     좋아요 <i class="fas fa-heart"><%=@index.goodPoint%></i>
                 </p>
                 <p>
-                    싫어요 <i class="far fa-heart"><%=@index.badPpint%></i>
+                    싫어요 <i class="far fa-heart"><%=@index.badPoint%></i>
                 </p>
             <%end%>
-            <% if @index.lesson_user_flags.empty? || @index.lesson_user_flags.find_by_user_id(current_user().id).favorite_flag == false%>
+            <% if @index.lesson_user_flags.empty? || @index.lesson_user_flags.find_by_user_id(current_user().id).favorite_flag == true%>
                 <%=link_to "찜하기", "/lesson/#{@index.id}/detail/favorite", method: :post%>
             <% else %>
                 <%=link_to "찜하기 취소", "/lesson/#{@index.id}/detail/favorite", method: :post%>

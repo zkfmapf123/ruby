@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_101227) do
     t.string "timetable"
     t.string "class_target"
     t.integer "goodPoint", default: 0
-    t.integer "badPpint", default: 0
+    t.integer "badPoint", default: 0
     t.integer "score", default: 0
     t.integer "view", default: 0
     t.datetime "created_at", null: false

@@ -14,7 +14,7 @@ class CreateLessons < ActiveRecord::Migration[5.2]
       t.string :timetable #시간표
       t.string :class_target #수강대상 .으로 구
       t.integer :goodPoint, default: 0
-      t.integer :badPpint, default: 0
+      t.integer :badPoint, default: 0
       t.integer :score, default: 0
       t.integer :view, default: 0
       t.timestamps
